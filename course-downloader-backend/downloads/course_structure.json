@@ -1,0 +1,1434 @@
+{
+  "total_modules": 44,
+  "total_lessons": 238,
+  "lessons": [
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5dd9",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5dd9",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5de2",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5de2",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5deb",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5deb",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5df4",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5df4",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5dfd",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5dfd",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e06",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5e06",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e0f",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5e0f",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e18",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5e18",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e21",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5e21",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e2a",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5e2a",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e33",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5e33",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e3c",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5e3c",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e45",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5e45",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e4e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5e4e",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e57",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5e57",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e60",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5dd1/lessons/68e420b6638ae9e77a0a5e60",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Introduction to Linear Algebra"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e71",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5e71",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e7a",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5e7a",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e83",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5e83",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e8c",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5e8c",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e95",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5e95",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5e9e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5e9e",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5ea7",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5ea7",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5eb0",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5eb0",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5eb9",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5eb9",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5ec2",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5ec2",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5ecb",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5ecb",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5ed4",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5ed4",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5edd",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5edd",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5ee6",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5ee6",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5eef",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5e69/lessons/68e420b6638ae9e77a0a5eef",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Basics of Quantum Mechanics"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f00",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5ef8/lessons/68e420b6638ae9e77a0a5f00",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "General Lecture on Quantum Technology"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f11",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5f09/lessons/68e420b6638ae9e77a0a5f11",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Essential Computer Science"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f1a",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5f09/lessons/68e420b6638ae9e77a0a5f1a",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Essential Computer Science"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f23",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5f09/lessons/68e420b6638ae9e77a0a5f23",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Essential Computer Science"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f2c",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5f09/lessons/68e420b6638ae9e77a0a5f2c",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Essential Computer Science"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f35",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5f09/lessons/68e420b6638ae9e77a0a5f35",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Essential Computer Science"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f3e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5f09/lessons/68e420b6638ae9e77a0a5f3e",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Essential Computer Science"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f47",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5f09/lessons/68e420b6638ae9e77a0a5f47",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Essential Computer Science"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f50",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5f09/lessons/68e420b6638ae9e77a0a5f50",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Essential Computer Science"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f59",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5f09/lessons/68e420b6638ae9e77a0a5f59",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Essential Computer Science"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f62",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5f09/lessons/68e420b6638ae9e77a0a5f62",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Essential Computer Science"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f6b",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5dca/chapters/68e420b6638ae9e77a0a5f09/lessons/68e420b6638ae9e77a0a5f6b",
+      "module_name": "Prerequisites for Quantum Computing",
+      "chapter_name": "Essential Computer Science"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f83",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5f74/chapters/68e420b6638ae9e77a0a5f7b/lessons/68e420b6638ae9e77a0a5f83",
+      "module_name": "Quantum States and Qubits Part 1",
+      "chapter_name": "Single-qubit states and superposition Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f8c",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5f74/chapters/68e420b6638ae9e77a0a5f7b/lessons/68e420b6638ae9e77a0a5f8c",
+      "module_name": "Quantum States and Qubits Part 1",
+      "chapter_name": "Single-qubit states and superposition Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f95",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5f74/chapters/68e420b6638ae9e77a0a5f7b/lessons/68e420b6638ae9e77a0a5f95",
+      "module_name": "Quantum States and Qubits Part 1",
+      "chapter_name": "Single-qubit states and superposition Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5f9e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5f74/chapters/68e420b6638ae9e77a0a5f7b/lessons/68e420b6638ae9e77a0a5f9e",
+      "module_name": "Quantum States and Qubits Part 1",
+      "chapter_name": "Single-qubit states and superposition Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5fa7",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5f74/chapters/68e420b6638ae9e77a0a5f7b/lessons/68e420b6638ae9e77a0a5fa7",
+      "module_name": "Quantum States and Qubits Part 1",
+      "chapter_name": "Single-qubit states and superposition Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5fb0",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5f74/chapters/68e420b6638ae9e77a0a5f7b/lessons/68e420b6638ae9e77a0a5fb0",
+      "module_name": "Quantum States and Qubits Part 1",
+      "chapter_name": "Single-qubit states and superposition Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5fb9",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5f74/chapters/68e420b6638ae9e77a0a5f7b/lessons/68e420b6638ae9e77a0a5fb9",
+      "module_name": "Quantum States and Qubits Part 1",
+      "chapter_name": "Single-qubit states and superposition Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5fc2",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5f74/chapters/68e420b6638ae9e77a0a5f7b/lessons/68e420b6638ae9e77a0a5fc2",
+      "module_name": "Quantum States and Qubits Part 1",
+      "chapter_name": "Single-qubit states and superposition Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5fcb",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5f74/chapters/68e420b6638ae9e77a0a5f7b/lessons/68e420b6638ae9e77a0a5fcb",
+      "module_name": "Quantum States and Qubits Part 1",
+      "chapter_name": "Single-qubit states and superposition Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5fe3",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5fd4/chapters/68e420b6638ae9e77a0a5fdb/lessons/68e420b6638ae9e77a0a5fe3",
+      "module_name": "Quantum States and Qubits Part 2",
+      "chapter_name": "Single-qubit states and superposition Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5fec",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5fd4/chapters/68e420b6638ae9e77a0a5fdb/lessons/68e420b6638ae9e77a0a5fec",
+      "module_name": "Quantum States and Qubits Part 2",
+      "chapter_name": "Single-qubit states and superposition Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a5ff5",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5fd4/chapters/68e420b6638ae9e77a0a5fdb/lessons/68e420b6638ae9e77a0a5ff5",
+      "module_name": "Quantum States and Qubits Part 2",
+      "chapter_name": "Single-qubit states and superposition Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a600d",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5ffe/chapters/68e420b6638ae9e77a0a6005/lessons/68e420b6638ae9e77a0a600d",
+      "module_name": "Quantum States and Qubits Part 3",
+      "chapter_name": "Single-qubit gates and measurements Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6016",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5ffe/chapters/68e420b6638ae9e77a0a6005/lessons/68e420b6638ae9e77a0a6016",
+      "module_name": "Quantum States and Qubits Part 3",
+      "chapter_name": "Single-qubit gates and measurements Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a601f",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5ffe/chapters/68e420b6638ae9e77a0a6005/lessons/68e420b6638ae9e77a0a601f",
+      "module_name": "Quantum States and Qubits Part 3",
+      "chapter_name": "Single-qubit gates and measurements Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6028",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5ffe/chapters/68e420b6638ae9e77a0a6005/lessons/68e420b6638ae9e77a0a6028",
+      "module_name": "Quantum States and Qubits Part 3",
+      "chapter_name": "Single-qubit gates and measurements Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6031",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5ffe/chapters/68e420b6638ae9e77a0a6005/lessons/68e420b6638ae9e77a0a6031",
+      "module_name": "Quantum States and Qubits Part 3",
+      "chapter_name": "Single-qubit gates and measurements Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6042",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5ffe/chapters/68e420b6638ae9e77a0a603a/lessons/68e420b6638ae9e77a0a6042",
+      "module_name": "Quantum States and Qubits Part 3",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a604b",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5ffe/chapters/68e420b6638ae9e77a0a603a/lessons/68e420b6638ae9e77a0a604b",
+      "module_name": "Quantum States and Qubits Part 3",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6054",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5ffe/chapters/68e420b6638ae9e77a0a603a/lessons/68e420b6638ae9e77a0a6054",
+      "module_name": "Quantum States and Qubits Part 3",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a605d",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5ffe/chapters/68e420b6638ae9e77a0a603a/lessons/68e420b6638ae9e77a0a605d",
+      "module_name": "Quantum States and Qubits Part 3",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6066",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5ffe/chapters/68e420b6638ae9e77a0a603a/lessons/68e420b6638ae9e77a0a6066",
+      "module_name": "Quantum States and Qubits Part 3",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a606f",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a5ffe/chapters/68e420b6638ae9e77a0a603a/lessons/68e420b6638ae9e77a0a606f",
+      "module_name": "Quantum States and Qubits Part 3",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6087",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6078/chapters/68e420b6638ae9e77a0a607f/lessons/68e420b6638ae9e77a0a6087",
+      "module_name": "Quantum States and Qubits Part 4",
+      "chapter_name": "Single-qubit gates and measurements Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6090",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6078/chapters/68e420b6638ae9e77a0a607f/lessons/68e420b6638ae9e77a0a6090",
+      "module_name": "Quantum States and Qubits Part 4",
+      "chapter_name": "Single-qubit gates and measurements Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6099",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6078/chapters/68e420b6638ae9e77a0a607f/lessons/68e420b6638ae9e77a0a6099",
+      "module_name": "Quantum States and Qubits Part 4",
+      "chapter_name": "Single-qubit gates and measurements Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a60a2",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6078/chapters/68e420b6638ae9e77a0a607f/lessons/68e420b6638ae9e77a0a60a2",
+      "module_name": "Quantum States and Qubits Part 4",
+      "chapter_name": "Single-qubit gates and measurements Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a60b3",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6078/chapters/68e420b6638ae9e77a0a60ab/lessons/68e420b6638ae9e77a0a60b3",
+      "module_name": "Quantum States and Qubits Part 4",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a60cb",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a60bc/chapters/68e420b6638ae9e77a0a60c3/lessons/68e420b6638ae9e77a0a60cb",
+      "module_name": "Quantum States and Qubits Part 5",
+      "chapter_name": "Single-qubit gates and measurements Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a60d4",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a60bc/chapters/68e420b6638ae9e77a0a60c3/lessons/68e420b6638ae9e77a0a60d4",
+      "module_name": "Quantum States and Qubits Part 5",
+      "chapter_name": "Single-qubit gates and measurements Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a60dd",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a60bc/chapters/68e420b6638ae9e77a0a60c3/lessons/68e420b6638ae9e77a0a60dd",
+      "module_name": "Quantum States and Qubits Part 5",
+      "chapter_name": "Single-qubit gates and measurements Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a60f5",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a60e6/chapters/68e420b6638ae9e77a0a60ed/lessons/68e420b6638ae9e77a0a60f5",
+      "module_name": "Quantum States and Qubits Part 6",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a60fe",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a60e6/chapters/68e420b6638ae9e77a0a60ed/lessons/68e420b6638ae9e77a0a60fe",
+      "module_name": "Quantum States and Qubits Part 6",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6107",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a60e6/chapters/68e420b6638ae9e77a0a60ed/lessons/68e420b6638ae9e77a0a6107",
+      "module_name": "Quantum States and Qubits Part 6",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a611f",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6110/chapters/68e420b6638ae9e77a0a6117/lessons/68e420b6638ae9e77a0a611f",
+      "module_name": "Quantum States and Qubits Part 7",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6128",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6110/chapters/68e420b6638ae9e77a0a6117/lessons/68e420b6638ae9e77a0a6128",
+      "module_name": "Quantum States and Qubits Part 7",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6131",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6110/chapters/68e420b6638ae9e77a0a6117/lessons/68e420b6638ae9e77a0a6131",
+      "module_name": "Quantum States and Qubits Part 7",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6149",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a613a/chapters/68e420b6638ae9e77a0a6141/lessons/68e420b6638ae9e77a0a6149",
+      "module_name": "Quantum States and Qubits Part 8",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6152",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a613a/chapters/68e420b6638ae9e77a0a6141/lessons/68e420b6638ae9e77a0a6152",
+      "module_name": "Quantum States and Qubits Part 8",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a615b",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a613a/chapters/68e420b6638ae9e77a0a6141/lessons/68e420b6638ae9e77a0a615b",
+      "module_name": "Quantum States and Qubits Part 8",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6164",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a613a/chapters/68e420b6638ae9e77a0a6141/lessons/68e420b6638ae9e77a0a6164",
+      "module_name": "Quantum States and Qubits Part 8",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a617c",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a616d/chapters/68e420b6638ae9e77a0a6174/lessons/68e420b6638ae9e77a0a617c",
+      "module_name": "Quantum States and Qubits Part 9",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 4"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6185",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a616d/chapters/68e420b6638ae9e77a0a6174/lessons/68e420b6638ae9e77a0a6185",
+      "module_name": "Quantum States and Qubits Part 9",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 4"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a618e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a616d/chapters/68e420b6638ae9e77a0a6174/lessons/68e420b6638ae9e77a0a618e",
+      "module_name": "Quantum States and Qubits Part 9",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 4"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6197",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a616d/chapters/68e420b6638ae9e77a0a6174/lessons/68e420b6638ae9e77a0a6197",
+      "module_name": "Quantum States and Qubits Part 9",
+      "chapter_name": "Two-qubit states, entanglement, and Bell inequality Part 4"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a61af",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61a0/chapters/68e420b6638ae9e77a0a61a7/lessons/68e420b6638ae9e77a0a61af",
+      "module_name": "Quantum States and Qubits Part 10",
+      "chapter_name": "Two-qubit gates and observable Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a61b8",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61a0/chapters/68e420b6638ae9e77a0a61a7/lessons/68e420b6638ae9e77a0a61b8",
+      "module_name": "Quantum States and Qubits Part 10",
+      "chapter_name": "Two-qubit gates and observable Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a61c1",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61a0/chapters/68e420b6638ae9e77a0a61a7/lessons/68e420b6638ae9e77a0a61c1",
+      "module_name": "Quantum States and Qubits Part 10",
+      "chapter_name": "Two-qubit gates and observable Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a61d2",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61a0/chapters/68e420b6638ae9e77a0a61ca/lessons/68e420b6638ae9e77a0a61d2",
+      "module_name": "Quantum States and Qubits Part 10",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a61db",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61a0/chapters/68e420b6638ae9e77a0a61ca/lessons/68e420b6638ae9e77a0a61db",
+      "module_name": "Quantum States and Qubits Part 10",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a61e4",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61a0/chapters/68e420b6638ae9e77a0a61ca/lessons/68e420b6638ae9e77a0a61e4",
+      "module_name": "Quantum States and Qubits Part 10",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a61ed",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61a0/chapters/68e420b6638ae9e77a0a61ca/lessons/68e420b6638ae9e77a0a61ed",
+      "module_name": "Quantum States and Qubits Part 10",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a61f6",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61a0/chapters/68e420b6638ae9e77a0a61ca/lessons/68e420b6638ae9e77a0a61f6",
+      "module_name": "Quantum States and Qubits Part 10",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a620e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61ff/chapters/68e420b6638ae9e77a0a6206/lessons/68e420b6638ae9e77a0a620e",
+      "module_name": "Quantum States and Qubits Part 11",
+      "chapter_name": "Two-qubit gates and observable Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6217",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61ff/chapters/68e420b6638ae9e77a0a6206/lessons/68e420b6638ae9e77a0a6217",
+      "module_name": "Quantum States and Qubits Part 11",
+      "chapter_name": "Two-qubit gates and observable Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6220",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61ff/chapters/68e420b6638ae9e77a0a6206/lessons/68e420b6638ae9e77a0a6220",
+      "module_name": "Quantum States and Qubits Part 11",
+      "chapter_name": "Two-qubit gates and observable Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6231",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61ff/chapters/68e420b6638ae9e77a0a6229/lessons/68e420b6638ae9e77a0a6231",
+      "module_name": "Quantum States and Qubits Part 11",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 4"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a623a",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61ff/chapters/68e420b6638ae9e77a0a6229/lessons/68e420b6638ae9e77a0a623a",
+      "module_name": "Quantum States and Qubits Part 11",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 4"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6243",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a61ff/chapters/68e420b6638ae9e77a0a6229/lessons/68e420b6638ae9e77a0a6243",
+      "module_name": "Quantum States and Qubits Part 11",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 4"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a625b",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a624c/chapters/68e420b6638ae9e77a0a6253/lessons/68e420b6638ae9e77a0a625b",
+      "module_name": "Quantum States and Qubits Part 12",
+      "chapter_name": "Two-qubit gates and observable Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6264",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a624c/chapters/68e420b6638ae9e77a0a6253/lessons/68e420b6638ae9e77a0a6264",
+      "module_name": "Quantum States and Qubits Part 12",
+      "chapter_name": "Two-qubit gates and observable Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a627c",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a626d/chapters/68e420b6638ae9e77a0a6274/lessons/68e420b6638ae9e77a0a627c",
+      "module_name": "Quantum States and Qubits Part 13",
+      "chapter_name": "Two-qubit gates and observable Part 4"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6285",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a626d/chapters/68e420b6638ae9e77a0a6274/lessons/68e420b6638ae9e77a0a6285",
+      "module_name": "Quantum States and Qubits Part 13",
+      "chapter_name": "Two-qubit gates and observable Part 4"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a629d",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a628e/chapters/68e420b6638ae9e77a0a6295/lessons/68e420b6638ae9e77a0a629d",
+      "module_name": "Quantum States and Qubits Part 14",
+      "chapter_name": "Two-qubit gates and observable Part 5"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a62a6",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a628e/chapters/68e420b6638ae9e77a0a6295/lessons/68e420b6638ae9e77a0a62a6",
+      "module_name": "Quantum States and Qubits Part 14",
+      "chapter_name": "Two-qubit gates and observable Part 5"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a62be",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a62af/chapters/68e420b6638ae9e77a0a62b6/lessons/68e420b6638ae9e77a0a62be",
+      "module_name": "Quantum States and Qubits Part 15",
+      "chapter_name": "Multi-Qubit States (GHZ and W states)"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a62c7",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a62af/chapters/68e420b6638ae9e77a0a62b6/lessons/68e420b6638ae9e77a0a62c7",
+      "module_name": "Quantum States and Qubits Part 15",
+      "chapter_name": "Multi-Qubit States (GHZ and W states)"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a62d0",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a62af/chapters/68e420b6638ae9e77a0a62b6/lessons/68e420b6638ae9e77a0a62d0",
+      "module_name": "Quantum States and Qubits Part 15",
+      "chapter_name": "Multi-Qubit States (GHZ and W states)"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a62d9",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a62af/chapters/68e420b6638ae9e77a0a62b6/lessons/68e420b6638ae9e77a0a62d9",
+      "module_name": "Quantum States and Qubits Part 15",
+      "chapter_name": "Multi-Qubit States (GHZ and W states)"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a62e2",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a62af/chapters/68e420b6638ae9e77a0a62b6/lessons/68e420b6638ae9e77a0a62e2",
+      "module_name": "Quantum States and Qubits Part 15",
+      "chapter_name": "Multi-Qubit States (GHZ and W states)"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a62eb",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a62af/chapters/68e420b6638ae9e77a0a62b6/lessons/68e420b6638ae9e77a0a62eb",
+      "module_name": "Quantum States and Qubits Part 15",
+      "chapter_name": "Multi-Qubit States (GHZ and W states)"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a62fc",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a62af/chapters/68e420b6638ae9e77a0a62f4/lessons/68e420b6638ae9e77a0a62fc",
+      "module_name": "Quantum States and Qubits Part 15",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 5"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6305",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a62af/chapters/68e420b6638ae9e77a0a62f4/lessons/68e420b6638ae9e77a0a6305",
+      "module_name": "Quantum States and Qubits Part 15",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 5"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a630e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a62af/chapters/68e420b6638ae9e77a0a62f4/lessons/68e420b6638ae9e77a0a630e",
+      "module_name": "Quantum States and Qubits Part 15",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 5"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6317",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a62af/chapters/68e420b6638ae9e77a0a62f4/lessons/68e420b6638ae9e77a0a6317",
+      "module_name": "Quantum States and Qubits Part 15",
+      "chapter_name": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 5"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a632f",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6320/chapters/68e420b6638ae9e77a0a6327/lessons/68e420b6638ae9e77a0a632f",
+      "module_name": "QpiAI Explorer Lab",
+      "chapter_name": "Quantum Circuit Generator"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6340",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6320/chapters/68e420b6638ae9e77a0a6338/lessons/68e420b6638ae9e77a0a6340",
+      "module_name": "QpiAI Explorer Lab",
+      "chapter_name": "QpiAI Lab Tutorials on Google Colab using AWS Braket"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6349",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6320/chapters/68e420b6638ae9e77a0a6338/lessons/68e420b6638ae9e77a0a6349",
+      "module_name": "QpiAI Explorer Lab",
+      "chapter_name": "QpiAI Lab Tutorials on Google Colab using AWS Braket"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6352",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6320/chapters/68e420b6638ae9e77a0a6338/lessons/68e420b6638ae9e77a0a6352",
+      "module_name": "QpiAI Explorer Lab",
+      "chapter_name": "QpiAI Lab Tutorials on Google Colab using AWS Braket"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a635b",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6320/chapters/68e420b6638ae9e77a0a6338/lessons/68e420b6638ae9e77a0a635b",
+      "module_name": "QpiAI Explorer Lab",
+      "chapter_name": "QpiAI Lab Tutorials on Google Colab using AWS Braket"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6373",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6364/chapters/68e420b6638ae9e77a0a636b/lessons/68e420b6638ae9e77a0a6373",
+      "module_name": "Quantum Algorithms Part 1",
+      "chapter_name": "Quantum Circuits"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a637c",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6364/chapters/68e420b6638ae9e77a0a636b/lessons/68e420b6638ae9e77a0a637c",
+      "module_name": "Quantum Algorithms Part 1",
+      "chapter_name": "Quantum Circuits"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6385",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6364/chapters/68e420b6638ae9e77a0a636b/lessons/68e420b6638ae9e77a0a6385",
+      "module_name": "Quantum Algorithms Part 1",
+      "chapter_name": "Quantum Circuits"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a638e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6364/chapters/68e420b6638ae9e77a0a636b/lessons/68e420b6638ae9e77a0a638e",
+      "module_name": "Quantum Algorithms Part 1",
+      "chapter_name": "Quantum Circuits"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6397",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6364/chapters/68e420b6638ae9e77a0a636b/lessons/68e420b6638ae9e77a0a6397",
+      "module_name": "Quantum Algorithms Part 1",
+      "chapter_name": "Quantum Circuits"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a63a0",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6364/chapters/68e420b6638ae9e77a0a636b/lessons/68e420b6638ae9e77a0a63a0",
+      "module_name": "Quantum Algorithms Part 1",
+      "chapter_name": "Quantum Circuits"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a63a9",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6364/chapters/68e420b6638ae9e77a0a636b/lessons/68e420b6638ae9e77a0a63a9",
+      "module_name": "Quantum Algorithms Part 1",
+      "chapter_name": "Quantum Circuits"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a63c1",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a63b2/chapters/68e420b6638ae9e77a0a63b9/lessons/68e420b6638ae9e77a0a63c1",
+      "module_name": "Quantum Algorithms Part 2",
+      "chapter_name": "Deutsch Algorithm Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a63ca",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a63b2/chapters/68e420b6638ae9e77a0a63b9/lessons/68e420b6638ae9e77a0a63ca",
+      "module_name": "Quantum Algorithms Part 2",
+      "chapter_name": "Deutsch Algorithm Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a63d3",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a63b2/chapters/68e420b6638ae9e77a0a63b9/lessons/68e420b6638ae9e77a0a63d3",
+      "module_name": "Quantum Algorithms Part 2",
+      "chapter_name": "Deutsch Algorithm Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a63dc",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a63b2/chapters/68e420b6638ae9e77a0a63b9/lessons/68e420b6638ae9e77a0a63dc",
+      "module_name": "Quantum Algorithms Part 2",
+      "chapter_name": "Deutsch Algorithm Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a63e5",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a63b2/chapters/68e420b6638ae9e77a0a63b9/lessons/68e420b6638ae9e77a0a63e5",
+      "module_name": "Quantum Algorithms Part 2",
+      "chapter_name": "Deutsch Algorithm Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a63ee",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a63b2/chapters/68e420b6638ae9e77a0a63b9/lessons/68e420b6638ae9e77a0a63ee",
+      "module_name": "Quantum Algorithms Part 2",
+      "chapter_name": "Deutsch Algorithm Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6406",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a63f7/chapters/68e420b6638ae9e77a0a63fe/lessons/68e420b6638ae9e77a0a6406",
+      "module_name": "Quantum Algorithms Part 3",
+      "chapter_name": "Deutsch Algorithm Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a640f",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a63f7/chapters/68e420b6638ae9e77a0a63fe/lessons/68e420b6638ae9e77a0a640f",
+      "module_name": "Quantum Algorithms Part 3",
+      "chapter_name": "Deutsch Algorithm Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6418",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a63f7/chapters/68e420b6638ae9e77a0a63fe/lessons/68e420b6638ae9e77a0a6418",
+      "module_name": "Quantum Algorithms Part 3",
+      "chapter_name": "Deutsch Algorithm Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6421",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a63f7/chapters/68e420b6638ae9e77a0a63fe/lessons/68e420b6638ae9e77a0a6421",
+      "module_name": "Quantum Algorithms Part 3",
+      "chapter_name": "Deutsch Algorithm Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6439",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a642a/chapters/68e420b6638ae9e77a0a6431/lessons/68e420b6638ae9e77a0a6439",
+      "module_name": "Quantum Algorithms Part 4",
+      "chapter_name": "Deutsch-Jozsa Algorithm & Bernstein-Vazirani Algorithm"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6442",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a642a/chapters/68e420b6638ae9e77a0a6431/lessons/68e420b6638ae9e77a0a6442",
+      "module_name": "Quantum Algorithms Part 4",
+      "chapter_name": "Deutsch-Jozsa Algorithm & Bernstein-Vazirani Algorithm"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a644b",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a642a/chapters/68e420b6638ae9e77a0a6431/lessons/68e420b6638ae9e77a0a644b",
+      "module_name": "Quantum Algorithms Part 4",
+      "chapter_name": "Deutsch-Jozsa Algorithm & Bernstein-Vazirani Algorithm"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6454",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a642a/chapters/68e420b6638ae9e77a0a6431/lessons/68e420b6638ae9e77a0a6454",
+      "module_name": "Quantum Algorithms Part 4",
+      "chapter_name": "Deutsch-Jozsa Algorithm & Bernstein-Vazirani Algorithm"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a645d",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a642a/chapters/68e420b6638ae9e77a0a6431/lessons/68e420b6638ae9e77a0a645d",
+      "module_name": "Quantum Algorithms Part 4",
+      "chapter_name": "Deutsch-Jozsa Algorithm & Bernstein-Vazirani Algorithm"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6466",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a642a/chapters/68e420b6638ae9e77a0a6431/lessons/68e420b6638ae9e77a0a6466",
+      "module_name": "Quantum Algorithms Part 4",
+      "chapter_name": "Deutsch-Jozsa Algorithm & Bernstein-Vazirani Algorithm"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a647e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a646f/chapters/68e420b6638ae9e77a0a6476/lessons/68e420b6638ae9e77a0a647e",
+      "module_name": "Quantum Algorithms Part 5",
+      "chapter_name": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6487",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a646f/chapters/68e420b6638ae9e77a0a6476/lessons/68e420b6638ae9e77a0a6487",
+      "module_name": "Quantum Algorithms Part 5",
+      "chapter_name": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6490",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a646f/chapters/68e420b6638ae9e77a0a6476/lessons/68e420b6638ae9e77a0a6490",
+      "module_name": "Quantum Algorithms Part 5",
+      "chapter_name": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6499",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a646f/chapters/68e420b6638ae9e77a0a6476/lessons/68e420b6638ae9e77a0a6499",
+      "module_name": "Quantum Algorithms Part 5",
+      "chapter_name": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 1"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a64b1",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a64a2/chapters/68e420b6638ae9e77a0a64a9/lessons/68e420b6638ae9e77a0a64b1",
+      "module_name": "Quantum Algorithms Part 6",
+      "chapter_name": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a64ba",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a64a2/chapters/68e420b6638ae9e77a0a64a9/lessons/68e420b6638ae9e77a0a64ba",
+      "module_name": "Quantum Algorithms Part 6",
+      "chapter_name": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a64c3",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a64a2/chapters/68e420b6638ae9e77a0a64a9/lessons/68e420b6638ae9e77a0a64c3",
+      "module_name": "Quantum Algorithms Part 6",
+      "chapter_name": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 2"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a64db",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a64cc/chapters/68e420b6638ae9e77a0a64d3/lessons/68e420b6638ae9e77a0a64db",
+      "module_name": "Quantum Algorithms Part 7",
+      "chapter_name": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a64e4",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a64cc/chapters/68e420b6638ae9e77a0a64d3/lessons/68e420b6638ae9e77a0a64e4",
+      "module_name": "Quantum Algorithms Part 7",
+      "chapter_name": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a64ed",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a64cc/chapters/68e420b6638ae9e77a0a64d3/lessons/68e420b6638ae9e77a0a64ed",
+      "module_name": "Quantum Algorithms Part 7",
+      "chapter_name": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a64f6",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a64cc/chapters/68e420b6638ae9e77a0a64d3/lessons/68e420b6638ae9e77a0a64f6",
+      "module_name": "Quantum Algorithms Part 7",
+      "chapter_name": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a64ff",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a64cc/chapters/68e420b6638ae9e77a0a64d3/lessons/68e420b6638ae9e77a0a64ff",
+      "module_name": "Quantum Algorithms Part 7",
+      "chapter_name": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 3"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6517",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6508/chapters/68e420b6638ae9e77a0a650f/lessons/68e420b6638ae9e77a0a6517",
+      "module_name": "Quantum Algorithms Part 8",
+      "chapter_name": "Quantum Database Search: Grover\u2019s Algorithm"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6520",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6508/chapters/68e420b6638ae9e77a0a650f/lessons/68e420b6638ae9e77a0a6520",
+      "module_name": "Quantum Algorithms Part 8",
+      "chapter_name": "Quantum Database Search: Grover\u2019s Algorithm"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6529",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6508/chapters/68e420b6638ae9e77a0a650f/lessons/68e420b6638ae9e77a0a6529",
+      "module_name": "Quantum Algorithms Part 8",
+      "chapter_name": "Quantum Database Search: Grover\u2019s Algorithm"
+    },
+    {
+      "lesson_id": "68e420b6638ae9e77a0a6532",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6508/chapters/68e420b6638ae9e77a0a650f/lessons/68e420b6638ae9e77a0a6532",
+      "module_name": "Quantum Algorithms Part 8",
+      "chapter_name": "Quantum Database Search: Grover\u2019s Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a653b",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6508/chapters/68e420b6638ae9e77a0a650f/lessons/68e420b7638ae9e77a0a653b",
+      "module_name": "Quantum Algorithms Part 8",
+      "chapter_name": "Quantum Database Search: Grover\u2019s Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6544",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6508/chapters/68e420b6638ae9e77a0a650f/lessons/68e420b7638ae9e77a0a6544",
+      "module_name": "Quantum Algorithms Part 8",
+      "chapter_name": "Quantum Database Search: Grover\u2019s Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a654d",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b6638ae9e77a0a6508/chapters/68e420b6638ae9e77a0a650f/lessons/68e420b7638ae9e77a0a654d",
+      "module_name": "Quantum Algorithms Part 8",
+      "chapter_name": "Quantum Database Search: Grover\u2019s Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6565",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6556/chapters/68e420b7638ae9e77a0a655d/lessons/68e420b7638ae9e77a0a6565",
+      "module_name": "Quantum Algorithms Part 9",
+      "chapter_name": "Circuit Simulation on QpiAI Explorer Software"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a656e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6556/chapters/68e420b7638ae9e77a0a655d/lessons/68e420b7638ae9e77a0a656e",
+      "module_name": "Quantum Algorithms Part 9",
+      "chapter_name": "Circuit Simulation on QpiAI Explorer Software"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6577",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6556/chapters/68e420b7638ae9e77a0a655d/lessons/68e420b7638ae9e77a0a6577",
+      "module_name": "Quantum Algorithms Part 9",
+      "chapter_name": "Circuit Simulation on QpiAI Explorer Software"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a658f",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6580/chapters/68e420b7638ae9e77a0a6587/lessons/68e420b7638ae9e77a0a658f",
+      "module_name": "Quantum Protocols Part 1",
+      "chapter_name": "Quantum Teleportation Part 1"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a65a7",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6598/chapters/68e420b7638ae9e77a0a659f/lessons/68e420b7638ae9e77a0a65a7",
+      "module_name": "Quantum Protocols Part 2",
+      "chapter_name": "Quantum Teleportation Part 2"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a65bf",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a65b0/chapters/68e420b7638ae9e77a0a65b7/lessons/68e420b7638ae9e77a0a65bf",
+      "module_name": "Quantum Protocols Part 3",
+      "chapter_name": "Superdense Coding Part 1"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a65d7",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a65c8/chapters/68e420b7638ae9e77a0a65cf/lessons/68e420b7638ae9e77a0a65d7",
+      "module_name": "Quantum Protocols Part 4",
+      "chapter_name": "Superdense Coding Part 2"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a65ef",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a65e0/chapters/68e420b7638ae9e77a0a65e7/lessons/68e420b7638ae9e77a0a65ef",
+      "module_name": "Quantum Protocols Part 5",
+      "chapter_name": "Simulation of QpiAI Explorer Software"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a65f8",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a65e0/chapters/68e420b7638ae9e77a0a65e7/lessons/68e420b7638ae9e77a0a65f8",
+      "module_name": "Quantum Protocols Part 5",
+      "chapter_name": "Simulation of QpiAI Explorer Software"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6610",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6601/chapters/68e420b7638ae9e77a0a6608/lessons/68e420b7638ae9e77a0a6610",
+      "module_name": "Quantum Protocols Part 6",
+      "chapter_name": "Quantum Cryptography and Key Distribution"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6619",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6601/chapters/68e420b7638ae9e77a0a6608/lessons/68e420b7638ae9e77a0a6619",
+      "module_name": "Quantum Protocols Part 6",
+      "chapter_name": "Quantum Cryptography and Key Distribution"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6622",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6601/chapters/68e420b7638ae9e77a0a6608/lessons/68e420b7638ae9e77a0a6622",
+      "module_name": "Quantum Protocols Part 6",
+      "chapter_name": "Quantum Cryptography and Key Distribution"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a662b",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6601/chapters/68e420b7638ae9e77a0a6608/lessons/68e420b7638ae9e77a0a662b",
+      "module_name": "Quantum Protocols Part 6",
+      "chapter_name": "Quantum Cryptography and Key Distribution"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6634",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6601/chapters/68e420b7638ae9e77a0a6608/lessons/68e420b7638ae9e77a0a6634",
+      "module_name": "Quantum Protocols Part 6",
+      "chapter_name": "Quantum Cryptography and Key Distribution"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a663d",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6601/chapters/68e420b7638ae9e77a0a6608/lessons/68e420b7638ae9e77a0a663d",
+      "module_name": "Quantum Protocols Part 6",
+      "chapter_name": "Quantum Cryptography and Key Distribution"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6655",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6646/chapters/68e420b7638ae9e77a0a664d/lessons/68e420b7638ae9e77a0a6655",
+      "module_name": "Quantum Protocols Part 7",
+      "chapter_name": "Quantum Communication and Networks"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a666d",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a665e/chapters/68e420b7638ae9e77a0a6665/lessons/68e420b7638ae9e77a0a666d",
+      "module_name": "Quantum Protocols Part 8",
+      "chapter_name": "Guest Lecture - QKD, Communications"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6685",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6676/chapters/68e420b7638ae9e77a0a667d/lessons/68e420b7638ae9e77a0a6685",
+      "module_name": "NISQ Devices Part 1",
+      "chapter_name": "NISQ Models"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a668e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6676/chapters/68e420b7638ae9e77a0a667d/lessons/68e420b7638ae9e77a0a668e",
+      "module_name": "NISQ Devices Part 1",
+      "chapter_name": "NISQ Models"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a66a6",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6697/chapters/68e420b7638ae9e77a0a669e/lessons/68e420b7638ae9e77a0a66a6",
+      "module_name": "NISQ Devices Part 2",
+      "chapter_name": "Quantum Error Mitigation"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a66af",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6697/chapters/68e420b7638ae9e77a0a669e/lessons/68e420b7638ae9e77a0a66af",
+      "module_name": "NISQ Devices Part 2",
+      "chapter_name": "Quantum Error Mitigation"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a66b8",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6697/chapters/68e420b7638ae9e77a0a669e/lessons/68e420b7638ae9e77a0a66b8",
+      "module_name": "NISQ Devices Part 2",
+      "chapter_name": "Quantum Error Mitigation"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a66d0",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a66c1/chapters/68e420b7638ae9e77a0a66c8/lessons/68e420b7638ae9e77a0a66d0",
+      "module_name": "NISQ Devices Part 3",
+      "chapter_name": "Quantum Volume and Performance Metrics"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a66e8",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a66d9/chapters/68e420b7638ae9e77a0a66e0/lessons/68e420b7638ae9e77a0a66e8",
+      "module_name": "NISQ Devices Part 4",
+      "chapter_name": "Hybrid Quantum-Classical Computing"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a66f1",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a66d9/chapters/68e420b7638ae9e77a0a66e0/lessons/68e420b7638ae9e77a0a66f1",
+      "module_name": "NISQ Devices Part 4",
+      "chapter_name": "Hybrid Quantum-Classical Computing"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a66fa",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a66d9/chapters/68e420b7638ae9e77a0a66e0/lessons/68e420b7638ae9e77a0a66fa",
+      "module_name": "NISQ Devices Part 4",
+      "chapter_name": "Hybrid Quantum-Classical Computing"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6703",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a66d9/chapters/68e420b7638ae9e77a0a66e0/lessons/68e420b7638ae9e77a0a6703",
+      "module_name": "NISQ Devices Part 4",
+      "chapter_name": "Hybrid Quantum-Classical Computing"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a671b",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a670c/chapters/68e420b7638ae9e77a0a6713/lessons/68e420b7638ae9e77a0a671b",
+      "module_name": "Quantum Algorithms for Applications Part 1",
+      "chapter_name": "Quantum Inspired Computing"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6724",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a670c/chapters/68e420b7638ae9e77a0a6713/lessons/68e420b7638ae9e77a0a6724",
+      "module_name": "Quantum Algorithms for Applications Part 1",
+      "chapter_name": "Quantum Inspired Computing"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a672d",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a670c/chapters/68e420b7638ae9e77a0a6713/lessons/68e420b7638ae9e77a0a672d",
+      "module_name": "Quantum Algorithms for Applications Part 1",
+      "chapter_name": "Quantum Inspired Computing"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6736",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a670c/chapters/68e420b7638ae9e77a0a6713/lessons/68e420b7638ae9e77a0a6736",
+      "module_name": "Quantum Algorithms for Applications Part 1",
+      "chapter_name": "Quantum Inspired Computing"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a673f",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a670c/chapters/68e420b7638ae9e77a0a6713/lessons/68e420b7638ae9e77a0a673f",
+      "module_name": "Quantum Algorithms for Applications Part 1",
+      "chapter_name": "Quantum Inspired Computing"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6757",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6748/chapters/68e420b7638ae9e77a0a674f/lessons/68e420b7638ae9e77a0a6757",
+      "module_name": "Quantum Algorithms for Applications Part 2",
+      "chapter_name": "Variational Quantum Algorithms"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6760",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6748/chapters/68e420b7638ae9e77a0a674f/lessons/68e420b7638ae9e77a0a6760",
+      "module_name": "Quantum Algorithms for Applications Part 2",
+      "chapter_name": "Variational Quantum Algorithms"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6769",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6748/chapters/68e420b7638ae9e77a0a674f/lessons/68e420b7638ae9e77a0a6769",
+      "module_name": "Quantum Algorithms for Applications Part 2",
+      "chapter_name": "Variational Quantum Algorithms"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6772",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6748/chapters/68e420b7638ae9e77a0a674f/lessons/68e420b7638ae9e77a0a6772",
+      "module_name": "Quantum Algorithms for Applications Part 2",
+      "chapter_name": "Variational Quantum Algorithms"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a677b",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6748/chapters/68e420b7638ae9e77a0a674f/lessons/68e420b7638ae9e77a0a677b",
+      "module_name": "Quantum Algorithms for Applications Part 2",
+      "chapter_name": "Variational Quantum Algorithms"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6784",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6748/chapters/68e420b7638ae9e77a0a674f/lessons/68e420b7638ae9e77a0a6784",
+      "module_name": "Quantum Algorithms for Applications Part 2",
+      "chapter_name": "Variational Quantum Algorithms"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a678d",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6748/chapters/68e420b7638ae9e77a0a674f/lessons/68e420b7638ae9e77a0a678d",
+      "module_name": "Quantum Algorithms for Applications Part 2",
+      "chapter_name": "Variational Quantum Algorithms"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6796",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6748/chapters/68e420b7638ae9e77a0a674f/lessons/68e420b7638ae9e77a0a6796",
+      "module_name": "Quantum Algorithms for Applications Part 2",
+      "chapter_name": "Variational Quantum Algorithms"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a679f",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6748/chapters/68e420b7638ae9e77a0a674f/lessons/68e420b7638ae9e77a0a679f",
+      "module_name": "Quantum Algorithms for Applications Part 2",
+      "chapter_name": "Variational Quantum Algorithms"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a67b7",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67a8/chapters/68e420b7638ae9e77a0a67af/lessons/68e420b7638ae9e77a0a67b7",
+      "module_name": "Quantum Algorithms for Applications Part 3",
+      "chapter_name": "Variational Quantum Eigensolver"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a67c0",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67a8/chapters/68e420b7638ae9e77a0a67af/lessons/68e420b7638ae9e77a0a67c0",
+      "module_name": "Quantum Algorithms for Applications Part 3",
+      "chapter_name": "Variational Quantum Eigensolver"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a67c9",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67a8/chapters/68e420b7638ae9e77a0a67af/lessons/68e420b7638ae9e77a0a67c9",
+      "module_name": "Quantum Algorithms for Applications Part 3",
+      "chapter_name": "Variational Quantum Eigensolver"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a67d2",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67a8/chapters/68e420b7638ae9e77a0a67af/lessons/68e420b7638ae9e77a0a67d2",
+      "module_name": "Quantum Algorithms for Applications Part 3",
+      "chapter_name": "Variational Quantum Eigensolver"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a67db",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67a8/chapters/68e420b7638ae9e77a0a67af/lessons/68e420b7638ae9e77a0a67db",
+      "module_name": "Quantum Algorithms for Applications Part 3",
+      "chapter_name": "Variational Quantum Eigensolver"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a67e4",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67a8/chapters/68e420b7638ae9e77a0a67af/lessons/68e420b7638ae9e77a0a67e4",
+      "module_name": "Quantum Algorithms for Applications Part 3",
+      "chapter_name": "Variational Quantum Eigensolver"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a67fc",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67ed/chapters/68e420b7638ae9e77a0a67f4/lessons/68e420b7638ae9e77a0a67fc",
+      "module_name": "Quantum Algorithms for Applications Part 4",
+      "chapter_name": "Quantum Approximate Optimization Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6805",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67ed/chapters/68e420b7638ae9e77a0a67f4/lessons/68e420b7638ae9e77a0a6805",
+      "module_name": "Quantum Algorithms for Applications Part 4",
+      "chapter_name": "Quantum Approximate Optimization Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a680e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67ed/chapters/68e420b7638ae9e77a0a67f4/lessons/68e420b7638ae9e77a0a680e",
+      "module_name": "Quantum Algorithms for Applications Part 4",
+      "chapter_name": "Quantum Approximate Optimization Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6817",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67ed/chapters/68e420b7638ae9e77a0a67f4/lessons/68e420b7638ae9e77a0a6817",
+      "module_name": "Quantum Algorithms for Applications Part 4",
+      "chapter_name": "Quantum Approximate Optimization Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6820",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67ed/chapters/68e420b7638ae9e77a0a67f4/lessons/68e420b7638ae9e77a0a6820",
+      "module_name": "Quantum Algorithms for Applications Part 4",
+      "chapter_name": "Quantum Approximate Optimization Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6829",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67ed/chapters/68e420b7638ae9e77a0a67f4/lessons/68e420b7638ae9e77a0a6829",
+      "module_name": "Quantum Algorithms for Applications Part 4",
+      "chapter_name": "Quantum Approximate Optimization Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6832",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67ed/chapters/68e420b7638ae9e77a0a67f4/lessons/68e420b7638ae9e77a0a6832",
+      "module_name": "Quantum Algorithms for Applications Part 4",
+      "chapter_name": "Quantum Approximate Optimization Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a683b",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67ed/chapters/68e420b7638ae9e77a0a67f4/lessons/68e420b7638ae9e77a0a683b",
+      "module_name": "Quantum Algorithms for Applications Part 4",
+      "chapter_name": "Quantum Approximate Optimization Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6844",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67ed/chapters/68e420b7638ae9e77a0a67f4/lessons/68e420b7638ae9e77a0a6844",
+      "module_name": "Quantum Algorithms for Applications Part 4",
+      "chapter_name": "Quantum Approximate Optimization Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a684d",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a67ed/chapters/68e420b7638ae9e77a0a67f4/lessons/68e420b7638ae9e77a0a684d",
+      "module_name": "Quantum Algorithms for Applications Part 4",
+      "chapter_name": "Quantum Approximate Optimization Algorithm"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6865",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6856/chapters/68e420b7638ae9e77a0a685d/lessons/68e420b7638ae9e77a0a6865",
+      "module_name": "Quantum Algorithms for Applications Part 5",
+      "chapter_name": "Quantum Machine Learning: QNNs"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a686e",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6856/chapters/68e420b7638ae9e77a0a685d/lessons/68e420b7638ae9e77a0a686e",
+      "module_name": "Quantum Algorithms for Applications Part 5",
+      "chapter_name": "Quantum Machine Learning: QNNs"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6877",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6856/chapters/68e420b7638ae9e77a0a685d/lessons/68e420b7638ae9e77a0a6877",
+      "module_name": "Quantum Algorithms for Applications Part 5",
+      "chapter_name": "Quantum Machine Learning: QNNs"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6880",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6856/chapters/68e420b7638ae9e77a0a685d/lessons/68e420b7638ae9e77a0a6880",
+      "module_name": "Quantum Algorithms for Applications Part 5",
+      "chapter_name": "Quantum Machine Learning: QNNs"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6889",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6856/chapters/68e420b7638ae9e77a0a685d/lessons/68e420b7638ae9e77a0a6889",
+      "module_name": "Quantum Algorithms for Applications Part 5",
+      "chapter_name": "Quantum Machine Learning: QNNs"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a6892",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6856/chapters/68e420b7638ae9e77a0a685d/lessons/68e420b7638ae9e77a0a6892",
+      "module_name": "Quantum Algorithms for Applications Part 5",
+      "chapter_name": "Quantum Machine Learning: QNNs"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a689b",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6856/chapters/68e420b7638ae9e77a0a685d/lessons/68e420b7638ae9e77a0a689b",
+      "module_name": "Quantum Algorithms for Applications Part 5",
+      "chapter_name": "Quantum Machine Learning: QNNs"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a68a4",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6856/chapters/68e420b7638ae9e77a0a685d/lessons/68e420b7638ae9e77a0a68a4",
+      "module_name": "Quantum Algorithms for Applications Part 5",
+      "chapter_name": "Quantum Machine Learning: QNNs"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a68ad",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a6856/chapters/68e420b7638ae9e77a0a685d/lessons/68e420b7638ae9e77a0a68ad",
+      "module_name": "Quantum Algorithms for Applications Part 5",
+      "chapter_name": "Quantum Machine Learning: QNNs"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a68c5",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a68b6/chapters/68e420b7638ae9e77a0a68bd/lessons/68e420b7638ae9e77a0a68c5",
+      "module_name": "Quantum Algorithms for Applications Part 6",
+      "chapter_name": "HHL quantum algorithm for solving a system of linear equations"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a68ce",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a68b6/chapters/68e420b7638ae9e77a0a68bd/lessons/68e420b7638ae9e77a0a68ce",
+      "module_name": "Quantum Algorithms for Applications Part 6",
+      "chapter_name": "HHL quantum algorithm for solving a system of linear equations"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a68d7",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a68b6/chapters/68e420b7638ae9e77a0a68bd/lessons/68e420b7638ae9e77a0a68d7",
+      "module_name": "Quantum Algorithms for Applications Part 6",
+      "chapter_name": "HHL quantum algorithm for solving a system of linear equations"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a68e0",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a68b6/chapters/68e420b7638ae9e77a0a68bd/lessons/68e420b7638ae9e77a0a68e0",
+      "module_name": "Quantum Algorithms for Applications Part 6",
+      "chapter_name": "HHL quantum algorithm for solving a system of linear equations"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a68e9",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a68b6/chapters/68e420b7638ae9e77a0a68bd/lessons/68e420b7638ae9e77a0a68e9",
+      "module_name": "Quantum Algorithms for Applications Part 6",
+      "chapter_name": "HHL quantum algorithm for solving a system of linear equations"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a68f2",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a68b6/chapters/68e420b7638ae9e77a0a68bd/lessons/68e420b7638ae9e77a0a68f2",
+      "module_name": "Quantum Algorithms for Applications Part 6",
+      "chapter_name": "HHL quantum algorithm for solving a system of linear equations"
+    },
+    {
+      "lesson_id": "68e420b7638ae9e77a0a68fb",
+      "lesson_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules/68e420b7638ae9e77a0a68b6/chapters/68e420b7638ae9e77a0a68bd/lessons/68e420b7638ae9e77a0a68fb",
+      "module_name": "Quantum Algorithms for Applications Part 6",
+      "chapter_name": "HHL quantum algorithm for solving a system of linear equations"
+    }
+  ]
+}
