@@ -113,8 +113,135 @@ def login_qpiai_explorer(driver, base_url: str, username: str, password: str) ->
         print(f"QpiAI login error: {e}")
         return False
 
+def detect_video_urls_from_page(driver, base_url: str) -> list:
+    """
+    Detect video URLs from a page like browser video downloader extensions do.
+    This uses JavaScript execution to find all video sources including dynamically loaded ones.
+    """
+    video_urls = []
+    
+    # JavaScript to find all video sources on the page
+    js_find_videos = """
+    var videos = [];
+    
+    // Find all video elements
+    document.querySelectorAll('video').forEach(function(video) {
+        if (video.src && video.src.length > 0) {
+            videos.push({type: 'video', src: video.src});
+        }
+        if (video.currentSrc && video.currentSrc.length > 0) {
+            videos.push({type: 'video', src: video.currentSrc});
+        }
+        // Check source elements inside video
+        video.querySelectorAll('source').forEach(function(source) {
+            if (source.src && source.src.length > 0) {
+                videos.push({type: 'video', src: source.src});
+            }
+        });
+    });
+    
+    // Find video iframes (YouTube, Vimeo, etc.)
+    document.querySelectorAll('iframe').forEach(function(iframe) {
+        var src = iframe.src || '';
+        if (src.includes('youtube') || src.includes('vimeo') || src.includes('video') || src.includes('player')) {
+            videos.push({type: 'iframe', src: src});
+        }
+    });
+    
+    // Find elements with video data attributes
+    document.querySelectorAll('[data-video-url], [data-src], [data-video], [data-video-src]').forEach(function(el) {
+        var url = el.getAttribute('data-video-url') || el.getAttribute('data-src') || 
+                  el.getAttribute('data-video') || el.getAttribute('data-video-src');
+        if (url && url.length > 0) {
+            videos.push({type: 'data-attr', src: url});
+        }
+    });
+    
+    // Find video URLs in script tags (common for video players)
+    document.querySelectorAll('script').forEach(function(script) {
+        var content = script.textContent || '';
+        // Look for common video URL patterns
+        var patterns = [
+            /["']([^"']*\\.mp4[^"']*)["']/gi,
+            /["']([^"']*\\.webm[^"']*)["']/gi,
+            /["']([^"']*\\.m3u8[^"']*)["']/gi,
+            /["'](https?:\\/\\/[^"']*video[^"']*)["']/gi,
+            /videoUrl["']?\\s*[:=]\\s*["']([^"']+)["']/gi,
+            /src["']?\\s*[:=]\\s*["']([^"']*\\.(mp4|webm|m3u8)[^"']*)["']/gi
+        ];
+        patterns.forEach(function(pattern) {
+            var matches = content.match(pattern);
+            if (matches) {
+                matches.forEach(function(match) {
+                    // Extract URL from the match
+                    var urlMatch = match.match(/["']([^"']+)["']/);
+                    if (urlMatch && urlMatch[1]) {
+                        videos.push({type: 'script', src: urlMatch[1]});
+                    }
+                });
+            }
+        });
+    });
+    
+    // Find object/embed elements
+    document.querySelectorAll('object, embed').forEach(function(el) {
+        var src = el.getAttribute('data') || el.getAttribute('src');
+        if (src && (src.includes('video') || src.includes('.mp4') || src.includes('.webm'))) {
+            videos.push({type: 'embed', src: src});
+        }
+    });
+    
+    return videos;
+    """
+    
+    try:
+        # Execute JavaScript to find videos
+        found_videos = driver.execute_script(js_find_videos)
+        
+        seen_urls = set()
+        for video in found_videos:
+            src = video.get('src', '')
+            if src and src not in seen_urls and not src.startswith('blob:'):
+                # Make URL absolute if needed
+                if not src.startswith('http'):
+                    src = urljoin(base_url, src)
+                seen_urls.add(src)
+                video_urls.append({
+                    "type": video.get('type', 'video'),
+                    "url": src
+                })
+        
+        # Also check page source for video URLs that JS might miss
+        page_source = driver.page_source
+        
+        # Common video URL patterns
+        video_patterns = [
+            r'https?://[^\s"\'<>]+\.mp4[^\s"\'<>]*',
+            r'https?://[^\s"\'<>]+\.webm[^\s"\'<>]*',
+            r'https?://[^\s"\'<>]+\.m3u8[^\s"\'<>]*',
+            r'https?://[^\s"\'<>]*cloudfront[^\s"\'<>]*video[^\s"\'<>]*',
+            r'https?://[^\s"\'<>]*s3[^\s"\'<>]*\.mp4[^\s"\'<>]*',
+        ]
+        
+        for pattern in video_patterns:
+            matches = re.findall(pattern, page_source, re.IGNORECASE)
+            for match in matches:
+                # Clean up the URL
+                clean_url = match.rstrip('\\').rstrip('"').rstrip("'")
+                if clean_url not in seen_urls:
+                    seen_urls.add(clean_url)
+                    video_urls.append({
+                        "type": "regex",
+                        "url": clean_url
+                    })
+        
+    except Exception as e:
+        print(f"Error detecting videos: {e}")
+    
+    return video_urls
+
 def scrape_qpiai_modules(driver, course_url: str) -> list:
-    """Scrape modules from QpiAI Explorer platform"""
+    """Scrape modules from QpiAI Explorer platform with video detection like browser extensions"""
     modules = []
     
     try:
@@ -160,51 +287,77 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
                         "items": []
                     })
         
-        # If no modules found from table, try clicking on each row to get video URLs
+        # If no modules found from table, try alternative selectors
         if not modules:
-            # Try alternative selectors for QpiAI
-            lesson_elements = soup.select("[class*='curriculum'], [class*='lesson'], [class*='chapter']")
-            for elem in lesson_elements:
-                module_id += 1
-                title = elem.get_text(strip=True)[:100]
-                if title:
-                    modules.append({
-                        "id": str(module_id),
-                        "name": title,
-                        "lesson_url": "",
-                        "items": []
-                    })
+            # Try clicking on table rows directly using Selenium
+            try:
+                table_rows = driver.find_elements(By.CSS_SELECTOR, "table tbody tr, [class*='lesson'], [class*='module']")
+                for idx, row in enumerate(table_rows):
+                    try:
+                        # Get text from the row
+                        row_text = row.text.strip()
+                        if row_text and len(row_text) > 2:
+                            # Try to find a clickable link
+                            links = row.find_elements(By.TAG_NAME, "a")
+                            lesson_url = ""
+                            title = row_text.split('\n')[0][:100]  # First line as title
+                            
+                            if links:
+                                lesson_url = links[0].get_attribute('href') or ""
+                            
+                            if title:
+                                module_id += 1
+                                modules.append({
+                                    "id": str(module_id),
+                                    "name": title,
+                                    "lesson_url": lesson_url,
+                                    "items": []
+                                })
+                    except StaleElementReferenceException:
+                        continue
+            except Exception as e:
+                print(f"Error finding modules via Selenium: {e}")
         
-        # Now navigate to each module to extract video URLs
+        print(f"Found {len(modules)} modules, now scanning each for videos...")
+        
+        # Now navigate to each module to detect videos
         for module in modules:
             if module.get("lesson_url"):
                 try:
+                    print(f"Scanning module: {module['name']}")
                     driver.get(module["lesson_url"])
-                    time.sleep(2)
+                    time.sleep(3)  # Wait for video player to load
                     
-                    # Look for video elements
-                    video_soup = BeautifulSoup(driver.page_source, 'html.parser')
+                    # Use the video detection function (like browser extensions)
+                    detected_videos = detect_video_urls_from_page(driver, course_url)
                     
-                    # Find video sources
-                    video_sources = video_soup.select("video source, video[src], [data-video-url], iframe[src*='video'], iframe[src*='vimeo'], iframe[src*='youtube']")
-                    for video in video_sources:
-                        video_url = video.get('src') or video.get('data-video-url')
+                    for idx, video in enumerate(detected_videos):
+                        video_url = video.get('url', '')
                         if video_url:
+                            # Determine video name
+                            video_name = f"{module['name']} - Video"
+                            if len(detected_videos) > 1:
+                                video_name = f"{module['name']} - Video {idx + 1}"
+                            
                             module["items"].append({
                                 "type": "video",
-                                "name": f"{module['name']} - Video",
-                                "url": video_url if video_url.startswith('http') else urljoin(course_url, video_url)
+                                "name": video_name,
+                                "url": video_url
                             })
+                    
+                    # Also look for PDFs and other resources
+                    video_soup = BeautifulSoup(driver.page_source, 'html.parser')
                     
                     # Find PDF links
                     pdf_links = video_soup.select("a[href*='.pdf'], a[href*='pdf']")
                     for pdf in pdf_links:
                         pdf_url = pdf.get('href')
                         if pdf_url:
+                            full_url = pdf_url if pdf_url.startswith('http') else urljoin(course_url, pdf_url)
                             module["items"].append({
                                 "type": "pdf",
                                 "name": pdf.get_text(strip=True) or f"{module['name']} - PDF",
-                                "url": pdf_url if pdf_url.startswith('http') else urljoin(course_url, pdf_url)
+                                "url": full_url
                             })
                     
                     # Check for downloadable resources
@@ -212,11 +365,14 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
                     for link in download_links:
                         link_url = link.get('href')
                         if link_url:
+                            full_url = link_url if link_url.startswith('http') else urljoin(course_url, link_url)
                             module["items"].append({
                                 "type": "file",
                                 "name": link.get_text(strip=True) or "Resource",
-                                "url": link_url if link_url.startswith('http') else urljoin(course_url, link_url)
+                                "url": full_url
                             })
+                    
+                    print(f"  Found {len(module['items'])} items in {module['name']}")
                             
                 except Exception as e:
                     print(f"Error scraping module {module['name']}: {e}")
