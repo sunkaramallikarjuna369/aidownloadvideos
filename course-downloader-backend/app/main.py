@@ -2016,6 +2016,191 @@ async def load_course_structure():
     }
 
 
+@app.get("/api/load-video-urls")
+async def load_video_urls():
+    """
+    Load the video_urls.json file with all 237 video URLs.
+    This is the simplest way to get all videos - no login required.
+    """
+    # Try multiple possible locations for the video_urls.json file
+    possible_paths = [
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "video_urls.json"),
+        os.path.join(DOWNLOAD_BASE_DIR, "video_urls.json"),
+        "./video_urls.json",
+    ]
+    
+    video_data = None
+    used_path = None
+    
+    for path in possible_paths:
+        if os.path.exists(path):
+            try:
+                with open(path, 'r', encoding='utf-8') as f:
+                    video_data = json.load(f)
+                used_path = path
+                break
+            except Exception as e:
+                print(f"Error reading {path}: {e}")
+                continue
+    
+    if not video_data:
+        raise HTTPException(
+            status_code=404, 
+            detail="video_urls.json not found. Please place the file in the backend folder."
+        )
+    
+    videos = video_data.get("videos", [])
+    
+    # Group videos by module and chapter for display
+    modules_dict = {}
+    for video in videos:
+        module_name = video.get("module", "Unknown Module")
+        chapter_name = video.get("chapter", "Unknown Chapter")
+        
+        if module_name not in modules_dict:
+            modules_dict[module_name] = {"chapters": {}}
+        
+        if chapter_name not in modules_dict[module_name]["chapters"]:
+            modules_dict[module_name]["chapters"][chapter_name] = []
+        
+        modules_dict[module_name]["chapters"][chapter_name].append(video)
+    
+    # Convert to list format for UI
+    modules_list = []
+    for module_name, module_data in modules_dict.items():
+        chapters_list = []
+        for chapter_name, chapter_videos in module_data["chapters"].items():
+            chapters_list.append({
+                "name": chapter_name,
+                "videos": chapter_videos,
+                "video_count": len(chapter_videos)
+            })
+        modules_list.append({
+            "name": module_name,
+            "chapters": chapters_list,
+            "total_videos": sum(len(ch["videos"]) for ch in chapters_list)
+        })
+    
+    return {
+        "success": True,
+        "total_videos": video_data.get("total_videos", len(videos)),
+        "total_lessons": video_data.get("total_lessons", 0),
+        "course_url": video_data.get("course_url", ""),
+        "extracted_at": video_data.get("extracted_at", ""),
+        "videos": videos,
+        "modules": modules_list,
+        "source_file": used_path
+    }
+
+
+class DownloadAllRequest(BaseModel):
+    download_path: str = ""
+
+
+class DownloadSelectedRequest(BaseModel):
+    download_path: str = ""
+    videos: list = []
+
+
+@app.post("/api/download-selected-videos")
+async def download_selected_videos(request: DownloadSelectedRequest, background_tasks: BackgroundTasks):
+    """
+    Download selected videos from the UI.
+    User can select specific modules/chapters/videos to download.
+    """
+    if not request.videos:
+        raise HTTPException(status_code=400, detail="No videos selected")
+    
+    download_id = str(uuid.uuid4())
+    download_path = request.download_path if request.download_path else DOWNLOAD_BASE_DIR
+    
+    # Initialize progress
+    download_progress[download_id] = {
+        "status": "starting",
+        "total_items": len(request.videos),
+        "completed_items": 0,
+        "current_item": "",
+        "errors": [],
+        "download_path": download_path
+    }
+    
+    # Start download in background
+    background_tasks.add_task(
+        download_videos_task,
+        download_id,
+        request.videos,
+        download_path
+    )
+    
+    return {
+        "success": True,
+        "download_id": download_id,
+        "total_videos": len(request.videos),
+        "download_path": download_path,
+        "message": f"Started downloading {len(request.videos)} selected videos to {download_path}"
+    }
+
+
+@app.post("/api/download-all-videos")
+async def download_all_videos(request: DownloadAllRequest, background_tasks: BackgroundTasks):
+    """
+    Download all videos from video_urls.json.
+    Simple one-click download - no login required.
+    """
+    # Load video URLs
+    possible_paths = [
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "video_urls.json"),
+        os.path.join(DOWNLOAD_BASE_DIR, "video_urls.json"),
+        "./video_urls.json",
+    ]
+    
+    video_data = None
+    for path in possible_paths:
+        if os.path.exists(path):
+            try:
+                with open(path, 'r', encoding='utf-8') as f:
+                    video_data = json.load(f)
+                break
+            except:
+                continue
+    
+    if not video_data:
+        raise HTTPException(status_code=404, detail="video_urls.json not found")
+    
+    videos = video_data.get("videos", [])
+    if not videos:
+        raise HTTPException(status_code=400, detail="No videos found in file")
+    
+    download_id = str(uuid.uuid4())
+    download_path = request.download_path if request.download_path else DOWNLOAD_BASE_DIR
+    
+    # Initialize progress
+    download_progress[download_id] = {
+        "status": "starting",
+        "total_items": len(videos),
+        "completed_items": 0,
+        "current_item": "",
+        "errors": [],
+        "download_path": download_path
+    }
+    
+    # Start download in background
+    background_tasks.add_task(
+        download_videos_task,
+        download_id,
+        videos,
+        download_path
+    )
+    
+    return {
+        "success": True,
+        "download_id": download_id,
+        "total_videos": len(videos),
+        "download_path": download_path,
+        "message": f"Started downloading {len(videos)} videos to {download_path}"
+    }
+
+
 @app.post("/api/download-videos")
 async def download_videos(request: VideoDownloadRequest, background_tasks: BackgroundTasks):
     """Download videos from the extracted URLs"""

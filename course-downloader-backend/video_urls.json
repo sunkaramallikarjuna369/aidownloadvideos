@@ -1,0 +1,1667 @@
+{
+  "course_url": "https://explorer-dev.qpiai.tech/learn/quantum-expert-with-amazon-braket/modules",
+  "total_videos": 237,
+  "total_lessons": 238,
+  "extracted_at": "2025-12-29 16:40:50",
+  "videos": [
+    {
+      "title": "Intuition and Aim of the Refresher Course in Linear Algebra",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Lec+0+Intuition+and+Aim+of+the+Refresher+Course+in+Linear+Algebra.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5dd9"
+    },
+    {
+      "title": "Introduction to Vectors and it's Significance",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Lec+1.1+Intro+to+Vectors.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5de2"
+    },
+    {
+      "title": "Basic Vector Operations and Terminologies",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Lec+1.2+Basic+Vector+Operations+and+Terminologies.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5deb"
+    },
+    {
+      "title": "Linearly Dependent Vectors",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Lec+1.3+Linearly+Dependent+Vectors.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5df4"
+    },
+    {
+      "title": "Intro to Matrices",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Lec+2.1+Intro+to+Matrices.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5dfd"
+    },
+    {
+      "title": "Operations on Matrices",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Lec+2.2+Operations+on+Matrices+.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5e06"
+    },
+    {
+      "title": "Special Matrices and Matrix Inverse",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Lec+2.3+Special+Matrices+and+Matrix+Inverse.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5e0f"
+    },
+    {
+      "title": "Linear Transformations",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Lec+3+linear+transformation.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5e18"
+    },
+    {
+      "title": "Linear Transformation and Change of Basis",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Lec+4+Linear+Transformation+and+Change+of+Basis.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5e21"
+    },
+    {
+      "title": "Eigenvectors and Eigenvalues",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Lec+5+Eigenvectors+and+Eigenvalues.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5e2a"
+    },
+    {
+      "title": "Inner product",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Lec+6+inner+product.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5e33"
+    },
+    {
+      "title": "Singular Value Decomposition",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Lec+7+Singular+Value+Decomposition.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5e3c"
+    },
+    {
+      "title": "Bonus: Unitary Operators",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Bouns_+Unitary+Operators.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5e45"
+    },
+    {
+      "title": "Bonus: Diagonalisation (part 1)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Bonus_+Diagonalisation+(part+1).mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5e4e"
+    },
+    {
+      "title": "Bonus: Diagonalisation (part 2)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Bonus_+Diagonalisation+(part+2).mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5e57"
+    },
+    {
+      "title": "Bonus: Singular Value Decomposition",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Bonus_+Singular+Value+Decomposition.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Introduction to Linear Algebra",
+      "lesson_id": "68e420b6638ae9e77a0a5e60"
+    },
+    {
+      "title": "Basic elements of QM: Preparation and Measurement (introduction)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Basics+of+QM+1.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5e71"
+    },
+    {
+      "title": "Quantum state: mathematical description of preparation procedure",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Basics+of+QM+2.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5e7a"
+    },
+    {
+      "title": "Additional resource: Quantum state: mathematical description of preparation procedure",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Postulate+1_edited.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5e83"
+    },
+    {
+      "title": "Projector: mathematical description of measurement procedure",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Basics+of+QM+3.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5e8c"
+    },
+    {
+      "title": "Additional resource: Projector: mathematical description of measurement procedure",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Postulate+3.1_edited.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5e95"
+    },
+    {
+      "title": "Basic elements of QM: Preparation and Measurement (summary)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Basics+of+QM+4.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5e9e"
+    },
+    {
+      "title": "Mixed state",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Basics+of+QM+5.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5ea7"
+    },
+    {
+      "title": "Summary so far",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Basics+of+QM+6.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5eb0"
+    },
+    {
+      "title": "Distinct measurements",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Basics+of+QM+7.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5eb9"
+    },
+    {
+      "title": "Quantum evolution and superposition",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/BQM+8+and+9.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5ec2"
+    },
+    {
+      "title": "Additional resource: Quantum evolution and superposition",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Postulate+2_edited.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5ecb"
+    },
+    {
+      "title": "Quantum entanglement",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Basics+of+QM+10.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5ed4"
+    },
+    {
+      "title": "Additional resource: Quantum Entanglement",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Postulate+4_edited.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5edd"
+    },
+    {
+      "title": "Quantum channel: Completely Positive Trace Preserving (CPTP) map",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/BQM+11+and+12.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5ee6"
+    },
+    {
+      "title": "Final Summary",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Basics+of+QM+13.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Basics of Quantum Mechanics",
+      "lesson_id": "68e420b6638ae9e77a0a5eef"
+    },
+    {
+      "title": "Quantum Computing: What, Why and How?",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Quantum+Computing_+What%2C+Why%2C+and+How.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "General Lecture on Quantum Technology",
+      "lesson_id": "68e420b6638ae9e77a0a5f00"
+    },
+    {
+      "title": "Introduction: Essential Computer Science",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cs1.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Essential Computer Science",
+      "lesson_id": "68e420b6638ae9e77a0a5f11"
+    },
+    {
+      "title": "An overview of computation",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cs2.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Essential Computer Science",
+      "lesson_id": "68e420b6638ae9e77a0a5f1a"
+    },
+    {
+      "title": "Classical Information and Computation",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cs3.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Essential Computer Science",
+      "lesson_id": "68e420b6638ae9e77a0a5f23"
+    },
+    {
+      "title": "Models of Computation",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cs4.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Essential Computer Science",
+      "lesson_id": "68e420b6638ae9e77a0a5f2c"
+    },
+    {
+      "title": "FSMs and Turing Machine",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cs5.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Essential Computer Science",
+      "lesson_id": "68e420b6638ae9e77a0a5f35"
+    },
+    {
+      "title": "Computational Problems",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cs6.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Essential Computer Science",
+      "lesson_id": "68e420b6638ae9e77a0a5f3e"
+    },
+    {
+      "title": "Algorithms and Optimization Problems",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cs7.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Essential Computer Science",
+      "lesson_id": "68e420b6638ae9e77a0a5f47"
+    },
+    {
+      "title": "Computational Complexity",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cs8.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Essential Computer Science",
+      "lesson_id": "68e420b6638ae9e77a0a5f50"
+    },
+    {
+      "title": "Complexity Classes",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cs9.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Essential Computer Science",
+      "lesson_id": "68e420b6638ae9e77a0a5f59"
+    },
+    {
+      "title": "Quantum Computational Model",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cs10.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Essential Computer Science",
+      "lesson_id": "68e420b6638ae9e77a0a5f62"
+    },
+    {
+      "title": "Summary",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cs11.mp4",
+      "module": "Prerequisites for Quantum Computing",
+      "chapter": "Essential Computer Science",
+      "lesson_id": "68e420b6638ae9e77a0a5f6b"
+    },
+    {
+      "title": "Simplest quantum system: qubit",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/V1.mp4",
+      "module": "Quantum States and Qubits Part 1",
+      "chapter": "Single-qubit states and superposition Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a5f83"
+    },
+    {
+      "title": "Single-qubit “pure” state (part 1)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/V2.mp4",
+      "module": "Quantum States and Qubits Part 1",
+      "chapter": "Single-qubit states and superposition Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a5f8c"
+    },
+    {
+      "title": "Additional resource: Single-qubit “pure” state (part 1)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/qubit+state+part+1_edited.mp4",
+      "module": "Quantum States and Qubits Part 1",
+      "chapter": "Single-qubit states and superposition Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a5f95"
+    },
+    {
+      "title": "Single-qubit “pure” state (part 2)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/V3.mp4",
+      "module": "Quantum States and Qubits Part 1",
+      "chapter": "Single-qubit states and superposition Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a5f9e"
+    },
+    {
+      "title": "Additional resource: Single-qubit “pure” state (part 2)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/qubit%20state%20part%202_edited.mp4",
+      "module": "Quantum States and Qubits Part 1",
+      "chapter": "Single-qubit states and superposition Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a5fa7"
+    },
+    {
+      "title": "Single-qubit “mixed” state",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/V4.mp4",
+      "module": "Quantum States and Qubits Part 1",
+      "chapter": "Single-qubit states and superposition Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a5fb0"
+    },
+    {
+      "title": "Additional resource: Single-qubit “mixed” state - Part 1",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/pure+state+vs+mixed+state_edited.mp4",
+      "module": "Quantum States and Qubits Part 1",
+      "chapter": "Single-qubit states and superposition Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a5fb9"
+    },
+    {
+      "title": "Additional resource: Single-qubit “mixed” state - Part 2",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/pure+vs+mixed+state+part+2_edited.mp4",
+      "module": "Quantum States and Qubits Part 1",
+      "chapter": "Single-qubit states and superposition Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a5fc2"
+    },
+    {
+      "title": "Additional resource: Single-qubit “mixed” state - Part 3",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/pure+vs+mixed+states+part+3_edited.mp4",
+      "module": "Quantum States and Qubits Part 1",
+      "chapter": "Single-qubit states and superposition Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a5fcb"
+    },
+    {
+      "title": "Properties of the Pauli operators",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/V5.mp4",
+      "module": "Quantum States and Qubits Part 2",
+      "chapter": "Single-qubit states and superposition Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a5fe3"
+    },
+    {
+      "title": "Spectral decomposition of a single-qubit state",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/V6.mp4",
+      "module": "Quantum States and Qubits Part 2",
+      "chapter": "Single-qubit states and superposition Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a5fec"
+    },
+    {
+      "title": "Superposition: Mach–Zehnder interferometer and the double-slit experiment",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/V7.mp4",
+      "module": "Quantum States and Qubits Part 2",
+      "chapter": "Single-qubit states and superposition Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a5ff5"
+    },
+    {
+      "title": "Logic gates",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SQG0.mp4",
+      "module": "Quantum States and Qubits Part 3",
+      "chapter": "Single-qubit gates and measurements Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a600d"
+    },
+    {
+      "title": "Representing a single-qubit system (RECALL)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SQG1.mp4",
+      "module": "Quantum States and Qubits Part 3",
+      "chapter": "Single-qubit gates and measurements Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a6016"
+    },
+    {
+      "title": "Unitary evolution: Rotation of the Bloch vector (part 1)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SQG2.mp4",
+      "module": "Quantum States and Qubits Part 3",
+      "chapter": "Single-qubit gates and measurements Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a601f"
+    },
+    {
+      "title": "Unitary evolution: Rotation of the Bloch vector (part 2)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SQG3.mp4",
+      "module": "Quantum States and Qubits Part 3",
+      "chapter": "Single-qubit gates and measurements Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a6028"
+    },
+    {
+      "title": "Rotation around x , y , z axes",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SQG4.mp4",
+      "module": "Quantum States and Qubits Part 3",
+      "chapter": "Single-qubit gates and measurements Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a6031"
+    },
+    {
+      "title": "Properties of unitary gates",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/prop-unitary-matrix_edited.mp4",
+      "module": "Quantum States and Qubits Part 3",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a6042"
+    },
+    {
+      "title": "Derivation of SIngle Qubit Unitary gate - part 1",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/single-unitary-gate-derivation_edited.mp4",
+      "module": "Quantum States and Qubits Part 3",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a604b"
+    },
+    {
+      "title": "Derivation of SIngle Qubit Unitary gate - part 2",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/global-phase_edited.mp4",
+      "module": "Quantum States and Qubits Part 3",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a6054"
+    },
+    {
+      "title": "Unitary way of Pauli X",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/X_gate_edited.mp4",
+      "module": "Quantum States and Qubits Part 3",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a605d"
+    },
+    {
+      "title": "Unitary way of Pauli Y",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Y_gate_edited.mp4",
+      "module": "Quantum States and Qubits Part 3",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a6066"
+    },
+    {
+      "title": "Unitary way of Pauli Z",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Z_gate_edited.mp4",
+      "module": "Quantum States and Qubits Part 3",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a606f"
+    },
+    {
+      "title": "Pauli, Hadamard, and Phase gates",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SQG5.mp4",
+      "module": "Quantum States and Qubits Part 4",
+      "chapter": "Single-qubit gates and measurements Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a6087"
+    },
+    {
+      "title": "How to prepare a general pure state",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SQG6.mp4",
+      "module": "Quantum States and Qubits Part 4",
+      "chapter": "Single-qubit gates and measurements Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a6090"
+    },
+    {
+      "title": "How to go from one pure state to another in 3 rotations",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SQG7.mp4",
+      "module": "Quantum States and Qubits Part 4",
+      "chapter": "Single-qubit gates and measurements Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a6099"
+    },
+    {
+      "title": "A useful theorem for designing controlled unitary gates",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SQG8.mp4",
+      "module": "Quantum States and Qubits Part 4",
+      "chapter": "Single-qubit gates and measurements Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a60a2"
+    },
+    {
+      "title": "Unitary way of Hadamard",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/h_gate_edited.mp4",
+      "module": "Quantum States and Qubits Part 4",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a60b3"
+    },
+    {
+      "title": "Universal set of “discrete” single-qubit gates",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SQG9.mp4",
+      "module": "Quantum States and Qubits Part 5",
+      "chapter": "Single-qubit gates and measurements Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a60cb"
+    },
+    {
+      "title": "Projective measurement for a qubit",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SQG10.mp4",
+      "module": "Quantum States and Qubits Part 5",
+      "chapter": "Single-qubit gates and measurements Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a60d4"
+    },
+    {
+      "title": "Symmetric Informationally Complete POVM for a qubit",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SQG11.mp4",
+      "module": "Quantum States and Qubits Part 5",
+      "chapter": "Single-qubit gates and measurements Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a60dd"
+    },
+    {
+      "title": "Representing a single-qubit system (RECALL)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS1.mp4",
+      "module": "Quantum States and Qubits Part 6",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a60f5"
+    },
+    {
+      "title": "Representing a two-qubit system",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS2.mp4",
+      "module": "Quantum States and Qubits Part 6",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a60fe"
+    },
+    {
+      "title": "Product vs Entangled states",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS3.mp4",
+      "module": "Quantum States and Qubits Part 6",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a6107"
+    },
+    {
+      "title": "Separable vs Entangled states",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS4.mp4",
+      "module": "Quantum States and Qubits Part 7",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a611f"
+    },
+    {
+      "title": "Entangled states (Quantum correlation stronger than classical correlation)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS5.mp4",
+      "module": "Quantum States and Qubits Part 7",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a6128"
+    },
+    {
+      "title": "Incomplete measurement, partial trace, reduced state",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS6.mp4",
+      "module": "Quantum States and Qubits Part 7",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a6131"
+    },
+    {
+      "title": "NO faster than light communication",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS7.mp4",
+      "module": "Quantum States and Qubits Part 8",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a6149"
+    },
+    {
+      "title": "Schmidt decomposition of a bipartite state-vector",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS8.mp4",
+      "module": "Quantum States and Qubits Part 8",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a6152"
+    },
+    {
+      "title": "Bell inequality: the question is about \"the origin\" of probabilistic nature (EPR Argument)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS9.mp4",
+      "module": "Quantum States and Qubits Part 8",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a615b"
+    },
+    {
+      "title": "Bell inequality: the question is about \"the origin\" of probabilistic nature (hidden variable)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS10.mp4",
+      "module": "Quantum States and Qubits Part 8",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a6164"
+    },
+    {
+      "title": "Bell inequality: the question is about \"the origin\" of probabilistic nature (Quantum correlation)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS11.mp4",
+      "module": "Quantum States and Qubits Part 9",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 4",
+      "lesson_id": "68e420b6638ae9e77a0a617c"
+    },
+    {
+      "title": "Bell inequality: the question is about \"the origin\" of probabilistic nature (conclusion)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS12.mp4",
+      "module": "Quantum States and Qubits Part 9",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 4",
+      "lesson_id": "68e420b6638ae9e77a0a6185"
+    },
+    {
+      "title": "Bell inequality: \"Device-independent\" quantum cryptography",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS13.mp4",
+      "module": "Quantum States and Qubits Part 9",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 4",
+      "lesson_id": "68e420b6638ae9e77a0a618e"
+    },
+    {
+      "title": "LOCC, Entanglement witness, and Entanglement measure",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQS14.mp4",
+      "module": "Quantum States and Qubits Part 9",
+      "chapter": "Two-qubit states, entanglement, and Bell inequality Part 4",
+      "lesson_id": "68e420b6638ae9e77a0a6197"
+    },
+    {
+      "title": "Introduction",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQG1.mp4",
+      "module": "Quantum States and Qubits Part 10",
+      "chapter": "Two-qubit gates and observable Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a61af"
+    },
+    {
+      "title": "XOR logic gate and Controlled-NOT quantum gate",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQG2.mp4",
+      "module": "Quantum States and Qubits Part 10",
+      "chapter": "Two-qubit gates and observable Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a61b8"
+    },
+    {
+      "title": "No-cloning of an unknown quantum state",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQG3.mp4",
+      "module": "Quantum States and Qubits Part 10",
+      "chapter": "Two-qubit gates and observable Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a61c1"
+    },
+    {
+      "title": "Introduction to Controlled Unitary quantum Gate",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cu_intro_edited.mp4",
+      "module": "Quantum States and Qubits Part 10",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a61d2"
+    },
+    {
+      "title": "Derivation of Controlled Unitary quantum Gate - part 1",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cu-part-2_edited.mp4",
+      "module": "Quantum States and Qubits Part 10",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a61db"
+    },
+    {
+      "title": "Derivation of Controlled Unitary quantum Gate - part 2",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/cu-part-3_edited.mp4",
+      "module": "Quantum States and Qubits Part 10",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a61e4"
+    },
+    {
+      "title": "Unitary way of Controlled-X",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/c-not_edited.mp4",
+      "module": "Quantum States and Qubits Part 10",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a61ed"
+    },
+    {
+      "title": "Unitary way of Controlled-Y",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/c-y_edited.mp4",
+      "module": "Quantum States and Qubits Part 10",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a61f6"
+    },
+    {
+      "title": "Bell basis",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQG4.mp4",
+      "module": "Quantum States and Qubits Part 11",
+      "chapter": "Two-qubit gates and observable Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a620e"
+    },
+    {
+      "title": "Controlled-Z, SWAP, iSWAP gates",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQG5.mp4",
+      "module": "Quantum States and Qubits Part 11",
+      "chapter": "Two-qubit gates and observable Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a6217"
+    },
+    {
+      "title": "Ising coupling gates",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQG6.mp4",
+      "module": "Quantum States and Qubits Part 11",
+      "chapter": "Two-qubit gates and observable Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a6220"
+    },
+    {
+      "title": "Unitary way of Controlled-Z",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/c-z_edited.mp4",
+      "module": "Quantum States and Qubits Part 11",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 4",
+      "lesson_id": "68e420b6638ae9e77a0a6231"
+    },
+    {
+      "title": "Unitary way of Swap",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/swap_gate_edited.mp4",
+      "module": "Quantum States and Qubits Part 11",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 4",
+      "lesson_id": "68e420b6638ae9e77a0a623a"
+    },
+    {
+      "title": "Unitary way of Controlled-Hadamard",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/c-hadamard_edited.mp4",
+      "module": "Quantum States and Qubits Part 11",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 4",
+      "lesson_id": "68e420b6638ae9e77a0a6243"
+    },
+    {
+      "title": "A useful theorem for designing Controlled-U gates",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQG7.mp4",
+      "module": "Quantum States and Qubits Part 12",
+      "chapter": "Two-qubit gates and observable Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a625b"
+    },
+    {
+      "title": "Important quantum subroutines",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQG8.mp4",
+      "module": "Quantum States and Qubits Part 12",
+      "chapter": "Two-qubit gates and observable Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a6264"
+    },
+    {
+      "title": "Universal set of “discrete” gates for multi-qubits",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQG9.mp4",
+      "module": "Quantum States and Qubits Part 13",
+      "chapter": "Two-qubit gates and observable Part 4",
+      "lesson_id": "68e420b6638ae9e77a0a627c"
+    },
+    {
+      "title": "Entanglement detection using Bell (correlation) measurement: Part 1",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQG10.mp4",
+      "module": "Quantum States and Qubits Part 13",
+      "chapter": "Two-qubit gates and observable Part 4",
+      "lesson_id": "68e420b6638ae9e77a0a6285"
+    },
+    {
+      "title": "Entanglement detection using Bell (correlation) measurement: Part 2",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQG11.mp4",
+      "module": "Quantum States and Qubits Part 14",
+      "chapter": "Two-qubit gates and observable Part 5",
+      "lesson_id": "68e420b6638ae9e77a0a629d"
+    },
+    {
+      "title": "Total spin measurement",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/TQG12.mp4",
+      "module": "Quantum States and Qubits Part 14",
+      "chapter": "Two-qubit gates and observable Part 5",
+      "lesson_id": "68e420b6638ae9e77a0a62a6"
+    },
+    {
+      "title": "Introduction",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/ebf7eb6d0865a040f9ad3326ac9ae8be1629958171229.mp4",
+      "module": "Quantum States and Qubits Part 15",
+      "chapter": "Multi-Qubit States (GHZ and W states)",
+      "lesson_id": "68e420b6638ae9e77a0a62be"
+    },
+    {
+      "title": "two qubit controlled gate",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/two+qubit+controlled+gate.mp4",
+      "module": "Quantum States and Qubits Part 15",
+      "chapter": "Multi-Qubit States (GHZ and W states)",
+      "lesson_id": "68e420b6638ae9e77a0a62c7"
+    },
+    {
+      "title": "two qubit controlled gates 2",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/two+qubit+controlled+gate+2.mp4",
+      "module": "Quantum States and Qubits Part 15",
+      "chapter": "Multi-Qubit States (GHZ and W states)",
+      "lesson_id": "68e420b6638ae9e77a0a62d0"
+    },
+    {
+      "title": "Toffolli Gate",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/toffolli+gate.mp4",
+      "module": "Quantum States and Qubits Part 15",
+      "chapter": "Multi-Qubit States (GHZ and W states)",
+      "lesson_id": "68e420b6638ae9e77a0a62d9"
+    },
+    {
+      "title": "N qubit controlled gate",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/N+qubit+controlled+gate.mp4",
+      "module": "Quantum States and Qubits Part 15",
+      "chapter": "Multi-Qubit States (GHZ and W states)",
+      "lesson_id": "68e420b6638ae9e77a0a62e2"
+    },
+    {
+      "title": "Quantum Circuit Model",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Quantum+Circuit+Model.mp4",
+      "module": "Quantum States and Qubits Part 15",
+      "chapter": "Multi-Qubit States (GHZ and W states)",
+      "lesson_id": "68e420b6638ae9e77a0a62eb"
+    },
+    {
+      "title": "Derivation of Mutli-Controlled Unitary quantum Gate",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/ccu-intro_edited.mp4",
+      "module": "Quantum States and Qubits Part 15",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 5",
+      "lesson_id": "68e420b6638ae9e77a0a62fc"
+    },
+    {
+      "title": "Unitary way of Multi-Controlled-X",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/ccx_edited.mp4",
+      "module": "Quantum States and Qubits Part 15",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 5",
+      "lesson_id": "68e420b6638ae9e77a0a6305"
+    },
+    {
+      "title": "Unitary way of Multi-Controlled-Y",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/ccy_edited.mp4",
+      "module": "Quantum States and Qubits Part 15",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 5",
+      "lesson_id": "68e420b6638ae9e77a0a630e"
+    },
+    {
+      "title": "Unitary way of Pauli Multi-Controlled-Z",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/ccz_edited.mp4",
+      "module": "Quantum States and Qubits Part 15",
+      "chapter": "Additional resource: Linear Algebra approach of Foundational Quantum Gates - Part 5",
+      "lesson_id": "68e420b6638ae9e77a0a6317"
+    },
+    {
+      "title": "Environment Setup",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Environment+Setup.mp4",
+      "module": "QpiAI Explorer Lab",
+      "chapter": "QpiAI Lab Tutorials on Google Colab using AWS Braket",
+      "lesson_id": "68e420b6638ae9e77a0a6340"
+    },
+    {
+      "title": "GHZ State Tutorials",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/GHZ+State+tutorial.mp4",
+      "module": "QpiAI Explorer Lab",
+      "chapter": "QpiAI Lab Tutorials on Google Colab using AWS Braket",
+      "lesson_id": "68e420b6638ae9e77a0a6349"
+    },
+    {
+      "title": "Deutsch Jozsa",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/deutsch_jozsa.mp4",
+      "module": "QpiAI Explorer Lab",
+      "chapter": "QpiAI Lab Tutorials on Google Colab using AWS Braket",
+      "lesson_id": "68e420b6638ae9e77a0a6352"
+    },
+    {
+      "title": "W State",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/w+state.mp4",
+      "module": "QpiAI Explorer Lab",
+      "chapter": "QpiAI Lab Tutorials on Google Colab using AWS Braket",
+      "lesson_id": "68e420b6638ae9e77a0a635b"
+    },
+    {
+      "title": "Introduction",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/introdution+1.mp4",
+      "module": "Quantum Algorithms Part 1",
+      "chapter": "Quantum Circuits",
+      "lesson_id": "68e420b6638ae9e77a0a6373"
+    },
+    {
+      "title": "Quantum Circuit",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Quantum+Circuits+1.mp4",
+      "module": "Quantum Algorithms Part 1",
+      "chapter": "Quantum Circuits",
+      "lesson_id": "68e420b6638ae9e77a0a637c"
+    },
+    {
+      "title": "Circuit Identities",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Circuit+Identities.mp4",
+      "module": "Quantum Algorithms Part 1",
+      "chapter": "Quantum Circuits",
+      "lesson_id": "68e420b6638ae9e77a0a6385"
+    },
+    {
+      "title": "Bell State",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Bell+State+1+.mp4",
+      "module": "Quantum Algorithms Part 1",
+      "chapter": "Quantum Circuits",
+      "lesson_id": "68e420b6638ae9e77a0a638e"
+    },
+    {
+      "title": "Bell State (reference lesson)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Bell_state_Adarsh.mp4",
+      "module": "Quantum Algorithms Part 1",
+      "chapter": "Quantum Circuits",
+      "lesson_id": "68e420b6638ae9e77a0a6397"
+    },
+    {
+      "title": "W State",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/W+State+1.mp4",
+      "module": "Quantum Algorithms Part 1",
+      "chapter": "Quantum Circuits",
+      "lesson_id": "68e420b6638ae9e77a0a63a0"
+    },
+    {
+      "title": "SWAP test",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SWAP+test+1.mp4",
+      "module": "Quantum Algorithms Part 1",
+      "chapter": "Quantum Circuits",
+      "lesson_id": "68e420b6638ae9e77a0a63a9"
+    },
+    {
+      "title": "Creating a framework to build quantum algorithms",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/f-1.mp4",
+      "module": "Quantum Algorithms Part 2",
+      "chapter": "Deutsch Algorithm Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a63c1"
+    },
+    {
+      "title": "Setting up Deutsch Problem",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/f-2.mp4",
+      "module": "Quantum Algorithms Part 2",
+      "chapter": "Deutsch Algorithm Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a63ca"
+    },
+    {
+      "title": "Functions as Oracles",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/f-3.mp4",
+      "module": "Quantum Algorithms Part 2",
+      "chapter": "Deutsch Algorithm Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a63d3"
+    },
+    {
+      "title": "Quantum Circuit U to implement function f(x)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/f-4.mp4",
+      "module": "Quantum Algorithms Part 2",
+      "chapter": "Deutsch Algorithm Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a63dc"
+    },
+    {
+      "title": "Classical solution for solving the Deutsch Problem",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/f-5.mp4",
+      "module": "Quantum Algorithms Part 2",
+      "chapter": "Deutsch Algorithm Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a63e5"
+    },
+    {
+      "title": "Quantum query complexity",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/f-6.mp4",
+      "module": "Quantum Algorithms Part 2",
+      "chapter": "Deutsch Algorithm Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a63ee"
+    },
+    {
+      "title": "Quantum phenomenon as a resource in algorithm design",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/f-7.mp4",
+      "module": "Quantum Algorithms Part 3",
+      "chapter": "Deutsch Algorithm Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a6406"
+    },
+    {
+      "title": "Building a quantum circuit to solve Deutsch Problem",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/f-8.mp4",
+      "module": "Quantum Algorithms Part 3",
+      "chapter": "Deutsch Algorithm Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a640f"
+    },
+    {
+      "title": "Deutsch Algorithm",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/f-9.mp4",
+      "module": "Quantum Algorithms Part 3",
+      "chapter": "Deutsch Algorithm Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a6418"
+    },
+    {
+      "title": "Summary",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/f-10.mp4",
+      "module": "Quantum Algorithms Part 3",
+      "chapter": "Deutsch Algorithm Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a6421"
+    },
+    {
+      "title": "Deutsch-Jozsa Problem",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/djaf-1.mp4",
+      "module": "Quantum Algorithms Part 4",
+      "chapter": "Deutsch-Jozsa Algorithm & Bernstein-Vazirani Algorithm",
+      "lesson_id": "68e420b6638ae9e77a0a6439"
+    },
+    {
+      "title": "Deutsch-Jozsa Algorithm",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/djaf-2.mp4",
+      "module": "Quantum Algorithms Part 4",
+      "chapter": "Deutsch-Jozsa Algorithm & Bernstein-Vazirani Algorithm",
+      "lesson_id": "68e420b6638ae9e77a0a6442"
+    },
+    {
+      "title": "Summary for Deutsch-Jozsa Algorithm",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/djaf-3.mp4",
+      "module": "Quantum Algorithms Part 4",
+      "chapter": "Deutsch-Jozsa Algorithm & Bernstein-Vazirani Algorithm",
+      "lesson_id": "68e420b6638ae9e77a0a644b"
+    },
+    {
+      "title": "Bernstein-Vazirani Problem",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/bv-1.mp4",
+      "module": "Quantum Algorithms Part 4",
+      "chapter": "Deutsch-Jozsa Algorithm & Bernstein-Vazirani Algorithm",
+      "lesson_id": "68e420b6638ae9e77a0a6454"
+    },
+    {
+      "title": "Bernstein-Vazirani Algorithm",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/bv-2.mp4",
+      "module": "Quantum Algorithms Part 4",
+      "chapter": "Deutsch-Jozsa Algorithm & Bernstein-Vazirani Algorithm",
+      "lesson_id": "68e420b6638ae9e77a0a645d"
+    },
+    {
+      "title": "Summary for Bernstein-Vazirani Algorithm",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/bv-3.mp4",
+      "module": "Quantum Algorithms Part 4",
+      "chapter": "Deutsch-Jozsa Algorithm & Bernstein-Vazirani Algorithm",
+      "lesson_id": "68e420b6638ae9e77a0a6466"
+    },
+    {
+      "title": "Introduction",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SA1.mp4",
+      "module": "Quantum Algorithms Part 5",
+      "chapter": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a647e"
+    },
+    {
+      "title": "Modular (remainder) arithmetic and multiplicative group of co-primes",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SA2.mp4",
+      "module": "Quantum Algorithms Part 5",
+      "chapter": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a6487"
+    },
+    {
+      "title": "RSA (Rivest–Shamir–Adleman) encryption",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SA3.mp4",
+      "module": "Quantum Algorithms Part 5",
+      "chapter": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a6490"
+    },
+    {
+      "title": "RSA (Rivest–Shamir–Adleman) encryption: Example",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SA4.mp4",
+      "module": "Quantum Algorithms Part 5",
+      "chapter": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 1",
+      "lesson_id": "68e420b6638ae9e77a0a6499"
+    },
+    {
+      "title": "Prime factorization",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SA5.mp4",
+      "module": "Quantum Algorithms Part 6",
+      "chapter": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a64b1"
+    },
+    {
+      "title": "Prime factorization is equivalent to order finding",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SA6.mp4",
+      "module": "Quantum Algorithms Part 6",
+      "chapter": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a64ba"
+    },
+    {
+      "title": "Quantum algorithm for order-finding",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SA7.mp4",
+      "module": "Quantum Algorithms Part 6",
+      "chapter": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 2",
+      "lesson_id": "68e420b6638ae9e77a0a64c3"
+    },
+    {
+      "title": "Discrete Fourier transform (DFT)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SA8.mp4",
+      "module": "Quantum Algorithms Part 7",
+      "chapter": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a64db"
+    },
+    {
+      "title": "Fast Fourier transform (FFT)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SA9.mp4",
+      "module": "Quantum Algorithms Part 7",
+      "chapter": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a64e4"
+    },
+    {
+      "title": "Quantum Fourier transform (QFT)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SA10.mp4",
+      "module": "Quantum Algorithms Part 7",
+      "chapter": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a64ed"
+    },
+    {
+      "title": "Unknown phase (eigenvalue) estimation",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SA11.mp4",
+      "module": "Quantum Algorithms Part 7",
+      "chapter": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a64f6"
+    },
+    {
+      "title": "Amplitude estimation: Grover + Shor algorithm",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SA12.mp4",
+      "module": "Quantum Algorithms Part 7",
+      "chapter": "RSA encryption, Shor factoring algorithm, and quantum Fourier transform Part 3",
+      "lesson_id": "68e420b6638ae9e77a0a64ff"
+    },
+    {
+      "title": "Introduction",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/1_Introduction.mp4",
+      "module": "Quantum Algorithms Part 8",
+      "chapter": "Quantum Database Search: Grover’s Algorithm",
+      "lesson_id": "68e420b6638ae9e77a0a6517"
+    },
+    {
+      "title": "A digital haystack!",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/2_A+digital+haystack.mp4",
+      "module": "Quantum Algorithms Part 8",
+      "chapter": "Quantum Database Search: Grover’s Algorithm",
+      "lesson_id": "68e420b6638ae9e77a0a6520"
+    },
+    {
+      "title": "The Two steps.",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/3_The+Two+steps.mp4",
+      "module": "Quantum Algorithms Part 8",
+      "chapter": "Quantum Database Search: Grover’s Algorithm",
+      "lesson_id": "68e420b6638ae9e77a0a6529"
+    },
+    {
+      "title": "The two steps with qubits.",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/4_The+two+steps+with+qubits.mp4",
+      "module": "Quantum Algorithms Part 8",
+      "chapter": "Quantum Database Search: Grover’s Algorithm",
+      "lesson_id": "68e420b6638ae9e77a0a6532"
+    },
+    {
+      "title": "Grover's algorithm : Quantum circuit-1",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/5_Grovers+algorithm_Quantum+circuit_1.mp4",
+      "module": "Quantum Algorithms Part 8",
+      "chapter": "Quantum Database Search: Grover’s Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a653b"
+    },
+    {
+      "title": "Grover's algorithm : Quantum circuit-2",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/5_Grovers+algorithm_Quantum+circuit_2.mp4",
+      "module": "Quantum Algorithms Part 8",
+      "chapter": "Quantum Database Search: Grover’s Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a6544"
+    },
+    {
+      "title": "Visualization and Applications",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/7_Visualization+and+Applications.mp4",
+      "module": "Quantum Algorithms Part 8",
+      "chapter": "Quantum Database Search: Grover’s Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a654d"
+    },
+    {
+      "title": "Bell State",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/bell+states.mp4",
+      "module": "Quantum Algorithms Part 9",
+      "chapter": "Circuit Simulation on QpiAI Explorer Software",
+      "lesson_id": "68e420b7638ae9e77a0a6565"
+    },
+    {
+      "title": "Single Qubit Gates",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/multi+qubit+gates.mp4",
+      "module": "Quantum Algorithms Part 9",
+      "chapter": "Circuit Simulation on QpiAI Explorer Software",
+      "lesson_id": "68e420b7638ae9e77a0a656e"
+    },
+    {
+      "title": "Multi Qubit Gates",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/single+qubit+gates.mp4",
+      "module": "Quantum Algorithms Part 9",
+      "chapter": "Circuit Simulation on QpiAI Explorer Software",
+      "lesson_id": "68e420b7638ae9e77a0a6577"
+    },
+    {
+      "title": "Quantum Teleportation: Background",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QT-Background.mp4",
+      "module": "Quantum Protocols Part 1",
+      "chapter": "Quantum Teleportation Part 1",
+      "lesson_id": "68e420b7638ae9e77a0a658f"
+    },
+    {
+      "title": "Quantum Teleportation: Theory",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QT-Theory.mp4",
+      "module": "Quantum Protocols Part 2",
+      "chapter": "Quantum Teleportation Part 2",
+      "lesson_id": "68e420b7638ae9e77a0a65a7"
+    },
+    {
+      "title": "Superdense Coding: Background",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SC-Background.mp4",
+      "module": "Quantum Protocols Part 3",
+      "chapter": "Superdense Coding Part 1",
+      "lesson_id": "68e420b7638ae9e77a0a65bf"
+    },
+    {
+      "title": "Superdense Coding: Theory",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SC-Theory.mp4",
+      "module": "Quantum Protocols Part 4",
+      "chapter": "Superdense Coding Part 2",
+      "lesson_id": "68e420b7638ae9e77a0a65d7"
+    },
+    {
+      "title": "Quantum Teleportation: Explorer Demo",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/SC-Explorer+Demo.mp4",
+      "module": "Quantum Protocols Part 5",
+      "chapter": "Simulation of QpiAI Explorer Software",
+      "lesson_id": "68e420b7638ae9e77a0a65ef"
+    },
+    {
+      "title": "Superdense Coding: Explorer Demo",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QT-Explorer+Demo.mp4",
+      "module": "Quantum Protocols Part 5",
+      "chapter": "Simulation of QpiAI Explorer Software",
+      "lesson_id": "68e420b7638ae9e77a0a65f8"
+    },
+    {
+      "title": "Introduction",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Video_1_Introduction.mp4",
+      "module": "Quantum Protocols Part 6",
+      "chapter": "Quantum Cryptography and Key Distribution",
+      "lesson_id": "68e420b7638ae9e77a0a6610"
+    },
+    {
+      "title": "Diffie–Hellman key exchange",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Video_2_Diffie-Hellman.mp4",
+      "module": "Quantum Protocols Part 6",
+      "chapter": "Quantum Cryptography and Key Distribution",
+      "lesson_id": "68e420b7638ae9e77a0a6619"
+    },
+    {
+      "title": "RSA Encryption",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Video_3_RSA_Encryption.mp4",
+      "module": "Quantum Protocols Part 6",
+      "chapter": "Quantum Cryptography and Key Distribution",
+      "lesson_id": "68e420b7638ae9e77a0a6622"
+    },
+    {
+      "title": "QKD Basics",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Video_4_QKD_Basics.mp4",
+      "module": "Quantum Protocols Part 6",
+      "chapter": "Quantum Cryptography and Key Distribution",
+      "lesson_id": "68e420b7638ae9e77a0a662b"
+    },
+    {
+      "title": "Quantum: BB84 protocol",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Video_5_Quantum_BB84+protocol.mp4",
+      "module": "Quantum Protocols Part 6",
+      "chapter": "Quantum Cryptography and Key Distribution",
+      "lesson_id": "68e420b7638ae9e77a0a6634"
+    },
+    {
+      "title": "QKD: Practical Implementations",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Video_6_QKD_Practical+Implementations.mp4",
+      "module": "Quantum Protocols Part 6",
+      "chapter": "Quantum Cryptography and Key Distribution",
+      "lesson_id": "68e420b7638ae9e77a0a663d"
+    },
+    {
+      "title": "Quantum Communication",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QKD_QuantumCommunication.mp4",
+      "module": "Quantum Protocols Part 7",
+      "chapter": "Quantum Communication and Networks",
+      "lesson_id": "68e420b7638ae9e77a0a6655"
+    },
+    {
+      "title": "Guest Lecture - QKD, Communications",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QpiAI-March-2021-1.m4v",
+      "module": "Quantum Protocols Part 8",
+      "chapter": "Guest Lecture - QKD, Communications",
+      "lesson_id": "68e420b7638ae9e77a0a666d"
+    },
+    {
+      "title": "Noise Models: Noise and relevance for NISQ era",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/NM-Background.mp4",
+      "module": "NISQ Devices Part 1",
+      "chapter": "NISQ Models",
+      "lesson_id": "68e420b7638ae9e77a0a6685"
+    },
+    {
+      "title": "Noise Models: Modeling Noise in Quantum",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/02-NM-Modeling+Noise+in+Quantum.mp4",
+      "module": "NISQ Devices Part 1",
+      "chapter": "NISQ Models",
+      "lesson_id": "68e420b7638ae9e77a0a668e"
+    },
+    {
+      "title": "Quantum Error Mitigation: Bit Flip Error",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/01-QEM-Bit+Flip.mp4",
+      "module": "NISQ Devices Part 2",
+      "chapter": "Quantum Error Mitigation",
+      "lesson_id": "68e420b7638ae9e77a0a66a6"
+    },
+    {
+      "title": "Quantum Error Mitigation: Phase Flip Error",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/02-QEM-Phase+Flip.mp4",
+      "module": "NISQ Devices Part 2",
+      "chapter": "Quantum Error Mitigation",
+      "lesson_id": "68e420b7638ae9e77a0a66af"
+    },
+    {
+      "title": "Quantum Error Mitigation: Shor Code",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/03-QEM-Shor+Code.mp4",
+      "module": "NISQ Devices Part 2",
+      "chapter": "Quantum Error Mitigation",
+      "lesson_id": "68e420b7638ae9e77a0a66b8"
+    },
+    {
+      "title": "Quantum volume and others",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Quantum+Volume+and+cousins.mp4",
+      "module": "NISQ Devices Part 3",
+      "chapter": "Quantum Volume and Performance Metrics",
+      "lesson_id": "68e420b7638ae9e77a0a66d0"
+    },
+    {
+      "title": "Hybrid Quantum-Classical Computing",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/hqc-1.mp4",
+      "module": "NISQ Devices Part 4",
+      "chapter": "Hybrid Quantum-Classical Computing",
+      "lesson_id": "68e420b7638ae9e77a0a66e8"
+    },
+    {
+      "title": "Noisy Intermediate-scale Quantum Computing (NISQ) Devices and Computing",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/hqc-2.mp4",
+      "module": "NISQ Devices Part 4",
+      "chapter": "Hybrid Quantum-Classical Computing",
+      "lesson_id": "68e420b7638ae9e77a0a66f1"
+    },
+    {
+      "title": "Hybrid Strategy I : Circuit Decompositions",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/hqc-3.mp4",
+      "module": "NISQ Devices Part 4",
+      "chapter": "Hybrid Quantum-Classical Computing",
+      "lesson_id": "68e420b7638ae9e77a0a66fa"
+    },
+    {
+      "title": "Hybrid Strategy II : Hybrid Quantum-Classical Variational Algorithms",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/hqc-4.mp4",
+      "module": "NISQ Devices Part 4",
+      "chapter": "Hybrid Quantum-Classical Computing",
+      "lesson_id": "68e420b7638ae9e77a0a6703"
+    },
+    {
+      "title": "Introduction",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Introduction.mp4",
+      "module": "Quantum Algorithms for Applications Part 1",
+      "chapter": "Quantum Inspired Computing",
+      "lesson_id": "68e420b7638ae9e77a0a671b"
+    },
+    {
+      "title": "Ising Model",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Ising+Model.mp4",
+      "module": "Quantum Algorithms for Applications Part 1",
+      "chapter": "Quantum Inspired Computing",
+      "lesson_id": "68e420b7638ae9e77a0a6724"
+    },
+    {
+      "title": "Quantum Annealing",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Quantum+Annealing.mp4",
+      "module": "Quantum Algorithms for Applications Part 1",
+      "chapter": "Quantum Inspired Computing",
+      "lesson_id": "68e420b7638ae9e77a0a672d"
+    },
+    {
+      "title": "Tensor Networks",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Tensor+Networks+1.mp4",
+      "module": "Quantum Algorithms for Applications Part 1",
+      "chapter": "Quantum Inspired Computing",
+      "lesson_id": "68e420b7638ae9e77a0a6736"
+    },
+    {
+      "title": "Simulated Annealing",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Simulated+Annealing+1.mp4",
+      "module": "Quantum Algorithms for Applications Part 1",
+      "chapter": "Quantum Inspired Computing",
+      "lesson_id": "68e420b7638ae9e77a0a673f"
+    },
+    {
+      "title": "Introduction to Variational Quantum Algorithms",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/vqa-1f.mp4",
+      "module": "Quantum Algorithms for Applications Part 2",
+      "chapter": "Variational Quantum Algorithms",
+      "lesson_id": "68e420b7638ae9e77a0a6757"
+    },
+    {
+      "title": "Outline of VQAs",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/vqa-2f.mp4",
+      "module": "Quantum Algorithms for Applications Part 2",
+      "chapter": "Variational Quantum Algorithms",
+      "lesson_id": "68e420b7638ae9e77a0a6760"
+    },
+    {
+      "title": "Building blocks of a variational quantum algorithm (1)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/vqa-3f.mp4",
+      "module": "Quantum Algorithms for Applications Part 2",
+      "chapter": "Variational Quantum Algorithms",
+      "lesson_id": "68e420b7638ae9e77a0a6769"
+    },
+    {
+      "title": "Building blocks of a variational quantum algorithm (2)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/vqa-4f.mp4",
+      "module": "Quantum Algorithms for Applications Part 2",
+      "chapter": "Variational Quantum Algorithms",
+      "lesson_id": "68e420b7638ae9e77a0a6772"
+    },
+    {
+      "title": "Setup: Variational quantum algorithm (VQA)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/vqa-5.mp4",
+      "module": "Quantum Algorithms for Applications Part 2",
+      "chapter": "Variational Quantum Algorithms",
+      "lesson_id": "68e420b7638ae9e77a0a677b"
+    },
+    {
+      "title": "VQA Example: VQE and QAOA",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/vqa-6.mp4",
+      "module": "Quantum Algorithms for Applications Part 2",
+      "chapter": "Variational Quantum Algorithms",
+      "lesson_id": "68e420b7638ae9e77a0a6784"
+    },
+    {
+      "title": "Challenge: Barren Plateaus",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/vqa-7.mp4",
+      "module": "Quantum Algorithms for Applications Part 2",
+      "chapter": "Variational Quantum Algorithms",
+      "lesson_id": "68e420b7638ae9e77a0a678d"
+    },
+    {
+      "title": "Current-generation application landscape for VQAs",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/vqa-8.mp4",
+      "module": "Quantum Algorithms for Applications Part 2",
+      "chapter": "Variational Quantum Algorithms",
+      "lesson_id": "68e420b7638ae9e77a0a6796"
+    },
+    {
+      "title": "Summary",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/vqa-9.mp4",
+      "module": "Quantum Algorithms for Applications Part 2",
+      "chapter": "Variational Quantum Algorithms",
+      "lesson_id": "68e420b7638ae9e77a0a679f"
+    },
+    {
+      "title": "Introduction",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Introduction+(1).mp4",
+      "module": "Quantum Algorithms for Applications Part 3",
+      "chapter": "Variational Quantum Eigensolver",
+      "lesson_id": "68e420b7638ae9e77a0a67b7"
+    },
+    {
+      "title": "Hybrid Quantum Classical Algorithms",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Hybrid+quantum+classical+algorithms.mp4",
+      "module": "Quantum Algorithms for Applications Part 3",
+      "chapter": "Variational Quantum Eigensolver",
+      "lesson_id": "68e420b7638ae9e77a0a67c0"
+    },
+    {
+      "title": "Variational Quantum Algorithms",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Variational+Quantum+Algorithms.mp4",
+      "module": "Quantum Algorithms for Applications Part 3",
+      "chapter": "Variational Quantum Eigensolver",
+      "lesson_id": "68e420b7638ae9e77a0a67c9"
+    },
+    {
+      "title": "Variational Quantum Eigensolver",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Variational+Quantum+EigenSolver.mp4",
+      "module": "Quantum Algorithms for Applications Part 3",
+      "chapter": "Variational Quantum Eigensolver",
+      "lesson_id": "68e420b7638ae9e77a0a67d2"
+    },
+    {
+      "title": "Electronic Structure Problem",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/Electronic+Structure+Problem+1.mp4",
+      "module": "Quantum Algorithms for Applications Part 3",
+      "chapter": "Variational Quantum Eigensolver",
+      "lesson_id": "68e420b7638ae9e77a0a67db"
+    },
+    {
+      "title": "Barren Plateus",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/vqa-7.mp4",
+      "module": "Quantum Algorithms for Applications Part 3",
+      "chapter": "Variational Quantum Eigensolver",
+      "lesson_id": "68e420b7638ae9e77a0a67e4"
+    },
+    {
+      "title": "Introduction",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QAOA1.mp4",
+      "module": "Quantum Algorithms for Applications Part 4",
+      "chapter": "Quantum Approximate Optimization Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a67fc"
+    },
+    {
+      "title": "The Combinatorial Optimization Problem (COP) ≡ QUBO (part 1)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QAOA2.mp4",
+      "module": "Quantum Algorithms for Applications Part 4",
+      "chapter": "Quantum Approximate Optimization Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a6805"
+    },
+    {
+      "title": "The Combinatorial Optimization Problem (COP) ≡ QUBO (part 2)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QAOA3.mp4",
+      "module": "Quantum Algorithms for Applications Part 4",
+      "chapter": "Quantum Approximate Optimization Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a680e"
+    },
+    {
+      "title": "Quantum formulation of the COP",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QAOA4.mp4",
+      "module": "Quantum Algorithms for Applications Part 4",
+      "chapter": "Quantum Approximate Optimization Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a6817"
+    },
+    {
+      "title": "Quantum Approximate Optimization Algorithm (QAOA) for the COP",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QAOA5.mp4",
+      "module": "Quantum Algorithms for Applications Part 4",
+      "chapter": "Quantum Approximate Optimization Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a6820"
+    },
+    {
+      "title": "Single (p = 1) layer QAOA",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QAOA6.mp4",
+      "module": "Quantum Algorithms for Applications Part 4",
+      "chapter": "Quantum Approximate Optimization Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a6829"
+    },
+    {
+      "title": "Single (p = 1) layer QAOA for n = 3 qubits",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QAOA7.mp4",
+      "module": "Quantum Algorithms for Applications Part 4",
+      "chapter": "Quantum Approximate Optimization Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a6832"
+    },
+    {
+      "title": "Computing gradient on a quantum computer by the parameter sift rule",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QAOA8.mp4",
+      "module": "Quantum Algorithms for Applications Part 4",
+      "chapter": "Quantum Approximate Optimization Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a683b"
+    },
+    {
+      "title": "Traveling Salesman Problem (TSP)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QAOA9.mp4",
+      "module": "Quantum Algorithms for Applications Part 4",
+      "chapter": "Quantum Approximate Optimization Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a6844"
+    },
+    {
+      "title": "Quantum (QAOA) formulation of the TSP",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/QAOA10.mp4",
+      "module": "Quantum Algorithms for Applications Part 4",
+      "chapter": "Quantum Approximate Optimization Algorithm",
+      "lesson_id": "68e420b7638ae9e77a0a684d"
+    },
+    {
+      "title": "Introduction",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/qml1f.mp4",
+      "module": "Quantum Algorithms for Applications Part 5",
+      "chapter": "Quantum Machine Learning: QNNs",
+      "lesson_id": "68e420b7638ae9e77a0a6865"
+    },
+    {
+      "title": "Why QML",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/qml2f.mp4",
+      "module": "Quantum Algorithms for Applications Part 5",
+      "chapter": "Quantum Machine Learning: QNNs",
+      "lesson_id": "68e420b7638ae9e77a0a686e"
+    },
+    {
+      "title": "Quantum models of ML algorithms",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/qml3f.mp4",
+      "module": "Quantum Algorithms for Applications Part 5",
+      "chapter": "Quantum Machine Learning: QNNs",
+      "lesson_id": "68e420b7638ae9e77a0a6877"
+    },
+    {
+      "title": "Variational quantum machine learning",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/qml4f.mp4",
+      "module": "Quantum Algorithms for Applications Part 5",
+      "chapter": "Quantum Machine Learning: QNNs",
+      "lesson_id": "68e420b7638ae9e77a0a6880"
+    },
+    {
+      "title": "Building neural networks in quantum model",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/qml5f.mp4",
+      "module": "Quantum Algorithms for Applications Part 5",
+      "chapter": "Quantum Machine Learning: QNNs",
+      "lesson_id": "68e420b7638ae9e77a0a6889"
+    },
+    {
+      "title": "A single-qubit neural network",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/qml6f.mp4",
+      "module": "Quantum Algorithms for Applications Part 5",
+      "chapter": "Quantum Machine Learning: QNNs",
+      "lesson_id": "68e420b7638ae9e77a0a6892"
+    },
+    {
+      "title": "A single-qubit neural network for classification problem",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/qml7f.mp4",
+      "module": "Quantum Algorithms for Applications Part 5",
+      "chapter": "Quantum Machine Learning: QNNs",
+      "lesson_id": "68e420b7638ae9e77a0a689b"
+    },
+    {
+      "title": "Hybrid quantum-classical neural network for molecular energy problem",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/qml8f.mp4",
+      "module": "Quantum Algorithms for Applications Part 5",
+      "chapter": "Quantum Machine Learning: QNNs",
+      "lesson_id": "68e420b7638ae9e77a0a68a4"
+    },
+    {
+      "title": "Summary",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/qml9f.mp4",
+      "module": "Quantum Algorithms for Applications Part 5",
+      "chapter": "Quantum Machine Learning: QNNs",
+      "lesson_id": "68e420b7638ae9e77a0a68ad"
+    },
+    {
+      "title": "Introduction",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/HHL1.mp4",
+      "module": "Quantum Algorithms for Applications Part 6",
+      "chapter": "HHL quantum algorithm for solving a system of linear equations",
+      "lesson_id": "68e420b7638ae9e77a0a68c5"
+    },
+    {
+      "title": "A system of linear equations",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/HHL2.mp4",
+      "module": "Quantum Algorithms for Applications Part 6",
+      "chapter": "HHL quantum algorithm for solving a system of linear equations",
+      "lesson_id": "68e420b7638ae9e77a0a68ce"
+    },
+    {
+      "title": "The HHL quantum algorithm (Steps 1 and 2)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/HHL3.mp4",
+      "module": "Quantum Algorithms for Applications Part 6",
+      "chapter": "HHL quantum algorithm for solving a system of linear equations",
+      "lesson_id": "68e420b7638ae9e77a0a68d7"
+    },
+    {
+      "title": "The HHL quantum algorithm (Steps 3-5)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/HHL4.mp4",
+      "module": "Quantum Algorithms for Applications Part 6",
+      "chapter": "HHL quantum algorithm for solving a system of linear equations",
+      "lesson_id": "68e420b7638ae9e77a0a68e0"
+    },
+    {
+      "title": "The HHL quantum algorithm (fine details)",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/HHL5.mp4",
+      "module": "Quantum Algorithms for Applications Part 6",
+      "chapter": "HHL quantum algorithm for solving a system of linear equations",
+      "lesson_id": "68e420b7638ae9e77a0a68e9"
+    },
+    {
+      "title": "Data Loading : State Preparation",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/HHL6.mp4",
+      "module": "Quantum Algorithms for Applications Part 6",
+      "chapter": "HHL quantum algorithm for solving a system of linear equations",
+      "lesson_id": "68e420b7638ae9e77a0a68f2"
+    },
+    {
+      "title": "The HHL quantum algorithm: an example",
+      "url": "https://explorer-videos-new.s3.ap-south-1.amazonaws.com/HHL7.mp4",
+      "module": "Quantum Algorithms for Applications Part 6",
+      "chapter": "HHL quantum algorithm for solving a system of linear equations",
+      "lesson_id": "68e420b7638ae9e77a0a68fb"
+    }
+  ]
+}
