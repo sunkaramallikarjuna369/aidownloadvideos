@@ -261,13 +261,31 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
     
     try:
         # Navigate to modules page
+        print(f"Navigating to: {course_url}")
         driver.get(course_url)
-        time.sleep(3)
+        time.sleep(5)  # Increased wait for SPA to load
         
-        # Wait for the page to load
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, "table, [class*='module'], [class*='content']"))
-        )
+        # Log current URL after navigation
+        current_url = driver.current_url
+        print(f"Current URL after navigation: {current_url}")
+        
+        # Wait for the page to load - try multiple selectors
+        try:
+            WebDriverWait(driver, 15).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "table, [role='grid'], [role='table'], [class*='module'], [class*='content'], [class*='list']"))
+            )
+        except Exception as e:
+            print(f"Timeout waiting for content: {e}")
+        
+        # Save page source for debugging
+        page_source = driver.page_source
+        print(f"Page source length: {len(page_source)}")
+        
+        # Debug: Save page source to file for inspection
+        debug_file = f"/tmp/qpiai_debug_{int(time.time())}.html"
+        with open(debug_file, 'w', encoding='utf-8') as f:
+            f.write(page_source)
+        print(f"Saved debug HTML to: {debug_file}")
         
         # First, try to find and click through all section dropdowns to get all modules
         # QpiAI has dropdown filters like "Prerequisites for Quantum", "Introduction to Linear"
@@ -332,32 +350,95 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
         
         # If no modules found from table, try using Selenium to find clickable rows
         if not modules:
+            print("No modules found from HTML table, trying Selenium selectors...")
             try:
-                # Try finding rows directly with Selenium
-                table_rows = driver.find_elements(By.CSS_SELECTOR, "table tbody tr, tr[class*='row']")
-                for row in table_rows:
+                # Try finding rows directly with Selenium - multiple selector strategies
+                selectors_to_try = [
+                    "table tbody tr",
+                    "tr[class*='row']",
+                    "[role='row']",
+                    "[role='grid'] [role='row']",
+                    "[class*='MuiTableRow']",
+                    "[class*='table'] [class*='row']",
+                    "[data-testid*='row']",
+                    "div[class*='list'] > div",
+                    "[class*='module-item']",
+                    "[class*='lesson-item']",
+                    "[class*='content-item']",
+                ]
+                
+                for selector in selectors_to_try:
+                    if modules:
+                        break
                     try:
-                        cells = row.find_elements(By.TAG_NAME, "td")
-                        if len(cells) >= 2:
-                            title = cells[1].text.strip() if len(cells) > 1 else cells[0].text.strip()
-                            
-                            if title and len(title) > 2 and not title.lower().startswith('s.no') and title.lower() != 'title':
+                        table_rows = driver.find_elements(By.CSS_SELECTOR, selector)
+                        print(f"Selector '{selector}' found {len(table_rows)} elements")
+                        
+                        for row in table_rows:
+                            try:
+                                # Try to get text from cells or child elements
+                                cells = row.find_elements(By.CSS_SELECTOR, "td, [role='cell'], [class*='cell'], > div")
+                                row_text = row.text.strip()
+                                
+                                title = ""
+                                if len(cells) >= 2:
+                                    title = cells[1].text.strip() if len(cells) > 1 else cells[0].text.strip()
+                                elif row_text:
+                                    # Use the row text if no cells found
+                                    title = row_text.split('\n')[0].strip()
+                                
+                                if title and len(title) > 2 and not title.lower().startswith('s.no') and title.lower() != 'title':
+                                    # Check if already exists
+                                    existing = [m for m in modules if m['name'] == title]
+                                    if not existing:
+                                        module_id += 1
+                                        
+                                        # Try to find a link
+                                        links = row.find_elements(By.TAG_NAME, "a")
+                                        lesson_url = links[0].get_attribute('href') if links else ""
+                                        
+                                        modules.append({
+                                            "id": str(module_id),
+                                            "name": title,
+                                            "lesson_url": lesson_url,
+                                            "items": []
+                                        })
+                                        print(f"Found module: {title}")
+                            except StaleElementReferenceException:
+                                continue
+                    except Exception as e:
+                        print(f"Selector '{selector}' failed: {e}")
+            except Exception as e:
+                print(f"Error finding modules via Selenium: {e}")
+        
+        # If still no modules, try finding any clickable links that look like lessons
+        if not modules:
+            print("Still no modules found, trying to find lesson links...")
+            try:
+                # Look for links that might be lessons
+                all_links = driver.find_elements(By.CSS_SELECTOR, "a[href*='lesson'], a[href*='module'], a[href*='content'], a[href*='learn']")
+                print(f"Found {len(all_links)} potential lesson links")
+                
+                for link in all_links:
+                    try:
+                        title = link.text.strip()
+                        href = link.get_attribute('href')
+                        
+                        if title and len(title) > 2 and href:
+                            existing = [m for m in modules if m['name'] == title]
+                            if not existing:
                                 module_id += 1
-                                
-                                # Try to find a link
-                                links = row.find_elements(By.TAG_NAME, "a")
-                                lesson_url = links[0].get_attribute('href') if links else ""
-                                
                                 modules.append({
                                     "id": str(module_id),
                                     "name": title,
-                                    "lesson_url": lesson_url,
+                                    "lesson_url": href,
                                     "items": []
                                 })
-                    except StaleElementReferenceException:
+                                print(f"Found lesson link: {title}")
+                    except:
                         continue
             except Exception as e:
-                print(f"Error finding modules via Selenium: {e}")
+                print(f"Error finding lesson links: {e}")
         
         # Try to expand all sections by clicking on dropdown options
         # This helps get all 16 modules if they're split across sections
@@ -470,10 +551,19 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
                 except Exception as e:
                     print(f"Error scraping module {module['name']}: {e}")
         
+        # Final summary
+        print(f"\n=== SCRAPING SUMMARY ===")
+        print(f"Total modules found: {len(modules)}")
+        for i, m in enumerate(modules, 1):
+            print(f"  {i}. {m['name']} - {len(m.get('items', []))} items")
+        print(f"========================\n")
+        
         return modules
         
     except Exception as e:
         print(f"Error scraping QpiAI modules: {e}")
+        import traceback
+        traceback.print_exc()
         return modules
 
 @app.post("/api/login")
