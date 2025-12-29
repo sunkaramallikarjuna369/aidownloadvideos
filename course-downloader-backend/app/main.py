@@ -1735,3 +1735,267 @@ async def list_downloads():
             for did, data in download_progress.items()
         ]
     }
+
+
+# ============= NEW API-BASED VIDEO EXTRACTION =============
+# This approach uses the QpiAI API with JWT token to get course structure
+# and then visits each lesson page to extract video URLs
+
+class APILoginRequest(BaseModel):
+    course_url: str
+    username: str
+    password: str
+
+class VideoDownloadRequest(BaseModel):
+    session_id: str
+    video_urls: list[dict]  # List of {url, filename, module, chapter}
+    download_path: str = ""
+
+@app.post("/api/extract-videos")
+async def extract_videos_api(request: LoginRequest, background_tasks: BackgroundTasks):
+    """
+    Login to QpiAI, get JWT token, fetch course structure via API,
+    then visit each lesson page to extract video URLs.
+    
+    This is more reliable than DOM scraping because:
+    1. Uses the official API to get course structure
+    2. Only needs to visit lesson pages to get video URLs
+    3. Videos are direct S3 MP4 files (no DRM)
+    """
+    session_id = str(uuid.uuid4())
+    
+    try:
+        driver = get_chrome_driver()
+        
+        # Step 1: Login and get JWT token
+        print("Step 1: Logging in to get JWT token...")
+        if not login_qpiai_explorer(driver, request.course_url, request.username, request.password):
+            driver.quit()
+            raise HTTPException(status_code=401, detail="Login failed")
+        
+        # Get JWT token from cookies
+        cookies = driver.get_cookies()
+        jwt_token = None
+        for cookie in cookies:
+            if cookie['name'] == 'explorer-token':
+                jwt_token = cookie['value']
+                break
+        
+        if not jwt_token:
+            driver.quit()
+            raise HTTPException(status_code=401, detail="Could not get authentication token")
+        
+        print(f"Got JWT token: {jwt_token[:50]}...")
+        
+        # Step 2: Use API to get course structure
+        print("Step 2: Fetching course structure from API...")
+        
+        # Extract course slug from URL
+        course_slug = "quantum-expert-with-amazon-braket"
+        if "/learn/" in request.course_url:
+            parts = request.course_url.split("/learn/")
+            if len(parts) > 1:
+                course_slug = parts[1].split("/")[0]
+        
+        api_base = "https://server-explorer-dev.qpiai.tech/api"
+        headers = {"Authorization": f"Bearer {jwt_token}"}
+        
+        # Get modules
+        modules_response = requests.get(
+            f"{api_base}/courses/{course_slug}/modules",
+            headers=headers
+        )
+        
+        if modules_response.status_code != 200:
+            driver.quit()
+            raise HTTPException(status_code=500, detail="Failed to fetch course modules from API")
+        
+        modules_data = modules_response.json()
+        print(f"Found {len(modules_data)} modules from API")
+        
+        # Build lesson URLs from API data
+        all_lessons = []
+        for module in modules_data:
+            module_id = module['_id']
+            module_name = module['title']
+            
+            for chapter in module.get('chapters', []):
+                chapter_id = chapter['_id']
+                chapter_name = chapter['title']
+                
+                for lesson_id in chapter.get('lessons', []):
+                    lesson_url = f"https://explorer-dev.qpiai.tech/learn/{course_slug}/modules/{module_id}/chapters/{chapter_id}/lessons/{lesson_id}"
+                    all_lessons.append({
+                        'lesson_id': lesson_id,
+                        'lesson_url': lesson_url,
+                        'module_name': module_name,
+                        'chapter_name': chapter_name
+                    })
+        
+        print(f"Total lessons to scan: {len(all_lessons)}")
+        
+        # Step 3: Visit each lesson page and extract video URL
+        print("Step 3: Extracting video URLs from lesson pages...")
+        
+        videos = []
+        for i, lesson in enumerate(all_lessons):
+            try:
+                print(f"Scanning lesson {i+1}/{len(all_lessons)}: {lesson['lesson_url'][:80]}...")
+                driver.get(lesson['lesson_url'])
+                time.sleep(3)  # Wait for video to load
+                
+                # Get lesson title
+                try:
+                    title_elem = driver.find_element(By.CSS_SELECTOR, "h1")
+                    lesson_title = title_elem.text.strip()
+                except:
+                    lesson_title = f"Lesson_{i+1}"
+                
+                # Get video URL
+                video_url = driver.execute_script("""
+                    var video = document.querySelector('video');
+                    return video ? (video.src || video.currentSrc) : null;
+                """)
+                
+                if video_url and video_url.startswith('http'):
+                    videos.append({
+                        'title': lesson_title,
+                        'url': video_url,
+                        'module': lesson['module_name'],
+                        'chapter': lesson['chapter_name'],
+                        'lesson_id': lesson['lesson_id']
+                    })
+                    print(f"  Found video: {lesson_title[:50]}...")
+                else:
+                    print(f"  No video found for lesson {i+1}")
+                    
+            except Exception as e:
+                print(f"  Error scanning lesson {i+1}: {e}")
+                continue
+        
+        driver.quit()
+        
+        # Store in session
+        sessions[session_id] = {
+            "course_url": request.course_url,
+            "jwt_token": jwt_token,
+            "videos": videos,
+            "total_lessons": len(all_lessons),
+            "modules": modules_data
+        }
+        
+        return {
+            "success": True,
+            "session_id": session_id,
+            "total_videos": len(videos),
+            "total_lessons": len(all_lessons),
+            "videos": videos
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"Error in extract_videos_api: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/download-videos")
+async def download_videos(request: VideoDownloadRequest, background_tasks: BackgroundTasks):
+    """Download videos from the extracted URLs"""
+    
+    if request.session_id not in sessions:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    session = sessions[request.session_id]
+    download_id = str(uuid.uuid4())
+    
+    # Determine download path
+    download_path = request.download_path if request.download_path else DOWNLOAD_BASE_DIR
+    
+    # Initialize progress
+    download_progress[download_id] = {
+        "status": "starting",
+        "total_items": len(request.video_urls),
+        "completed_items": 0,
+        "current_item": "",
+        "errors": []
+    }
+    
+    # Start download in background
+    background_tasks.add_task(
+        download_videos_task,
+        download_id,
+        request.video_urls,
+        download_path
+    )
+    
+    return {
+        "success": True,
+        "download_id": download_id,
+        "message": f"Started downloading {len(request.video_urls)} videos"
+    }
+
+
+async def download_videos_task(download_id: str, videos: list, download_path: str):
+    """Background task to download videos"""
+    
+    try:
+        download_progress[download_id]["status"] = "downloading"
+        
+        for i, video in enumerate(videos):
+            try:
+                url = video.get('url')
+                title = video.get('title', f'video_{i+1}')
+                module = video.get('module', 'Unknown')
+                chapter = video.get('chapter', '')
+                
+                # Create folder structure: download_path/module/chapter/
+                safe_module = sanitize_filename(module)
+                safe_chapter = sanitize_filename(chapter) if chapter else ""
+                
+                if safe_chapter:
+                    folder_path = os.path.join(download_path, safe_module, safe_chapter)
+                else:
+                    folder_path = os.path.join(download_path, safe_module)
+                
+                os.makedirs(folder_path, exist_ok=True)
+                
+                # Create filename
+                safe_title = sanitize_filename(title)
+                filename = f"{safe_title}.mp4"
+                filepath = os.path.join(folder_path, filename)
+                
+                # Skip if already exists
+                if os.path.exists(filepath):
+                    print(f"Skipping (exists): {filename}")
+                    download_progress[download_id]["completed_items"] = i + 1
+                    continue
+                
+                download_progress[download_id]["current_item"] = title
+                
+                # Download the video
+                print(f"Downloading: {title}")
+                response = requests.get(url, stream=True, headers={
+                    "User-Agent": USER_AGENT
+                })
+                
+                if response.status_code == 200:
+                    with open(filepath, 'wb') as f:
+                        for chunk in response.iter_content(chunk_size=8192):
+                            f.write(chunk)
+                    print(f"Downloaded: {filename}")
+                else:
+                    download_progress[download_id]["errors"].append(f"Failed to download {title}: HTTP {response.status_code}")
+                
+                download_progress[download_id]["completed_items"] = i + 1
+                
+            except Exception as e:
+                download_progress[download_id]["errors"].append(f"Error downloading {video.get('title', 'unknown')}: {str(e)}")
+                download_progress[download_id]["completed_items"] = i + 1
+        
+        download_progress[download_id]["status"] = "completed"
+        download_progress[download_id]["current_item"] = ""
+        
+    except Exception as e:
+        download_progress[download_id]["status"] = "error"
+        download_progress[download_id]["errors"].append(str(e))

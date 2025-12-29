@@ -8,9 +8,18 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Download, LogIn, FileVideo, FileText, Folder, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, BookOpen, GraduationCap, ClipboardList, Award, ChevronDown, ChevronRight, Play } from 'lucide-react'
+import { Download, LogIn, FileVideo, FileText, Folder, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, BookOpen, GraduationCap, ClipboardList, Award, ChevronDown, ChevronRight, Play, Video, RefreshCw } from 'lucide-react'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+
+// Video extraction result interface
+interface ExtractedVideo {
+  title: string
+  url: string
+  module: string
+  chapter: string
+  lesson_id: string
+}
 
 // QpiAI Explorer sections - mirrors the site structure
 const SECTIONS = [
@@ -68,6 +77,12 @@ function App() {
     const [isDownloading, setIsDownloading] = useState(false)
     const [downloadPath, setDownloadPath] = useState('')
     const [expandedModules, setExpandedModules] = useState<string[]>([])
+    
+    // New state for API-based video extraction
+    const [extractedVideos, setExtractedVideos] = useState<ExtractedVideo[]>([])
+    const [isExtracting, setIsExtracting] = useState(false)
+    const [extractionProgress, setExtractionProgress] = useState('')
+    const [showVideoList, setShowVideoList] = useState(false)
 
     // Toggle module expansion to show/hide files inside
     const toggleModuleExpansion = (moduleId: string) => {
@@ -137,6 +152,82 @@ function App() {
       setError('Failed to connect to server. Make sure the backend is running.')
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  // New API-based video extraction - more reliable than DOM scraping
+  const handleExtractVideos = async () => {
+    if (!courseUrl || !username || !password) {
+      setError('Please fill in all fields')
+      return
+    }
+
+    setIsExtracting(true)
+    setError('')
+    setSuccess('')
+    setExtractionProgress('Logging in and fetching course structure...')
+
+    try {
+      const response = await fetch(`${API_URL}/api/extract-videos`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          course_url: courseUrl,
+          username: username,
+          password: password
+        })
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSessionId(data.session_id)
+        setExtractedVideos(data.videos || [])
+        setShowVideoList(true)
+        setSuccess(`Found ${data.total_videos} videos out of ${data.total_lessons} lessons!`)
+      } else {
+        setError(data.detail || data.error || 'Video extraction failed')
+      }
+    } catch (err) {
+      setError('Failed to connect to server. Make sure the backend is running.')
+    } finally {
+      setIsExtracting(false)
+      setExtractionProgress('')
+    }
+  }
+
+  // Download all extracted videos
+  const handleDownloadAllVideos = async () => {
+    if (!sessionId || extractedVideos.length === 0) {
+      setError('No videos to download')
+      return
+    }
+
+    setIsDownloading(true)
+    setError('')
+
+    try {
+      const response = await fetch(`${API_URL}/api/download-videos`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          session_id: sessionId,
+          video_urls: extractedVideos,
+          download_path: downloadPath
+        })
+      })
+
+      const data = await response.json()
+      if (data.success) {
+        setDownloadId(data.download_id)
+        setSuccess(`Started downloading ${extractedVideos.length} videos...`)
+      } else {
+        setError(data.detail || 'Failed to start download')
+        setIsDownloading(false)
+      }
+    } catch (err) {
+      setError('Failed to start download')
+      setIsDownloading(false)
     }
   }
 
@@ -351,10 +442,54 @@ function App() {
                 </div>
               </div>
 
+              <div className="space-y-2">
+                <Label htmlFor="downloadPath" className="text-gray-200">Download Location (optional)</Label>
+                <Input
+                  id="downloadPath"
+                  placeholder="D:\Downloads\QpiAI_Course"
+                  value={downloadPath}
+                  onChange={(e) => setDownloadPath(e.target.value)}
+                  className="bg-slate-700 border-slate-600 text-white placeholder:text-gray-400"
+                />
+                <p className="text-xs text-gray-500">Leave empty to use default location</p>
+              </div>
+
+              <Button 
+                onClick={handleExtractVideos} 
+                disabled={isExtracting || isLoading}
+                className="w-full bg-green-600 hover:bg-green-700"
+              >
+                {isExtracting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Extracting Videos... (This takes a while)
+                  </>
+                ) : (
+                  <>
+                    <Video className="mr-2 h-4 w-4" />
+                    Extract All Video URLs
+                  </>
+                )}
+              </Button>
+
+              {extractionProgress && (
+                <p className="text-sm text-gray-400 text-center">{extractionProgress}</p>
+              )}
+
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t border-slate-600" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-slate-800 px-2 text-gray-500">Or use legacy mode</span>
+                </div>
+              </div>
+
               <Button 
                 onClick={handleLogin} 
-                disabled={isLoading}
-                className="w-full bg-purple-600 hover:bg-purple-700"
+                disabled={isLoading || isExtracting}
+                variant="outline"
+                className="w-full border-slate-600 text-gray-200 hover:bg-slate-700"
               >
                 {isLoading ? (
                   <>
@@ -364,7 +499,7 @@ function App() {
                 ) : (
                   <>
                     <LogIn className="mr-2 h-4 w-4" />
-                    Login & Scan
+                    Login & Scan (Legacy)
                   </>
                 )}
               </Button>
@@ -386,6 +521,116 @@ function App() {
               )}
             </CardContent>
           </Card>
+        ) : showVideoList && extractedVideos.length > 0 ? (
+          // Video List View - Shows all extracted videos
+          <div className="max-w-4xl mx-auto space-y-6">
+            <Card className="bg-slate-800/50 border-slate-700">
+              <CardHeader>
+                <CardTitle className="text-white flex items-center gap-2">
+                  <Video className="h-5 w-5" />
+                  Extracted Videos ({extractedVideos.length})
+                </CardTitle>
+                <CardDescription className="text-gray-400">
+                  All video URLs have been extracted. Click "Download All" to start downloading.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex gap-2">
+                  <Button 
+                    onClick={handleDownloadAllVideos}
+                    disabled={isDownloading}
+                    className="bg-green-600 hover:bg-green-700"
+                  >
+                    {isDownloading ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Downloading...
+                      </>
+                    ) : (
+                      <>
+                        <Download className="mr-2 h-4 w-4" />
+                        Download All Videos
+                      </>
+                    )}
+                  </Button>
+                  <Button 
+                    onClick={() => {
+                      setShowVideoList(false)
+                      setExtractedVideos([])
+                      setSessionId('')
+                    }}
+                    variant="outline"
+                    className="border-slate-600 text-gray-200 hover:bg-slate-700"
+                  >
+                    <RefreshCw className="mr-2 h-4 w-4" />
+                    Start Over
+                  </Button>
+                </div>
+
+                {downloadProgress && (
+                  <div className="space-y-2 p-4 bg-slate-700/50 rounded-lg">
+                    <div className="flex justify-between text-sm text-gray-300">
+                      <span>Progress: {downloadProgress.completed_items} / {downloadProgress.total_items}</span>
+                      <span>{downloadProgress.status}</span>
+                    </div>
+                    <Progress 
+                      value={downloadProgress.total_items > 0 
+                        ? (downloadProgress.completed_items / downloadProgress.total_items) * 100 
+                        : 0
+                      } 
+                      className="h-2"
+                    />
+                    {downloadProgress.current_item && (
+                      <p className="text-sm text-gray-400 truncate">
+                        Current: {downloadProgress.current_item}
+                      </p>
+                    )}
+                    {downloadProgress.status === 'completed' && (
+                      <Alert className="bg-green-900/50 border-green-800 mt-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        <AlertTitle className="text-green-400">Download Complete!</AlertTitle>
+                        <AlertDescription className="text-green-300">
+                          All videos have been downloaded to your specified location.
+                        </AlertDescription>
+                      </Alert>
+                    )}
+                  </div>
+                )}
+
+                <ScrollArea className="h-96 rounded border border-slate-600">
+                  <div className="p-4 space-y-2">
+                    {/* Group videos by module */}
+                    {Array.from(new Set(extractedVideos.map(v => v.module))).map(moduleName => (
+                      <div key={moduleName} className="mb-4">
+                        <h3 className="text-sm font-medium text-purple-400 mb-2 flex items-center gap-2">
+                          <Folder className="h-4 w-4" />
+                          {moduleName}
+                        </h3>
+                        <div className="pl-4 space-y-1">
+                          {extractedVideos
+                            .filter(v => v.module === moduleName)
+                            .map((video, idx) => (
+                              <div key={idx} className="flex items-center gap-2 text-sm text-gray-300 py-1 hover:bg-slate-700/50 rounded px-2">
+                                <FileVideo className="h-4 w-4 text-blue-400 flex-shrink-0" />
+                                <span className="truncate flex-1">{video.title}</span>
+                                <a 
+                                  href={video.url} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                  className="text-xs text-blue-400 hover:underline flex-shrink-0"
+                                >
+                                  Open
+                                </a>
+                              </div>
+                            ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </ScrollArea>
+              </CardContent>
+            </Card>
+          </div>
         ) : (
           // Main Content - Mirrors QpiAI Structure with Sidebar
           <div className="flex gap-6">
