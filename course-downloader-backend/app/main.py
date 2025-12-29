@@ -249,21 +249,29 @@ def detect_video_urls_from_page(driver, base_url: str) -> list:
     return video_urls
 
 def scrape_qpiai_modules(driver, course_url: str) -> list:
-    """Scrape modules from QpiAI Explorer platform with video detection like browser extensions
+    """Scrape modules from QpiAI Explorer platform using the 'Explore Course Content' sidebar
     
-    QpiAI Explorer structure (from screenshot):
-    - Left sidebar: Course Overview, Modules, Quizzes & Assignments, Certificate
-    - Main content: Table with S.No, Title, Completion Status columns
-    - Two dropdown filters at top (e.g., "Prerequisites for Quantum", "Introduction to Linear")
-    - Pagination: "Page 1 of 2" with "Rows per page: 10"
-    - 16 total modules across pages and dropdown sections
+    NEW approach based on user screenshot:
+    - Navigate to any lesson page to access the "Explore Course Content" sidebar
+    - The sidebar shows expandable sections (chapters) with lessons inside
+    - Each section can be expanded to show individual lessons
+    - Click into each lesson to get video URLs
+    
+    Structure from screenshot:
+    - Prerequisites for Quantum Computing (expandable)
+      - Introduction to Linear Algebra
+      - Basics of Quantum Mechanics
+      - etc.
+    - Quantum States and Qubits Part 1-7 (expandable)
+      - Single-qubit states and superposition Part 1
+      - etc.
     """
     modules = []
     seen_titles = set()  # Track seen titles to avoid duplicates
     module_id = 0
     
     try:
-        # Navigate to modules page
+        # Navigate to course page
         print(f"Navigating to: {course_url}")
         driver.get(course_url)
         time.sleep(5)  # Wait for SPA to load
@@ -272,76 +280,244 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
         current_url = driver.current_url
         print(f"Current URL after navigation: {current_url}")
         
-        # ALWAYS click on "Modules" in the sidebar first to ensure we're on the correct page
-        # The user confirmed we need to go to modules page first
-        print("Clicking on 'Modules' in sidebar to navigate to lessons list...")
+        # First, click on "Modules" in the left sidebar to get to the modules list
+        print("Step 1: Clicking on 'Modules' in left sidebar...")
         try:
-            # Wait for sidebar to load
             time.sleep(2)
-            
-            # Try multiple selectors to find the Modules link
             modules_selectors = [
                 "//a[contains(text(), 'Modules')]",
                 "//*[contains(text(), 'Modules') and (self::button or self::a or self::div or self::span)]",
                 "//nav//a[contains(., 'Modules')]",
-                "//*[@class and contains(@class, 'sidebar')]//*[contains(text(), 'Modules')]",
-                "//aside//*[contains(text(), 'Modules')]",
+                "a[href*='modules']",
             ]
             
             clicked = False
             for selector in modules_selectors:
                 try:
-                    modules_link = driver.find_element(By.XPATH, selector)
-                    if modules_link.is_displayed():
-                        modules_link.click()
+                    if selector.startswith("//"):
+                        elem = driver.find_element(By.XPATH, selector)
+                    else:
+                        elem = driver.find_element(By.CSS_SELECTOR, selector)
+                    if elem.is_displayed():
+                        elem.click()
                         clicked = True
-                        print(f"Clicked Modules using selector: {selector}")
+                        print(f"Clicked Modules using: {selector}")
                         break
                 except:
                     continue
             
-            if not clicked:
-                # Try CSS selectors as fallback
-                css_selectors = [
-                    "a[href*='modules']",
-                    "[class*='sidebar'] a",
-                    "nav a",
-                ]
-                for selector in css_selectors:
-                    try:
-                        links = driver.find_elements(By.CSS_SELECTOR, selector)
-                        for link in links:
-                            if 'modules' in link.text.lower() or 'modules' in (link.get_attribute('href') or '').lower():
-                                link.click()
-                                clicked = True
-                                print(f"Clicked Modules using CSS: {selector}")
-                                break
-                        if clicked:
-                            break
-                    except:
-                        continue
-            
             if clicked:
-                time.sleep(3)  # Wait for page to load after clicking
+                time.sleep(3)
                 print(f"Now at: {driver.current_url}")
-            else:
-                print("Could not find Modules link to click")
-                
         except Exception as e:
             print(f"Error clicking Modules: {e}")
         
-        # Wait for the CORRECT table to load - need BOTH "S.No" AND "Completion Status" headers
-        # This ensures we're on the modules list, not a course overview page
+        # Step 2: Click on the first lesson in the table to access the "Explore Course Content" sidebar
+        print("\nStep 2: Clicking on first lesson to access 'Explore Course Content' sidebar...")
         try:
-            WebDriverWait(driver, 15).until(
-                EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'S.No')]"))
-            )
-            WebDriverWait(driver, 5).until(
-                EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Completion Status')]"))
-            )
-            print("Found correct table headers (S.No AND Completion Status)")
+            # Wait for table to load
+            time.sleep(2)
+            
+            # Find and click the first lesson row/link
+            first_lesson_selectors = [
+                "table tbody tr td a",  # Link in table cell
+                "table tbody tr:first-child",  # First table row
+                "[role='row'] a",  # Link in row
+                "a[href*='lessons']",  # Any lesson link
+                "a[href*='chapters']",  # Any chapter link
+            ]
+            
+            clicked_lesson = False
+            for selector in first_lesson_selectors:
+                try:
+                    elems = driver.find_elements(By.CSS_SELECTOR, selector)
+                    for elem in elems:
+                        if elem.is_displayed():
+                            elem.click()
+                            clicked_lesson = True
+                            print(f"Clicked first lesson using: {selector}")
+                            break
+                    if clicked_lesson:
+                        break
+                except:
+                    continue
+            
+            if clicked_lesson:
+                time.sleep(4)  # Wait for lesson page to load
+                print(f"Now at lesson page: {driver.current_url}")
+            else:
+                print("Could not click on first lesson")
         except Exception as e:
-            print(f"Timeout waiting for correct table headers: {e}")
+            print(f"Error clicking first lesson: {e}")
+        
+        # Step 3: Find and interact with the "Explore Course Content" sidebar
+        print("\nStep 3: Looking for 'Explore Course Content' sidebar...")
+        
+        # The sidebar might need to be opened via a button
+        try:
+            # Look for "Explore" or "Browse" button to open the sidebar
+            explore_buttons = [
+                "//*[contains(text(), 'Explore Course Content')]",
+                "//*[contains(text(), 'Browse')]",
+                "//*[contains(text(), 'Explore')]",
+                "button[aria-label*='explore']",
+                "button[aria-label*='browse']",
+            ]
+            
+            for selector in explore_buttons:
+                try:
+                    if selector.startswith("//"):
+                        btn = driver.find_element(By.XPATH, selector)
+                    else:
+                        btn = driver.find_element(By.CSS_SELECTOR, selector)
+                    if btn.is_displayed():
+                        # Check if it's a button that needs clicking
+                        if btn.tag_name == 'button':
+                            btn.click()
+                            print(f"Clicked explore button: {selector}")
+                            time.sleep(2)
+                        break
+                except:
+                    continue
+        except Exception as e:
+            print(f"Note: {e}")
+        
+        # Step 4: Extract sections and lessons from the sidebar
+        print("\nStep 4: Extracting sections and lessons from sidebar...")
+        
+        # Find all section headers (expandable accordion items)
+        section_selectors = [
+            # Accordion/expandable sections
+            "[aria-expanded]",
+            "button[aria-expanded]",
+            "[role='button'][aria-expanded]",
+            # Common patterns for course content sidebars
+            "[class*='accordion'] > div",
+            "[class*='chapter']",
+            "[class*='section']",
+            "[class*='module']",
+        ]
+        
+        sections_found = []
+        
+        for selector in section_selectors:
+            try:
+                elements = driver.find_elements(By.CSS_SELECTOR, selector)
+                print(f"Selector '{selector}' found {len(elements)} elements")
+                
+                for elem in elements:
+                    try:
+                        text = elem.text.strip()
+                        if text and len(text) > 3 and text not in seen_titles:
+                            # Check if this looks like a section header
+                            if any(keyword in text.lower() for keyword in ['quantum', 'linear', 'algebra', 'mechanics', 'computer', 'prerequisites', 'introduction', 'basics', 'essential', 'part']):
+                                sections_found.append({
+                                    'text': text.split('\n')[0],  # First line only
+                                    'element': elem,
+                                    'expanded': elem.get_attribute('aria-expanded') == 'true'
+                                })
+                                seen_titles.add(text)
+                    except:
+                        continue
+            except Exception as e:
+                print(f"Selector '{selector}' error: {e}")
+        
+        print(f"Found {len(sections_found)} potential sections")
+        
+        # Step 5: Find all lesson links directly
+        print("\nStep 5: Finding all lesson links...")
+        
+        lesson_links = []
+        lesson_selectors = [
+            "a[href*='/lessons/']",
+            "a[href*='/chapters/']",
+            "[class*='lesson'] a",
+            "[class*='content'] a[href*='learn']",
+        ]
+        
+        for selector in lesson_selectors:
+            try:
+                links = driver.find_elements(By.CSS_SELECTOR, selector)
+                print(f"Selector '{selector}' found {len(links)} links")
+                
+                for link in links:
+                    try:
+                        href = link.get_attribute('href')
+                        text = link.text.strip()
+                        
+                        if href and '/lessons/' in href and text:
+                            if text not in seen_titles:
+                                seen_titles.add(text)
+                                lesson_links.append({
+                                    'name': text,
+                                    'url': href
+                                })
+                    except:
+                        continue
+            except Exception as e:
+                print(f"Selector '{selector}' error: {e}")
+        
+        print(f"Found {len(lesson_links)} lesson links")
+        
+        # Step 6: If we found lesson links, create modules from them
+        if lesson_links:
+            print("\nStep 6: Creating modules from lesson links...")
+            for lesson in lesson_links:
+                module_id += 1
+                modules.append({
+                    "id": str(module_id),
+                    "name": lesson['name'],
+                    "lesson_url": lesson['url'],
+                    "status": "Not Started",
+                    "items": []
+                })
+                print(f"  Added module: {lesson['name']}")
+        
+        # Step 7: If no lesson links found, try expanding sections and finding lessons
+        if not modules:
+            print("\nStep 7: Trying to expand sections and find lessons...")
+            
+            # Try clicking on expandable sections
+            try:
+                expandable = driver.find_elements(By.CSS_SELECTOR, "[aria-expanded='false']")
+                print(f"Found {len(expandable)} collapsed sections")
+                
+                for exp in expandable[:10]:  # Limit to first 10
+                    try:
+                        exp.click()
+                        time.sleep(1)
+                    except:
+                        continue
+                
+                # Now look for lesson links again
+                time.sleep(2)
+                links = driver.find_elements(By.CSS_SELECTOR, "a[href*='/lessons/']")
+                print(f"After expanding, found {len(links)} lesson links")
+                
+                for link in links:
+                    try:
+                        href = link.get_attribute('href')
+                        text = link.text.strip()
+                        
+                        if href and text and text not in seen_titles:
+                            seen_titles.add(text)
+                            module_id += 1
+                            modules.append({
+                                "id": str(module_id),
+                                "name": text,
+                                "lesson_url": href,
+                                "status": "Not Started",
+                                "items": []
+                            })
+                            print(f"  Added module: {text}")
+                    except:
+                        continue
+            except Exception as e:
+                print(f"Error expanding sections: {e}")
+        
+        # Fallback: Use the old table-based approach if sidebar approach didn't work
+        if not modules:
+            print("\nFallback: Using table-based approach...")
         
         # Additional wait for table rows to render
         time.sleep(2)
