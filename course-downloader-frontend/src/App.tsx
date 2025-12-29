@@ -7,12 +7,18 @@ import { Progress } from '@/components/ui/progress'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Separator } from '@/components/ui/separator'
-import { Download, LogIn, FileVideo, FileText, Folder, CheckCircle, AlertCircle, Loader2, RefreshCw, Eye, EyeOff } from 'lucide-react'
+import { Download, LogIn, FileVideo, FileText, Folder, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, BookOpen, GraduationCap, ClipboardList, Award } from 'lucide-react'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+
+// QpiAI Explorer sections - mirrors the site structure
+const SECTIONS = [
+  { id: 'overview', name: 'Course Overview', icon: BookOpen },
+  { id: 'modules', name: 'Modules', icon: Folder },
+  { id: 'quizzes', name: 'Quizzes & Assignments', icon: ClipboardList },
+  { id: 'certificate', name: 'Certificate', icon: Award },
+]
 
 interface ModuleItem {
   type: string
@@ -23,7 +29,15 @@ interface ModuleItem {
 interface Module {
   id: string
   name: string
+  section?: string
+  status?: string
   items: ModuleItem[]
+}
+
+interface SectionData {
+  id: string
+  name: string
+  items: Module[]
 }
 
 interface DownloadProgress {
@@ -45,13 +59,18 @@ function App() {
   const [success, setSuccess] = useState('')
   
   const [sessionId, setSessionId] = useState('')
-  const [modules, setModules] = useState<Module[]>([])
+  const [sections, setSections] = useState<SectionData[]>([])
+  const [activeSection, setActiveSection] = useState('modules')
   const [selectedModules, setSelectedModules] = useState<string[]>([])
   
   const [downloadId, setDownloadId] = useState('')
   const [downloadProgress, setDownloadProgress] = useState<DownloadProgress | null>(null)
   const [isDownloading, setIsDownloading] = useState(false)
-  const [downloadPath, setDownloadPath] = useState('')  // Custom download location
+  const [downloadPath, setDownloadPath] = useState('')
+
+  // Get modules for the active section
+  const currentSectionData = sections.find(s => s.id === activeSection)
+  const modules = currentSectionData?.items || []
 
   const handleLogin = async () => {
     if (!courseUrl || !username || !password) {
@@ -78,9 +97,19 @@ function App() {
 
       if (data.success) {
         setSessionId(data.session_id)
-        setModules(data.modules || [])
-        setSuccess(`Successfully logged in! Found ${data.modules?.length || 0} modules.`)
-        setSelectedModules(data.modules?.map((m: Module) => m.id) || [])
+        
+        // Organize modules into sections (mirroring QpiAI structure)
+        const allModules = data.modules || []
+        const sectionData: SectionData[] = [
+          { id: 'overview', name: 'Course Overview', items: [] },
+          { id: 'modules', name: 'Modules', items: allModules },
+          { id: 'quizzes', name: 'Quizzes & Assignments', items: data.quizzes || [] },
+          { id: 'certificate', name: 'Certificate', items: data.certificate || [] },
+        ]
+        setSections(sectionData)
+        setActiveSection('modules')
+        setSuccess(`Successfully logged in! Found ${allModules.length} modules.`)
+        setSelectedModules(allModules.map((m: Module) => m.id))
       } else {
         setError(data.error || data.message || 'Login failed')
       }
@@ -138,11 +167,26 @@ function App() {
   }
 
   const selectAllModules = () => {
-    setSelectedModules(modules.map(m => m.id))
+    const allIds = sections.flatMap(s => s.items.map(m => m.id))
+    setSelectedModules(allIds)
   }
 
   const deselectAllModules = () => {
     setSelectedModules([])
+  }
+
+  const selectSectionModules = () => {
+    const sectionIds = modules.map(m => m.id)
+    setSelectedModules(prev => [...new Set([...prev, ...sectionIds])])
+  }
+
+  const getSectionIcon = (sectionId: string) => {
+    const section = SECTIONS.find(s => s.id === sectionId)
+    if (section) {
+      const Icon = section.icon
+      return <Icon className="h-5 w-5" />
+    }
+    return <Folder className="h-5 w-5" />
   }
 
   const startDownload = async () => {
@@ -215,21 +259,25 @@ function App() {
     }
   }
 
-  const totalItems = modules.reduce((sum, m) => sum + (m.items?.length || 0), 0)
-  const selectedItemsCount = modules
+  const totalItems = sections.flatMap(s => s.items).reduce((sum, m) => sum + (m.items?.length || 0), 0)
+  const selectedItemsCount = sections
+    .flatMap(s => s.items)
     .filter(m => selectedModules.includes(m.id))
     .reduce((sum, m) => sum + (m.items?.length || 0), 0)
+
+  const isLoggedIn = sessionId && sections.length > 0
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-white mb-2">Course Content Downloader</h1>
-          <p className="text-gray-300">Download videos and PDFs from your online courses</p>
+          <p className="text-gray-300">Download videos and PDFs - Mirrors QpiAI Explorer structure</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card className="bg-slate-800/50 border-slate-700">
+        {!isLoggedIn ? (
+          // Login Form
+          <Card className="max-w-md mx-auto bg-slate-800/50 border-slate-700">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
                 <LogIn className="h-5 w-5" />
@@ -244,7 +292,7 @@ function App() {
                 <Label htmlFor="courseUrl" className="text-gray-200">Course URL</Label>
                 <Input
                   id="courseUrl"
-                  placeholder="https://your-course-platform.com/course"
+                  placeholder="https://explorer-dev.qpiai.tech/learn/..."
                   value={courseUrl}
                   onChange={(e) => setCourseUrl(e.target.value)}
                   className="bg-slate-700 border-slate-600 text-white placeholder:text-gray-400"
@@ -283,34 +331,23 @@ function App() {
                 </div>
               </div>
 
-              <div className="flex gap-2 pt-2">
-                <Button 
-                  onClick={handleLogin} 
-                  disabled={isLoading}
-                  className="flex-1 bg-purple-600 hover:bg-purple-700"
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Logging in...
-                    </>
-                  ) : (
-                    <>
-                      <LogIn className="mr-2 h-4 w-4" />
-                      Login & Scan
-                    </>
-                  )}
-                </Button>
-                <Button 
-                  onClick={handleScanPage} 
-                  disabled={isLoading}
-                  variant="outline"
-                  className="border-slate-600 text-gray-200 hover:bg-slate-700"
-                >
-                  <RefreshCw className="mr-2 h-4 w-4" />
-                  Scan Only
-                </Button>
-              </div>
+              <Button 
+                onClick={handleLogin} 
+                disabled={isLoading}
+                className="w-full bg-purple-600 hover:bg-purple-700"
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Logging in...
+                  </>
+                ) : (
+                  <>
+                    <LogIn className="mr-2 h-4 w-4" />
+                    Login & Scan
+                  </>
+                )}
+              </Button>
 
               {error && (
                 <Alert variant="destructive" className="bg-red-900/50 border-red-800">
@@ -329,247 +366,322 @@ function App() {
               )}
             </CardContent>
           </Card>
-
-          <Card className="bg-slate-800/50 border-slate-700">
-            <CardHeader>
-              <CardTitle className="text-white flex items-center gap-2">
-                <Folder className="h-5 w-5" />
-                Course Modules
-                {modules.length > 0 && (
-                  <Badge variant="secondary" className="ml-2">
-                    {modules.length} modules
-                  </Badge>
-                )}
-              </CardTitle>
-              <CardDescription className="text-gray-400">
-                Select modules to download ({selectedItemsCount} of {totalItems} items selected)
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {modules.length === 0 ? (
-                <div className="text-center py-8 text-gray-400">
-                  <Folder className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                  <p>No modules found yet.</p>
-                  <p className="text-sm">Login to your course to see available content.</p>
-                </div>
-              ) : (
-                <>
-                  <div className="flex gap-2 mb-4">
+        ) : (
+          // Main Content - Mirrors QpiAI Structure with Sidebar
+          <div className="flex gap-6">
+            {/* Left Sidebar - QpiAI Navigation */}
+            <div className="w-64 flex-shrink-0">
+              <Card className="bg-slate-800/50 border-slate-700 sticky top-4">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-white text-lg flex items-center gap-2">
+                    <GraduationCap className="h-5 w-5" />
+                    Course Content
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-2">
+                  <nav className="space-y-1">
+                    {SECTIONS.map((section) => {
+                      const sectionData = sections.find(s => s.id === section.id)
+                      const itemCount = sectionData?.items.length || 0
+                      const Icon = section.icon
+                      
+                      return (
+                        <button
+                          key={section.id}
+                          onClick={() => setActiveSection(section.id)}
+                          className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${
+                            activeSection === section.id
+                              ? 'bg-purple-600 text-white'
+                              : 'text-gray-300 hover:bg-slate-700'
+                          }`}
+                        >
+                          <Icon className="h-5 w-5" />
+                          <span className="flex-1">{section.name}</span>
+                          {itemCount > 0 && (
+                            <Badge variant="secondary" className="text-xs">
+                              {itemCount}
+                            </Badge>
+                          )}
+                        </button>
+                      )
+                    })}
+                  </nav>
+                  
+                  <div className="mt-4 pt-4 border-t border-slate-700">
+                    <p className="text-xs text-gray-500 mb-2">
+                      {selectedModules.length} items selected
+                    </p>
                     <Button 
-                      size="sm" 
-                      variant="outline" 
                       onClick={selectAllModules}
-                      className="border-slate-600 text-gray-200 hover:bg-slate-700"
+                      size="sm"
+                      variant="outline"
+                      className="w-full border-slate-600 text-gray-200 hover:bg-slate-700 mb-2"
                     >
-                      Select All
+                      Select All Sections
                     </Button>
                     <Button 
-                      size="sm" 
-                      variant="outline" 
                       onClick={deselectAllModules}
-                      className="border-slate-600 text-gray-200 hover:bg-slate-700"
+                      size="sm"
+                      variant="outline"
+                      className="w-full border-slate-600 text-gray-200 hover:bg-slate-700"
                     >
                       Deselect All
                     </Button>
                   </div>
-                  
-                  <ScrollArea className="h-64 rounded-md border border-slate-700 p-4">
-                    <div className="space-y-3">
-                      {modules.map((module) => (
-                        <div 
-                          key={module.id} 
-                          className="flex items-start space-x-3 p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors"
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Main Content Area */}
+            <div className="flex-1 space-y-6">
+              {/* Section Content */}
+              <Card className="bg-slate-800/50 border-slate-700">
+                <CardHeader>
+                  <CardTitle className="text-white flex items-center gap-2">
+                    {getSectionIcon(activeSection)}
+                    {SECTIONS.find(s => s.id === activeSection)?.name}
+                    {modules.length > 0 && (
+                      <Badge variant="secondary" className="ml-2">
+                        {modules.length} items
+                      </Badge>
+                    )}
+                  </CardTitle>
+                  <CardDescription className="text-gray-400">
+                    {activeSection === 'modules' && 'Course modules with videos and learning materials'}
+                    {activeSection === 'overview' && 'Course overview and introduction'}
+                    {activeSection === 'quizzes' && 'Quizzes and assignments for this course'}
+                    {activeSection === 'certificate' && 'Your course completion certificate'}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {modules.length === 0 ? (
+                    <div className="text-center py-8 text-gray-400">
+                      <Folder className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                      <p>No content found in this section.</p>
+                      {activeSection !== 'modules' && (
+                        <p className="text-sm mt-2">This section may not have downloadable content.</p>
+                      )}
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flex gap-2 mb-4">
+                        <Button 
+                          size="sm" 
+                          variant="outline" 
+                          onClick={selectSectionModules}
+                          className="border-slate-600 text-gray-200 hover:bg-slate-700"
                         >
-                          <Checkbox
-                            id={`module-${module.id}`}
-                            checked={selectedModules.includes(module.id)}
-                            onCheckedChange={() => toggleModuleSelection(module.id)}
-                            className="mt-1"
-                          />
-                          <div className="flex-1 min-w-0">
-                            <label 
-                              htmlFor={`module-${module.id}`}
-                              className="text-sm font-medium text-white cursor-pointer block truncate"
-                            >
-                              {module.name}
-                            </label>
-                            <div className="flex flex-wrap gap-1 mt-1">
-                              {module.items?.slice(0, 5).map((item, idx) => (
-                                <Badge 
-                                  key={idx} 
-                                  variant="outline" 
-                                  className="text-xs border-slate-600 text-gray-300"
-                                >
-                                  {getItemIcon(item.type)}
-                                  <span className="ml-1 truncate max-w-24">{item.name}</span>
-                                </Badge>
-                              ))}
-                              {(module.items?.length || 0) > 5 && (
-                                <Badge variant="outline" className="text-xs border-slate-600 text-gray-300">
-                                  +{(module.items?.length || 0) - 5} more
-                                </Badge>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </ScrollArea>
-                </>
-              )}
-            </CardContent>
-          </Card>
-        </div>
-
-        {modules.length > 0 && (
-          <Card className="mt-6 bg-slate-800/50 border-slate-700">
-            <CardHeader>
-              <CardTitle className="text-white flex items-center gap-2">
-                <Download className="h-5 w-5" />
-                Download Content
-              </CardTitle>
-              <CardDescription className="text-gray-400">
-                Download selected modules as videos and PDFs
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="downloadPath" className="text-gray-300">
-                  Download Location (optional)
-                </Label>
-                <Input
-                  id="downloadPath"
-                  type="text"
-                  placeholder="e.g., D:\Downloads\Courses or leave empty for default"
-                  value={downloadPath}
-                  onChange={(e) => setDownloadPath(e.target.value)}
-                  className="bg-slate-700 border-slate-600 text-white placeholder:text-gray-500"
-                />
-                <p className="text-xs text-gray-500">
-                  Files will be organized in folders by module name. Leave empty to use server default location.
-                </p>
-              </div>
-
-              <div className="flex gap-2">
-                <Button 
-                  onClick={() => {
-                    selectAllModules()
-                    setTimeout(startDownload, 100)
-                  }} 
-                  disabled={isDownloading || modules.length === 0}
-                  className="flex-1 bg-purple-600 hover:bg-purple-700"
-                  size="lg"
-                >
-                  {isDownloading ? (
-                    <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      Downloading...
-                    </>
-                  ) : (
-                    <>
-                      <Download className="mr-2 h-5 w-5" />
-                      Download Everything
-                    </>
-                  )}
-                </Button>
-                <Button 
-                  onClick={startDownload} 
-                  disabled={isDownloading || selectedModules.length === 0}
-                  className="flex-1 bg-green-600 hover:bg-green-700"
-                  size="lg"
-                >
-                  {isDownloading ? (
-                    <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      Downloading...
-                    </>
-                  ) : (
-                    <>
-                      <Download className="mr-2 h-5 w-5" />
-                      Download Selected ({selectedModules.length})
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {downloadProgress && (
-                <div className="space-y-4 p-4 rounded-lg bg-slate-700/50">
-                  <div className="flex justify-between text-sm text-gray-300">
-                    <span>Progress: {downloadProgress.completed_items} / {downloadProgress.total_items}</span>
-                    <Badge 
-                      variant={downloadProgress.status === 'completed' ? 'default' : 'secondary'}
-                      className={downloadProgress.status === 'completed' ? 'bg-green-600' : ''}
-                    >
-                      {downloadProgress.status}
-                    </Badge>
-                  </div>
-                  
-                  <Progress 
-                    value={downloadProgress.total_items > 0 
-                      ? (downloadProgress.completed_items / downloadProgress.total_items) * 100 
-                      : 0
-                    } 
-                    className="h-2"
-                  />
-                  
-                  {downloadProgress.current_item && (
-                    <p className="text-sm text-gray-400 truncate">
-                      Current: {downloadProgress.current_item}
-                    </p>
-                  )}
-
-                  {downloadProgress.status === 'completed' && (
-                    <div className="space-y-3">
-                      <Alert className="bg-green-900/50 border-green-800">
-                        <CheckCircle className="h-4 w-4 text-green-500" />
-                        <AlertTitle className="text-green-400">Download Complete!</AlertTitle>
-                        <AlertDescription className="text-green-300">
-                          Successfully downloaded {downloadProgress.downloaded_files?.length || 0} files.
-                        </AlertDescription>
-                      </Alert>
+                          Select All in Section
+                        </Button>
+                      </div>
                       
-                      <Button 
-                        onClick={downloadZip}
-                        className="w-full bg-blue-600 hover:bg-blue-700"
-                      >
-                        <Download className="mr-2 h-4 w-4" />
-                        Download as ZIP
-                      </Button>
-                    </div>
-                  )}
-
-                  {downloadProgress.errors?.length > 0 && (
-                    <div className="space-y-2">
-                      <p className="text-sm font-medium text-red-400">Errors:</p>
-                      <ScrollArea className="h-24 rounded border border-red-800 p-2">
-                        {downloadProgress.errors.map((err, idx) => (
-                          <p key={idx} className="text-xs text-red-300">{err}</p>
-                        ))}
+                      {/* Table Header - Mirrors QpiAI */}
+                      <div className="grid grid-cols-12 gap-4 px-4 py-2 bg-slate-700/50 rounded-t-lg text-sm font-medium text-gray-300">
+                        <div className="col-span-1">S.No</div>
+                        <div className="col-span-8">Title</div>
+                        <div className="col-span-3">Status</div>
+                      </div>
+                      
+                      <ScrollArea className="h-80 rounded-b-md border border-slate-700 border-t-0">
+                        <div className="divide-y divide-slate-700">
+                          {modules.map((module, index) => (
+                            <div 
+                              key={module.id} 
+                              className="grid grid-cols-12 gap-4 px-4 py-3 hover:bg-slate-700/50 transition-colors items-center"
+                            >
+                              <div className="col-span-1 text-gray-400 text-sm">
+                                {index + 1}
+                              </div>
+                              <div className="col-span-8 flex items-center gap-3">
+                                <Checkbox
+                                  id={`module-${module.id}`}
+                                  checked={selectedModules.includes(module.id)}
+                                  onCheckedChange={() => toggleModuleSelection(module.id)}
+                                />
+                                <label 
+                                  htmlFor={`module-${module.id}`}
+                                  className="text-sm text-white cursor-pointer flex-1"
+                                >
+                                  {module.name}
+                                </label>
+                                {module.items?.length > 0 && (
+                                  <Badge variant="outline" className="text-xs border-slate-600 text-gray-300">
+                                    {module.items.length} files
+                                  </Badge>
+                                )}
+                              </div>
+                              <div className="col-span-3">
+                                <Badge 
+                                  variant="outline" 
+                                  className={`text-xs ${
+                                    module.status === 'Completed' 
+                                      ? 'border-green-600 text-green-400' 
+                                      : 'border-slate-600 text-gray-400'
+                                  }`}
+                                >
+                                  {module.status || 'Not Started'}
+                                </Badge>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
                       </ScrollArea>
-                    </div>
+                    </>
                   )}
+                </CardContent>
+              </Card>
 
-                  {downloadProgress.downloaded_files?.length > 0 && (
-                    <div className="space-y-2">
-                      <p className="text-sm font-medium text-gray-300">Downloaded Files:</p>
-                      <ScrollArea className="h-32 rounded border border-slate-600 p-2">
-                        {downloadProgress.downloaded_files.map((file, idx) => (
-                          <div key={idx} className="flex items-center gap-2 text-xs text-gray-400 py-1">
-                            {getItemIcon(file.type)}
-                            <span className="truncate">{file.module} / {file.file}</span>
-                          </div>
-                        ))}
-                      </ScrollArea>
+              {/* Download Section */}
+              <Card className="bg-slate-800/50 border-slate-700">
+                <CardHeader>
+                  <CardTitle className="text-white flex items-center gap-2">
+                    <Download className="h-5 w-5" />
+                    Download Content
+                  </CardTitle>
+                  <CardDescription className="text-gray-400">
+                    Download selected content ({selectedItemsCount} of {totalItems} items)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="downloadPath" className="text-gray-300">
+                      Download Location (optional)
+                    </Label>
+                    <Input
+                      id="downloadPath"
+                      type="text"
+                      placeholder="e.g., D:\Downloads\Courses or leave empty for default"
+                      value={downloadPath}
+                      onChange={(e) => setDownloadPath(e.target.value)}
+                      className="bg-slate-700 border-slate-600 text-white placeholder:text-gray-500"
+                    />
+                    <p className="text-xs text-gray-500">
+                      Files will be organized in folders matching the course structure.
+                    </p>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Button 
+                      onClick={() => {
+                        selectAllModules()
+                        setTimeout(startDownload, 100)
+                      }} 
+                      disabled={isDownloading || sections.flatMap(s => s.items).length === 0}
+                      className="flex-1 bg-purple-600 hover:bg-purple-700"
+                      size="lg"
+                    >
+                      {isDownloading ? (
+                        <>
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                          Downloading...
+                        </>
+                      ) : (
+                        <>
+                          <Download className="mr-2 h-5 w-5" />
+                          Download Everything
+                        </>
+                      )}
+                    </Button>
+                    <Button 
+                      onClick={startDownload} 
+                      disabled={isDownloading || selectedModules.length === 0}
+                      className="flex-1 bg-green-600 hover:bg-green-700"
+                      size="lg"
+                    >
+                      {isDownloading ? (
+                        <>
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                          Downloading...
+                        </>
+                      ) : (
+                        <>
+                          <Download className="mr-2 h-5 w-5" />
+                          Download Selected ({selectedModules.length})
+                        </>
+                      )}
+                    </Button>
+                  </div>
+
+                  {downloadProgress && (
+                    <div className="space-y-4 p-4 rounded-lg bg-slate-700/50">
+                      <div className="flex justify-between text-sm text-gray-300">
+                        <span>Progress: {downloadProgress.completed_items} / {downloadProgress.total_items}</span>
+                        <Badge 
+                          variant={downloadProgress.status === 'completed' ? 'default' : 'secondary'}
+                          className={downloadProgress.status === 'completed' ? 'bg-green-600' : ''}
+                        >
+                          {downloadProgress.status}
+                        </Badge>
+                      </div>
+                      
+                      <Progress 
+                        value={downloadProgress.total_items > 0 
+                          ? (downloadProgress.completed_items / downloadProgress.total_items) * 100 
+                          : 0
+                        } 
+                        className="h-2"
+                      />
+                      
+                      {downloadProgress.current_item && (
+                        <p className="text-sm text-gray-400 truncate">
+                          Current: {downloadProgress.current_item}
+                        </p>
+                      )}
+
+                      {downloadProgress.status === 'completed' && (
+                        <div className="space-y-3">
+                          <Alert className="bg-green-900/50 border-green-800">
+                            <CheckCircle className="h-4 w-4 text-green-500" />
+                            <AlertTitle className="text-green-400">Download Complete!</AlertTitle>
+                            <AlertDescription className="text-green-300">
+                              Successfully downloaded {downloadProgress.downloaded_files?.length || 0} files.
+                            </AlertDescription>
+                          </Alert>
+                          
+                          <Button 
+                            onClick={downloadZip}
+                            className="w-full bg-blue-600 hover:bg-blue-700"
+                          >
+                            <Download className="mr-2 h-4 w-4" />
+                            Download as ZIP
+                          </Button>
+                        </div>
+                      )}
+
+                      {downloadProgress.errors?.length > 0 && (
+                        <div className="space-y-2">
+                          <p className="text-sm font-medium text-red-400">Errors:</p>
+                          <ScrollArea className="h-24 rounded border border-red-800 p-2">
+                            {downloadProgress.errors.map((err, idx) => (
+                              <p key={idx} className="text-xs text-red-300">{err}</p>
+                            ))}
+                          </ScrollArea>
+                        </div>
+                      )}
+
+                      {downloadProgress.downloaded_files?.length > 0 && (
+                        <div className="space-y-2">
+                          <p className="text-sm font-medium text-gray-300">Downloaded Files:</p>
+                          <ScrollArea className="h-32 rounded border border-slate-600 p-2">
+                            {downloadProgress.downloaded_files.map((file, idx) => (
+                              <div key={idx} className="flex items-center gap-2 text-xs text-gray-400 py-1">
+                                {getItemIcon(file.type)}
+                                <span className="truncate">{file.module} / {file.file}</span>
+                              </div>
+                            ))}
+                          </ScrollArea>
+                        </div>
+                      )}
                     </div>
                   )}
-                </div>
-              )}
-            </CardContent>
-          </Card>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         )}
 
         <footer className="mt-8 text-center text-gray-500 text-sm">
-          <p>Course Content Downloader - Download your course materials locally</p>
+          <p>Course Content Downloader - Mirrors QpiAI Explorer structure</p>
         </footer>
       </div>
     </div>
