@@ -242,72 +242,105 @@ def detect_video_urls_from_page(driver, base_url: str) -> list:
     return video_urls
 
 def scrape_qpiai_modules(driver, course_url: str) -> list:
-    """Scrape modules from QpiAI Explorer platform with video detection like browser extensions"""
+    """Scrape modules from QpiAI Explorer platform with video detection like browser extensions
+    
+    QpiAI Explorer structure:
+    - Left sidebar: Course Overview, Modules, Quizzes & Assignments, Certificate
+    - Main content: Table with S.No, Title, Completion Status
+    - Dropdown filters for different sections (e.g., Prerequisites, Introduction to Linear)
+    """
     modules = []
+    sections = []  # Track different sections/categories
     
     try:
         # Navigate to modules page
         driver.get(course_url)
         time.sleep(3)
         
-        # Wait for the modules table to load
+        # Wait for the page to load
         WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, "table, [class*='module'], [class*='lesson']"))
+            EC.presence_of_element_located((By.CSS_SELECTOR, "table, [class*='module'], [class*='content']"))
         )
+        
+        # First, try to find and click through all section dropdowns to get all modules
+        # QpiAI has dropdown filters like "Prerequisites for Quantum", "Introduction to Linear"
+        try:
+            # Find dropdown/select elements or buttons that might filter content
+            dropdowns = driver.find_elements(By.CSS_SELECTOR, "select, [role='combobox'], button[class*='select'], [class*='dropdown']")
+            
+            for dropdown in dropdowns:
+                try:
+                    dropdown_text = dropdown.text.strip()
+                    if dropdown_text and len(dropdown_text) > 2:
+                        sections.append(dropdown_text)
+                except:
+                    pass
+        except Exception as e:
+            print(f"Error finding dropdowns: {e}")
+        
+        print(f"Found sections: {sections}")
         
         # Get page source and parse
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         
-        # Find all module/lesson rows in the table
-        rows = soup.select("tr, [class*='lesson-row'], [class*='module-item']")
-        
+        # Find all table rows - QpiAI uses a table with S.No, Title, Completion Status
+        table = soup.find('table')
         module_id = 0
-        for row in rows:
-            # Skip header rows
-            if row.find('th'):
-                continue
-            
-            # Get the title from the row
-            title_elem = row.select_one("td:nth-child(2), [class*='title'], a")
-            if title_elem:
-                title = title_elem.get_text(strip=True)
-                if title and len(title) > 2:
-                    module_id += 1
-                    
-                    # Try to find a link to the lesson
-                    link = row.find('a')
-                    lesson_url = ""
-                    if link and link.get('href'):
-                        href = link.get('href')
-                        lesson_url = href if href.startswith('http') else urljoin(course_url, href)
-                    
-                    modules.append({
-                        "id": str(module_id),
-                        "name": title,
-                        "lesson_url": lesson_url,
-                        "items": []
-                    })
         
-        # If no modules found from table, try alternative selectors
+        if table:
+            rows = table.find_all('tr')
+            for row in rows:
+                # Skip header rows
+                if row.find('th'):
+                    continue
+                
+                cells = row.find_all('td')
+                if len(cells) >= 2:
+                    # S.No is first cell, Title is second cell
+                    title_cell = cells[1] if len(cells) > 1 else cells[0]
+                    title = title_cell.get_text(strip=True)
+                    
+                    if title and len(title) > 2:
+                        module_id += 1
+                        
+                        # Try to find a link to the lesson
+                        link = row.find('a')
+                        lesson_url = ""
+                        if link and link.get('href'):
+                            href = link.get('href')
+                            lesson_url = href if href.startswith('http') else urljoin(course_url, href)
+                        
+                        # Get completion status if available
+                        status = ""
+                        if len(cells) >= 3:
+                            status = cells[2].get_text(strip=True)
+                        
+                        modules.append({
+                            "id": str(module_id),
+                            "name": title,
+                            "lesson_url": lesson_url,
+                            "status": status,
+                            "items": []
+                        })
+        
+        # If no modules found from table, try using Selenium to find clickable rows
         if not modules:
-            # Try clicking on table rows directly using Selenium
             try:
-                table_rows = driver.find_elements(By.CSS_SELECTOR, "table tbody tr, [class*='lesson'], [class*='module']")
-                for idx, row in enumerate(table_rows):
+                # Try finding rows directly with Selenium
+                table_rows = driver.find_elements(By.CSS_SELECTOR, "table tbody tr, tr[class*='row']")
+                for row in table_rows:
                     try:
-                        # Get text from the row
-                        row_text = row.text.strip()
-                        if row_text and len(row_text) > 2:
-                            # Try to find a clickable link
-                            links = row.find_elements(By.TAG_NAME, "a")
-                            lesson_url = ""
-                            title = row_text.split('\n')[0][:100]  # First line as title
+                        cells = row.find_elements(By.TAG_NAME, "td")
+                        if len(cells) >= 2:
+                            title = cells[1].text.strip() if len(cells) > 1 else cells[0].text.strip()
                             
-                            if links:
-                                lesson_url = links[0].get_attribute('href') or ""
-                            
-                            if title:
+                            if title and len(title) > 2 and not title.lower().startswith('s.no') and title.lower() != 'title':
                                 module_id += 1
+                                
+                                # Try to find a link
+                                links = row.find_elements(By.TAG_NAME, "a")
+                                lesson_url = links[0].get_attribute('href') if links else ""
+                                
                                 modules.append({
                                     "id": str(module_id),
                                     "name": title,
@@ -318,6 +351,58 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
                         continue
             except Exception as e:
                 print(f"Error finding modules via Selenium: {e}")
+        
+        # Try to expand all sections by clicking on dropdown options
+        # This helps get all 16 modules if they're split across sections
+        try:
+            # Look for select elements or dropdown triggers
+            selects = driver.find_elements(By.CSS_SELECTOR, "select")
+            for select in selects:
+                options = select.find_elements(By.TAG_NAME, "option")
+                for option in options:
+                    try:
+                        option_text = option.text.strip()
+                        if option_text and option_text not in ['Select', 'All', '']:
+                            # Click the option to load that section
+                            option.click()
+                            time.sleep(2)
+                            
+                            # Parse the new table content
+                            new_soup = BeautifulSoup(driver.page_source, 'html.parser')
+                            new_table = new_soup.find('table')
+                            
+                            if new_table:
+                                new_rows = new_table.find_all('tr')
+                                for row in new_rows:
+                                    if row.find('th'):
+                                        continue
+                                    
+                                    cells = row.find_all('td')
+                                    if len(cells) >= 2:
+                                        title = cells[1].get_text(strip=True) if len(cells) > 1 else cells[0].get_text(strip=True)
+                                        
+                                        # Check if this module is already in our list
+                                        if title and len(title) > 2:
+                                            existing = [m for m in modules if m['name'] == title]
+                                            if not existing:
+                                                module_id += 1
+                                                link = row.find('a')
+                                                lesson_url = ""
+                                                if link and link.get('href'):
+                                                    href = link.get('href')
+                                                    lesson_url = href if href.startswith('http') else urljoin(course_url, href)
+                                                
+                                                modules.append({
+                                                    "id": str(module_id),
+                                                    "name": title,
+                                                    "lesson_url": lesson_url,
+                                                    "section": option_text,
+                                                    "items": []
+                                                })
+                    except Exception as e:
+                        print(f"Error clicking option: {e}")
+        except Exception as e:
+            print(f"Error expanding sections: {e}")
         
         print(f"Found {len(modules)} modules, now scanning each for videos...")
         
