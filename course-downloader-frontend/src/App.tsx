@@ -382,50 +382,50 @@ function App() {
   const isLoggedIn = sessionId && sections.length > 0
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2">Course Content Downloader</h1>
-          <p className="text-gray-300">Download videos and PDFs - Mirrors QpiAI Explorer structure</p>
+          <h1 className="text-4xl font-bold text-indigo-900 mb-2">Course Content Downloader</h1>
+          <p className="text-indigo-600">Download videos and PDFs - Mirrors QpiAI Explorer structure</p>
         </div>
 
         {!isLoggedIn ? (
           // Login Form
-          <Card className="max-w-md mx-auto bg-slate-800/50 border-slate-700">
+          <Card className="max-w-md mx-auto bg-white shadow-xl border-indigo-200">
             <CardHeader>
-              <CardTitle className="text-white flex items-center gap-2">
+              <CardTitle className="text-indigo-900 flex items-center gap-2">
                 <LogIn className="h-5 w-5" />
                 Login to Course
               </CardTitle>
-              <CardDescription className="text-gray-400">
+              <CardDescription className="text-indigo-600">
                 Enter your course URL and credentials to access the content
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="courseUrl" className="text-gray-200">Course URL</Label>
+                <Label htmlFor="courseUrl" className="text-indigo-800 font-medium">Course URL</Label>
                 <Input
                   id="courseUrl"
                   placeholder="https://explorer-dev.qpiai.tech/learn/..."
                   value={courseUrl}
                   onChange={(e) => setCourseUrl(e.target.value)}
-                  className="bg-slate-700 border-slate-600 text-white placeholder:text-gray-400"
+                  className="bg-white border-indigo-300 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500"
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="username" className="text-gray-200">Username / Email</Label>
+                <Label htmlFor="username" className="text-indigo-800 font-medium">Username / Email</Label>
                 <Input
                   id="username"
                   placeholder="your@email.com"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="bg-slate-700 border-slate-600 text-white placeholder:text-gray-400"
+                  className="bg-white border-indigo-300 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500"
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-gray-200">Password</Label>
+                <Label htmlFor="password" className="text-indigo-800 font-medium">Password</Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -433,12 +433,12 @@ function App() {
                     placeholder="Your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="bg-slate-700 border-slate-600 text-white placeholder:text-gray-400 pr-10"
+                    className="bg-white border-indigo-300 text-gray-900 placeholder:text-gray-400 pr-10 focus:border-indigo-500"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-indigo-400 hover:text-indigo-600"
                   >
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
@@ -446,15 +446,15 @@ function App() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="downloadPath" className="text-gray-200">Download Location (optional)</Label>
+                <Label htmlFor="downloadPath" className="text-indigo-800 font-medium">Download Location (optional)</Label>
                 <Input
                   id="downloadPath"
                   placeholder="D:\Downloads\QpiAI_Course"
                   value={downloadPath}
                   onChange={(e) => setDownloadPath(e.target.value)}
-                  className="bg-slate-700 border-slate-600 text-white placeholder:text-gray-400"
+                  className="bg-white border-indigo-300 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500"
                 />
-                <p className="text-xs text-gray-500">Leave empty to use default location</p>
+                <p className="text-xs text-indigo-500">Leave empty to use default location</p>
               </div>
 
               <Button 
