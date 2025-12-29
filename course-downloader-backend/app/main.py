@@ -744,62 +744,121 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
         
         print(f"Found {len(modules)} modules, now scanning each for videos...")
         
+        # Store the modules page URL to return to after scanning each module
+        modules_page_url = driver.current_url
+        print(f"Modules page URL: {modules_page_url}")
+        
         # Now navigate to each module to detect videos
-        for module in modules:
-            if module.get("lesson_url"):
-                try:
-                    print(f"Scanning module: {module['name']}")
+        for idx, module in enumerate(modules):
+            try:
+                print(f"\nScanning module {idx+1}/{len(modules)}: {module['name']}")
+                
+                navigated = False
+                
+                # Method 1: Use lesson_url if available
+                if module.get("lesson_url"):
+                    print(f"  Navigating via URL: {module['lesson_url']}")
                     driver.get(module["lesson_url"])
-                    time.sleep(3)  # Wait for video player to load
+                    navigated = True
+                    time.sleep(3)
+                else:
+                    # Method 2: Click on the row element directly
+                    # First, go back to modules page to find the row
+                    print(f"  No URL, going back to modules page to click row...")
+                    driver.get(modules_page_url)
+                    time.sleep(2)
                     
-                    # Use the video detection function (like browser extensions)
-                    detected_videos = detect_video_urls_from_page(driver, course_url)
-                    
-                    for idx, video in enumerate(detected_videos):
-                        video_url = video.get('url', '')
-                        if video_url:
-                            # Determine video name
-                            video_name = f"{module['name']} - Video"
-                            if len(detected_videos) > 1:
-                                video_name = f"{module['name']} - Video {idx + 1}"
-                            
-                            module["items"].append({
-                                "type": "video",
-                                "name": video_name,
-                                "url": video_url
-                            })
-                    
-                    # Also look for PDFs and other resources
-                    video_soup = BeautifulSoup(driver.page_source, 'html.parser')
-                    
-                    # Find PDF links
-                    pdf_links = video_soup.select("a[href*='.pdf'], a[href*='pdf']")
-                    for pdf in pdf_links:
-                        pdf_url = pdf.get('href')
-                        if pdf_url:
-                            full_url = pdf_url if pdf_url.startswith('http') else urljoin(course_url, pdf_url)
-                            module["items"].append({
-                                "type": "pdf",
-                                "name": pdf.get_text(strip=True) or f"{module['name']} - PDF",
-                                "url": full_url
-                            })
-                    
-                    # Check for downloadable resources
-                    download_links = video_soup.select("a[download], a[href*='download']")
-                    for link in download_links:
-                        link_url = link.get('href')
-                        if link_url:
-                            full_url = link_url if link_url.startswith('http') else urljoin(course_url, link_url)
-                            module["items"].append({
-                                "type": "file",
-                                "name": link.get_text(strip=True) or "Resource",
-                                "url": full_url
-                            })
-                    
-                    print(f"  Found {len(module['items'])} items in {module['name']}")
-                            
-                except Exception as e:
-                    print(f"Error scraping module {module['name']}: {e}")
+                    # Find and click the row with this module's title
+                    try:
+                        # Try to find the row by its title text
+                        row_xpath = f"//tr[contains(., '{module['name'][:30]}')]"
+                        row = driver.find_element(By.XPATH, row_xpath)
+                        
+                        # Try clicking on a link inside the row first
+                        try:
+                            link = row.find_element(By.TAG_NAME, "a")
+                            link.click()
+                            navigated = True
+                            print(f"  Clicked link in row")
+                        except:
+                            # Click on the row itself
+                            row.click()
+                            navigated = True
+                            print(f"  Clicked row directly")
+                        
+                        time.sleep(3)
+                    except Exception as click_e:
+                        print(f"  Could not click row: {click_e}")
+                        
+                        # Method 3: Try finding by partial text match
+                        try:
+                            clickable = driver.find_element(By.XPATH, f"//*[contains(text(), '{module['name'][:20]}')]")
+                            clickable.click()
+                            navigated = True
+                            print(f"  Clicked element with matching text")
+                            time.sleep(3)
+                        except Exception as text_e:
+                            print(f"  Could not find clickable element: {text_e}")
+                
+                if not navigated:
+                    print(f"  Skipping - could not navigate to module")
+                    continue
+                
+                # Check if we're on a different page (module detail page)
+                current_url = driver.current_url
+                print(f"  Current URL: {current_url}")
+                
+                # Use the video detection function (like browser extensions)
+                detected_videos = detect_video_urls_from_page(driver, course_url)
+                print(f"  Detected {len(detected_videos)} videos")
+                
+                for vid_idx, video in enumerate(detected_videos):
+                    video_url = video.get('url', '')
+                    if video_url:
+                        # Determine video name
+                        video_name = f"{module['name']} - Video"
+                        if len(detected_videos) > 1:
+                            video_name = f"{module['name']} - Video {vid_idx + 1}"
+                        
+                        module["items"].append({
+                            "type": "video",
+                            "name": video_name,
+                            "url": video_url
+                        })
+                
+                # Also look for PDFs and other resources
+                video_soup = BeautifulSoup(driver.page_source, 'html.parser')
+                
+                # Find PDF links
+                pdf_links = video_soup.select("a[href*='.pdf'], a[href*='pdf']")
+                for pdf in pdf_links:
+                    pdf_url = pdf.get('href')
+                    if pdf_url:
+                        full_url = pdf_url if pdf_url.startswith('http') else urljoin(course_url, pdf_url)
+                        module["items"].append({
+                            "type": "pdf",
+                            "name": pdf.get_text(strip=True) or f"{module['name']} - PDF",
+                            "url": full_url
+                        })
+                
+                # Check for downloadable resources
+                download_links = video_soup.select("a[download], a[href*='download']")
+                for link in download_links:
+                    link_url = link.get('href')
+                    if link_url:
+                        full_url = link_url if link_url.startswith('http') else urljoin(course_url, link_url)
+                        module["items"].append({
+                            "type": "file",
+                            "name": link.get_text(strip=True) or "Resource",
+                            "url": full_url
+                        })
+                
+                print(f"  Found {len(module['items'])} items in {module['name']}")
+                        
+            except Exception as e:
+                print(f"Error scraping module {module['name']}: {e}")
+                import traceback
+                traceback.print_exc()
         
         # Clean up row_element references (can't be serialized to JSON)
         for module in modules:
