@@ -272,14 +272,76 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
         current_url = driver.current_url
         print(f"Current URL after navigation: {current_url}")
         
-        # Wait for the table to load - look for "S.No" header text which indicates table is ready
+        # ALWAYS click on "Modules" in the sidebar first to ensure we're on the correct page
+        # The user confirmed we need to go to modules page first
+        print("Clicking on 'Modules' in sidebar to navigate to lessons list...")
+        try:
+            # Wait for sidebar to load
+            time.sleep(2)
+            
+            # Try multiple selectors to find the Modules link
+            modules_selectors = [
+                "//a[contains(text(), 'Modules')]",
+                "//*[contains(text(), 'Modules') and (self::button or self::a or self::div or self::span)]",
+                "//nav//a[contains(., 'Modules')]",
+                "//*[@class and contains(@class, 'sidebar')]//*[contains(text(), 'Modules')]",
+                "//aside//*[contains(text(), 'Modules')]",
+            ]
+            
+            clicked = False
+            for selector in modules_selectors:
+                try:
+                    modules_link = driver.find_element(By.XPATH, selector)
+                    if modules_link.is_displayed():
+                        modules_link.click()
+                        clicked = True
+                        print(f"Clicked Modules using selector: {selector}")
+                        break
+                except:
+                    continue
+            
+            if not clicked:
+                # Try CSS selectors as fallback
+                css_selectors = [
+                    "a[href*='modules']",
+                    "[class*='sidebar'] a",
+                    "nav a",
+                ]
+                for selector in css_selectors:
+                    try:
+                        links = driver.find_elements(By.CSS_SELECTOR, selector)
+                        for link in links:
+                            if 'modules' in link.text.lower() or 'modules' in (link.get_attribute('href') or '').lower():
+                                link.click()
+                                clicked = True
+                                print(f"Clicked Modules using CSS: {selector}")
+                                break
+                        if clicked:
+                            break
+                    except:
+                        continue
+            
+            if clicked:
+                time.sleep(3)  # Wait for page to load after clicking
+                print(f"Now at: {driver.current_url}")
+            else:
+                print("Could not find Modules link to click")
+                
+        except Exception as e:
+            print(f"Error clicking Modules: {e}")
+        
+        # Wait for the CORRECT table to load - need BOTH "S.No" AND "Completion Status" headers
+        # This ensures we're on the modules list, not a course overview page
         try:
             WebDriverWait(driver, 15).until(
-                EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'S.No') or contains(text(), 'Title')]"))
+                EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'S.No')]"))
             )
-            print("Found table header (S.No/Title)")
+            WebDriverWait(driver, 5).until(
+                EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Completion Status')]"))
+            )
+            print("Found correct table headers (S.No AND Completion Status)")
         except Exception as e:
-            print(f"Timeout waiting for table header: {e}")
+            print(f"Timeout waiting for correct table headers: {e}")
         
         # Additional wait for table rows to render
         time.sleep(2)
@@ -348,6 +410,12 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
                                 # Skip header-like text
                                 if title.lower() in ['title', 's.no', 'completion status']:
                                     continue
+                                
+                                # Skip course summary rows (contain "Lessons:" or "Assessments:")
+                                # These are course-level rows, not individual lesson rows
+                                if 'Lessons:' in title or 'Assessments:' in title or 'lessons:' in title.lower():
+                                    print(f"  Skipping course summary row: {title[:50]}...")
+                                    continue
                                     
                                 seen_titles.add(title)
                                 module_id += 1
@@ -403,6 +471,11 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
                             
                             if title and len(title) > 3 and title not in seen_titles:
                                 if title.lower() in ['title', 's.no', 'completion status']:
+                                    continue
+                                
+                                # Skip course summary rows (contain "Lessons:" or "Assessments:")
+                                if 'Lessons:' in title or 'Assessments:' in title or 'lessons:' in title.lower():
+                                    print(f"  Skipping course summary row: {title[:50]}...")
                                     continue
                                     
                                 seen_titles.add(title)
