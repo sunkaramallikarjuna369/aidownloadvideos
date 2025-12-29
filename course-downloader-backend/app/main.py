@@ -281,11 +281,43 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
         page_source = driver.page_source
         print(f"Page source length: {len(page_source)}")
         
-        # Debug: Save page source to file for inspection
-        debug_file = f"/tmp/qpiai_debug_{int(time.time())}.html"
-        with open(debug_file, 'w', encoding='utf-8') as f:
-            f.write(page_source)
-        print(f"Saved debug HTML to: {debug_file}")
+        # Debug: Save page source to file for inspection (use temp directory that works on all OS)
+        import tempfile
+        try:
+            debug_file = os.path.join(tempfile.gettempdir(), f"qpiai_debug_{int(time.time())}.html")
+            with open(debug_file, 'w', encoding='utf-8') as f:
+                f.write(page_source)
+            print(f"Saved debug HTML to: {debug_file}")
+        except Exception as e:
+            print(f"Could not save debug file: {e}")
+        
+        # Check if we're actually logged in by looking for login form elements
+        login_indicators = driver.find_elements(By.CSS_SELECTOR, "input[type='password'], [class*='signin'], [class*='login'] button")
+        if login_indicators:
+            print("WARNING: Login form elements detected - may not be logged in!")
+        
+        # Log what elements we can find on the page for debugging
+        print("\n=== PAGE ELEMENT COUNTS ===")
+        element_checks = [
+            ("tables", "table"),
+            ("table rows", "tr"),
+            ("divs with role=row", "[role='row']"),
+            ("divs with role=grid", "[role='grid']"),
+            ("links", "a"),
+            ("buttons", "button"),
+            ("any element with 'module' in class", "[class*='module']"),
+            ("any element with 'lesson' in class", "[class*='lesson']"),
+            ("any element with 'content' in class", "[class*='content']"),
+            ("any element with 'list' in class", "[class*='list']"),
+            ("any element with 'item' in class", "[class*='item']"),
+        ]
+        for name, selector in element_checks:
+            try:
+                count = len(driver.find_elements(By.CSS_SELECTOR, selector))
+                print(f"  {name}: {count}")
+            except:
+                print(f"  {name}: error")
+        print("===========================\n")
         
         # First, try to find and click through all section dropdowns to get all modules
         # QpiAI has dropdown filters like "Prerequisites for Quantum", "Introduction to Linear"
@@ -439,6 +471,55 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
                         continue
             except Exception as e:
                 print(f"Error finding lesson links: {e}")
+        
+        # Last resort: search for text patterns in page source that look like module names
+        if not modules:
+            print("Trying text pattern search in page source...")
+            import re
+            
+            # Look for common patterns like "Linear Algebra", "Lesson X", "Module X", etc.
+            patterns = [
+                r'Linear Algebra[^"<>]*Lesson\s*\d+',
+                r'Introduction to[^"<>]{3,50}',
+                r'Prerequisites[^"<>]{3,50}',
+                r'Lesson\s*\d+[^"<>]{0,50}',
+                r'Module\s*\d+[^"<>]{0,50}',
+            ]
+            
+            found_titles = set()
+            for pattern in patterns:
+                matches = re.findall(pattern, page_source, re.IGNORECASE)
+                for match in matches:
+                    clean_title = match.strip()
+                    if len(clean_title) > 5 and len(clean_title) < 100:
+                        found_titles.add(clean_title)
+            
+            print(f"Found {len(found_titles)} potential module titles via regex")
+            for title in sorted(found_titles):
+                print(f"  - {title}")
+                module_id += 1
+                modules.append({
+                    "id": str(module_id),
+                    "name": title,
+                    "lesson_url": "",
+                    "items": []
+                })
+        
+        # Also try to find all links on the page and log them for debugging
+        if not modules:
+            print("\nAll links on page:")
+            try:
+                all_links = driver.find_elements(By.TAG_NAME, "a")
+                for link in all_links[:50]:  # Limit to first 50
+                    try:
+                        text = link.text.strip()
+                        href = link.get_attribute('href') or ""
+                        if text and len(text) > 2:
+                            print(f"  Link: '{text}' -> {href[:80]}...")
+                    except:
+                        pass
+            except Exception as e:
+                print(f"Error listing links: {e}")
         
         # Try to expand all sections by clicking on dropdown options
         # This helps get all 16 modules if they're split across sections
