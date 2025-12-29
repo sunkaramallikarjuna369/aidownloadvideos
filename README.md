@@ -32,7 +32,7 @@ aidownloadvideos/
 - Python 3.12+
 - Node.js 18+
 - Google Chrome (for Selenium web scraping)
-- Poetry (Python package manager)
+- pip (Python package manager)
 
 ## Setup Instructions
 
@@ -43,22 +43,41 @@ git clone https://github.com/sunkaramallikarjuna369/aidownloadvideos.git
 cd aidownloadvideos
 ```
 
-### 2. Backend Setup
+### 2. Backend Setup (Using Virtual Environment)
 
 ```bash
 # Navigate to backend directory
 cd course-downloader-backend
 
-# Install dependencies using Poetry
-poetry install
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Linux/Mac:
+source venv/bin/activate
+# On Windows:
+# venv\Scripts\activate
+
+# Install dependencies from requirements.txt
+pip install -r requirements.txt
 
 # Start the backend server
-poetry run fastapi dev app/main.py --host 0.0.0.0 --port 8000
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 The backend will be available at `http://localhost:8000`
 
 API Documentation: `http://localhost:8000/docs`
+
+### Alternative: Backend Setup (Using Poetry)
+
+If you prefer using Poetry:
+
+```bash
+cd course-downloader-backend
+poetry install
+poetry run fastapi dev app/main.py --host 0.0.0.0 --port 8000
+```
 
 ### 3. Frontend Setup
 
@@ -84,6 +103,24 @@ Frontend environment variables (`.env` file in frontend directory):
 ```env
 VITE_API_URL=http://localhost:8000
 ```
+
+## Quick Start (All Commands)
+
+```bash
+# Terminal 1 - Backend
+cd aidownloadvideos/course-downloader-backend
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+# Terminal 2 - Frontend
+cd aidownloadvideos/course-downloader-frontend
+npm install
+npm run dev
+```
+
+Then open http://localhost:5173 in your browser.
 
 ## Usage
 
