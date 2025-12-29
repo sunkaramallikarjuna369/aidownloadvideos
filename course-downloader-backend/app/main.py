@@ -12,13 +12,15 @@ import time
 import zipfile
 import io
 import shutil
+import re
+from urllib.parse import urljoin, urlparse
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 import uuid
@@ -74,6 +76,157 @@ def get_chrome_driver():
 async def healthz():
     return {"status": "ok"}
 
+def is_qpiai_explorer(url: str) -> bool:
+    """Check if the URL is a QpiAI Explorer platform"""
+    return "qpiai.tech" in url or "explorer" in url.lower()
+
+def login_qpiai_explorer(driver, base_url: str, username: str, password: str) -> bool:
+    """Login to QpiAI Explorer platform"""
+    try:
+        # Navigate to login page
+        login_url = urljoin(base_url, "/auth/signin")
+        driver.get(login_url)
+        time.sleep(3)
+        
+        # Fill email
+        email_field = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "input[name='email'], input[type='email']"))
+        )
+        email_field.clear()
+        email_field.send_keys(username)
+        
+        # Fill password
+        password_field = driver.find_element(By.CSS_SELECTOR, "input[name='password'], input[type='password']")
+        password_field.clear()
+        password_field.send_keys(password)
+        
+        # Click sign in button
+        submit_btn = driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
+        submit_btn.click()
+        
+        time.sleep(5)
+        
+        # Check if login was successful (should redirect away from signin page)
+        return "/auth/signin" not in driver.current_url
+        
+    except Exception as e:
+        print(f"QpiAI login error: {e}")
+        return False
+
+def scrape_qpiai_modules(driver, course_url: str) -> list:
+    """Scrape modules from QpiAI Explorer platform"""
+    modules = []
+    
+    try:
+        # Navigate to modules page
+        driver.get(course_url)
+        time.sleep(3)
+        
+        # Wait for the modules table to load
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "table, [class*='module'], [class*='lesson']"))
+        )
+        
+        # Get page source and parse
+        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        
+        # Find all module/lesson rows in the table
+        rows = soup.select("tr, [class*='lesson-row'], [class*='module-item']")
+        
+        module_id = 0
+        for row in rows:
+            # Skip header rows
+            if row.find('th'):
+                continue
+            
+            # Get the title from the row
+            title_elem = row.select_one("td:nth-child(2), [class*='title'], a")
+            if title_elem:
+                title = title_elem.get_text(strip=True)
+                if title and len(title) > 2:
+                    module_id += 1
+                    
+                    # Try to find a link to the lesson
+                    link = row.find('a')
+                    lesson_url = ""
+                    if link and link.get('href'):
+                        href = link.get('href')
+                        lesson_url = href if href.startswith('http') else urljoin(course_url, href)
+                    
+                    modules.append({
+                        "id": str(module_id),
+                        "name": title,
+                        "lesson_url": lesson_url,
+                        "items": []
+                    })
+        
+        # If no modules found from table, try clicking on each row to get video URLs
+        if not modules:
+            # Try alternative selectors for QpiAI
+            lesson_elements = soup.select("[class*='curriculum'], [class*='lesson'], [class*='chapter']")
+            for elem in lesson_elements:
+                module_id += 1
+                title = elem.get_text(strip=True)[:100]
+                if title:
+                    modules.append({
+                        "id": str(module_id),
+                        "name": title,
+                        "lesson_url": "",
+                        "items": []
+                    })
+        
+        # Now navigate to each module to extract video URLs
+        for module in modules:
+            if module.get("lesson_url"):
+                try:
+                    driver.get(module["lesson_url"])
+                    time.sleep(2)
+                    
+                    # Look for video elements
+                    video_soup = BeautifulSoup(driver.page_source, 'html.parser')
+                    
+                    # Find video sources
+                    video_sources = video_soup.select("video source, video[src], [data-video-url], iframe[src*='video'], iframe[src*='vimeo'], iframe[src*='youtube']")
+                    for video in video_sources:
+                        video_url = video.get('src') or video.get('data-video-url')
+                        if video_url:
+                            module["items"].append({
+                                "type": "video",
+                                "name": f"{module['name']} - Video",
+                                "url": video_url if video_url.startswith('http') else urljoin(course_url, video_url)
+                            })
+                    
+                    # Find PDF links
+                    pdf_links = video_soup.select("a[href*='.pdf'], a[href*='pdf']")
+                    for pdf in pdf_links:
+                        pdf_url = pdf.get('href')
+                        if pdf_url:
+                            module["items"].append({
+                                "type": "pdf",
+                                "name": pdf.get_text(strip=True) or f"{module['name']} - PDF",
+                                "url": pdf_url if pdf_url.startswith('http') else urljoin(course_url, pdf_url)
+                            })
+                    
+                    # Check for downloadable resources
+                    download_links = video_soup.select("a[download], a[href*='download']")
+                    for link in download_links:
+                        link_url = link.get('href')
+                        if link_url:
+                            module["items"].append({
+                                "type": "file",
+                                "name": link.get_text(strip=True) or "Resource",
+                                "url": link_url if link_url.startswith('http') else urljoin(course_url, link_url)
+                            })
+                            
+                except Exception as e:
+                    print(f"Error scraping module {module['name']}: {e}")
+        
+        return modules
+        
+    except Exception as e:
+        print(f"Error scraping QpiAI modules: {e}")
+        return modules
+
 @app.post("/api/login")
 async def login(request: LoginRequest):
     """Login to the course platform and return session info with modules"""
@@ -82,7 +235,48 @@ async def login(request: LoginRequest):
     try:
         driver = get_chrome_driver()
         
-        # Navigate to the course URL
+        # Check if this is QpiAI Explorer platform
+        if is_qpiai_explorer(request.course_url):
+            # Use QpiAI-specific login and scraping
+            base_url = f"{urlparse(request.course_url).scheme}://{urlparse(request.course_url).netloc}"
+            
+            login_success = login_qpiai_explorer(driver, base_url, request.username, request.password)
+            
+            if login_success:
+                # Scrape modules from QpiAI
+                modules = scrape_qpiai_modules(driver, request.course_url)
+                
+                cookies = driver.get_cookies()
+                current_url = driver.current_url
+                page_source = driver.page_source
+                
+                # Store session info
+                sessions[session_id] = {
+                    "cookies": cookies,
+                    "course_url": request.course_url,
+                    "current_url": current_url,
+                    "page_source": page_source,
+                    "modules": modules,
+                    "platform": "qpiai"
+                }
+                
+                driver.quit()
+                
+                return {
+                    "success": True,
+                    "session_id": session_id,
+                    "modules": modules,
+                    "message": f"Found {len(modules)} modules from QpiAI Explorer"
+                }
+            else:
+                driver.quit()
+                return {
+                    "success": False,
+                    "error": "Login failed",
+                    "message": "Failed to login to QpiAI Explorer. Please check your credentials."
+                }
+        
+        # Generic login for other platforms
         driver.get(request.course_url)
         time.sleep(3)
         
