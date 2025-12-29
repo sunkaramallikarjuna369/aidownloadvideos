@@ -479,33 +479,45 @@ function App() {
                 <p className="text-sm text-gray-400 text-center">{extractionProgress}</p>
               )}
 
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <span className="w-full border-t border-slate-600" />
-                </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-slate-800 px-2 text-gray-500">Or use legacy mode</span>
-                </div>
-              </div>
+              {/* Only show legacy button for non-QpiAI sites */}
+              {!courseUrl.includes('qpiai.tech') && (
+                <>
+                  <div className="relative">
+                    <div className="absolute inset-0 flex items-center">
+                      <span className="w-full border-t border-slate-600" />
+                    </div>
+                    <div className="relative flex justify-center text-xs uppercase">
+                      <span className="bg-slate-800 px-2 text-gray-500">Or use legacy mode (other platforms)</span>
+                    </div>
+                  </div>
 
-              <Button 
-                onClick={handleLogin} 
-                disabled={isLoading || isExtracting}
-                variant="outline"
-                className="w-full border-slate-600 text-gray-200 hover:bg-slate-700"
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Logging in...
-                  </>
-                ) : (
-                  <>
-                    <LogIn className="mr-2 h-4 w-4" />
-                    Login & Scan (Legacy)
-                  </>
-                )}
-              </Button>
+                  <Button 
+                    onClick={handleLogin} 
+                    disabled={isLoading || isExtracting}
+                    variant="outline"
+                    className="w-full border-slate-600 text-gray-200 hover:bg-slate-700"
+                  >
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Logging in...
+                      </>
+                    ) : (
+                      <>
+                        <LogIn className="mr-2 h-4 w-4" />
+                        Login & Scan (Legacy)
+                      </>
+                    )}
+                  </Button>
+                </>
+              )}
+              
+              {/* Show note for QpiAI users */}
+              {courseUrl.includes('qpiai.tech') && (
+                <p className="text-xs text-center text-indigo-400">
+                  QpiAI detected - Use "Extract All Video URLs" button above for best results
+                </p>
+              )}
 
               {error && (
                 <Alert variant="destructive" className="bg-red-900/50 border-red-800">
