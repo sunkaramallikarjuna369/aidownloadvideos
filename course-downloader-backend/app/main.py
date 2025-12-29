@@ -60,7 +60,7 @@ class ModuleInfo(BaseModel):
     name: str
     items: list[dict]
 
-def get_chrome_driver():
+def get_chrome_driver(enable_network_logging=False):
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
@@ -69,9 +69,16 @@ def get_chrome_driver():
     chrome_options.add_argument("--window-size=1920,1080")
     chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
     
+    # Enable network logging for video URL detection (like browser extensions)
+    if enable_network_logging:
+        chrome_options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
+    
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
+
+# Store user agent for download requests
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
 @app.get("/healthz")
 async def healthz():
@@ -868,19 +875,32 @@ async def download_modules_task(download_id: str, session: dict, module_ids: lis
     try:
         modules = session.get("modules", [])
         cookies = session.get("cookies", [])
+        course_url = session.get("course_url", "")
         
-        # Filter selected modules
-        selected_modules = [m for m in modules if m["id"] in module_ids] if module_ids else modules
+        # Filter selected modules - if module_ids is empty, download ALL modules
+        if module_ids and len(module_ids) > 0:
+            selected_modules = [m for m in modules if m["id"] in module_ids]
+        else:
+            selected_modules = modules  # Download everything
         
         # Count total items
         total_items = sum(len(m.get("items", [])) for m in selected_modules)
         download_progress[download_id]["total_items"] = total_items
         download_progress[download_id]["status"] = "downloading"
         
-        # Create requests session with cookies
+        # Create requests session with cookies and proper headers (like browser extensions)
         req_session = requests.Session()
         for cookie in cookies:
             req_session.cookies.set(cookie['name'], cookie['value'])
+        
+        # Set headers to mimic browser (important for CDN/video downloads)
+        req_session.headers.update({
+            'User-Agent': USER_AGENT,
+            'Accept': '*/*',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
+        })
         
         completed = 0
         
@@ -888,6 +908,9 @@ async def download_modules_task(download_id: str, session: dict, module_ids: lis
             module_name = sanitize_filename(module["name"])
             module_dir = os.path.join(download_dir, module_name)
             os.makedirs(module_dir, exist_ok=True)
+            
+            # Get the lesson URL for Referer header
+            lesson_url = module.get("lesson_url", course_url)
             
             for item in module.get("items", []):
                 try:
@@ -908,8 +931,11 @@ async def download_modules_task(download_id: str, session: dict, module_ids: lis
                         
                         file_path = os.path.join(module_dir, f"{item_name}{ext}")
                         
-                        # Download file
-                        response = req_session.get(item_url, stream=True, timeout=300)
+                        # Set Referer header (important for video CDNs)
+                        headers = {'Referer': lesson_url or course_url}
+                        
+                        # Download file with proper headers
+                        response = req_session.get(item_url, stream=True, timeout=300, headers=headers)
                         if response.status_code == 200:
                             with open(file_path, 'wb') as f:
                                 for chunk in response.iter_content(chunk_size=8192):

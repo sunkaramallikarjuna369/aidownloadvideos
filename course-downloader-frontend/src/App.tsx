@@ -450,24 +450,47 @@ function App() {
                 </p>
               </div>
 
-              <Button 
-                onClick={startDownload} 
-                disabled={isDownloading || selectedModules.length === 0}
-                className="w-full bg-green-600 hover:bg-green-700"
-                size="lg"
-              >
-                {isDownloading ? (
-                  <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    Downloading...
-                  </>
-                ) : (
-                  <>
-                    <Download className="mr-2 h-5 w-5" />
-                    Download {selectedModules.length} Module{selectedModules.length !== 1 ? 's' : ''}
-                  </>
-                )}
-              </Button>
+              <div className="flex gap-2">
+                <Button 
+                  onClick={() => {
+                    selectAllModules()
+                    setTimeout(startDownload, 100)
+                  }} 
+                  disabled={isDownloading || modules.length === 0}
+                  className="flex-1 bg-purple-600 hover:bg-purple-700"
+                  size="lg"
+                >
+                  {isDownloading ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Downloading...
+                    </>
+                  ) : (
+                    <>
+                      <Download className="mr-2 h-5 w-5" />
+                      Download Everything
+                    </>
+                  )}
+                </Button>
+                <Button 
+                  onClick={startDownload} 
+                  disabled={isDownloading || selectedModules.length === 0}
+                  className="flex-1 bg-green-600 hover:bg-green-700"
+                  size="lg"
+                >
+                  {isDownloading ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Downloading...
+                    </>
+                  ) : (
+                    <>
+                      <Download className="mr-2 h-5 w-5" />
+                      Download Selected ({selectedModules.length})
+                    </>
+                  )}
+                </Button>
+              </div>
 
               {downloadProgress && (
                 <div className="space-y-4 p-4 rounded-lg bg-slate-700/50">
