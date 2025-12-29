@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = ""
+authors = ["Devin AI <158243242+devin-ai-integration[bot]@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["standard"], version = "^0.128.0"}
+psycopg = {extras = ["binary"], version = "^3.3.2"}
+selenium = "^4.39.0"
+beautifulsoup4 = "^4.14.3"
+aiofiles = "^25.1.0"
+python-multipart = "^0.0.21"
+requests = "^2.32.5"
+webdriver-manager = "^4.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
