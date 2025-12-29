@@ -41,8 +41,9 @@ sessions = {}
 download_progress = {}
 download_tasks = {}
 
-# Base download directory
-DOWNLOAD_BASE_DIR = "/home/ubuntu/aidownloadvideos/downloads"
+# Base download directory - use relative path for cross-platform compatibility
+# This will be relative to the backend folder: course-downloader-backend/downloads/
+DOWNLOAD_BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "downloads")
 os.makedirs(DOWNLOAD_BASE_DIR, exist_ok=True)
 
 class LoginRequest(BaseModel):
@@ -1938,6 +1939,81 @@ async def extract_videos_api(request: LoginRequest, background_tasks: Background
     except Exception as e:
         print(f"Error in extract_videos_api: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/load-course-structure")
+async def load_course_structure():
+    """
+    Load the pre-extracted course structure JSON file.
+    This allows the UI to display all lessons without re-extracting.
+    """
+    # Try multiple possible locations for the course structure file
+    possible_paths = [
+        os.path.join(DOWNLOAD_BASE_DIR, "course_structure.json"),
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "downloads", "course_structure.json"),
+        "./downloads/course_structure.json",
+    ]
+    
+    course_data = None
+    used_path = None
+    
+    for path in possible_paths:
+        if os.path.exists(path):
+            try:
+                with open(path, 'r', encoding='utf-8') as f:
+                    course_data = json.load(f)
+                used_path = path
+                break
+            except Exception as e:
+                print(f"Error reading {path}: {e}")
+                continue
+    
+    if not course_data:
+        raise HTTPException(
+            status_code=404, 
+            detail="Course structure file not found. Please run extraction first or place course_structure.json in the downloads folder."
+        )
+    
+    lessons = course_data.get("lessons", [])
+    total_modules = course_data.get("total_modules", 0)
+    total_lessons = course_data.get("total_lessons", len(lessons))
+    
+    # Group lessons by module and chapter for easier display
+    modules_dict = {}
+    for lesson in lessons:
+        module_name = lesson.get("module_name", "Unknown Module")
+        chapter_name = lesson.get("chapter_name", "Unknown Chapter")
+        
+        if module_name not in modules_dict:
+            modules_dict[module_name] = {"chapters": {}}
+        
+        if chapter_name not in modules_dict[module_name]["chapters"]:
+            modules_dict[module_name]["chapters"][chapter_name] = []
+        
+        modules_dict[module_name]["chapters"][chapter_name].append(lesson)
+    
+    # Convert to list format for UI
+    modules_list = []
+    for module_name, module_data in modules_dict.items():
+        chapters_list = []
+        for chapter_name, chapter_lessons in module_data["chapters"].items():
+            chapters_list.append({
+                "name": chapter_name,
+                "lessons": chapter_lessons
+            })
+        modules_list.append({
+            "name": module_name,
+            "chapters": chapters_list,
+            "total_lessons": sum(len(ch["lessons"]) for ch in chapters_list)
+        })
+    
+    return {
+        "success": True,
+        "total_modules": total_modules or len(modules_list),
+        "total_lessons": total_lessons,
+        "modules": modules_list,
+        "source_file": used_path
+    }
 
 
 @app.post("/api/download-videos")

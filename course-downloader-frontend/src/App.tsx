@@ -199,6 +199,48 @@ function App() {
     }
   }
 
+  // Load course structure from pre-saved JSON file
+  const handleLoadCourseStructure = async () => {
+    setIsExtracting(true)
+    setError('')
+    setSuccess('')
+    setExtractionProgress('Loading course structure from saved file...')
+
+    try {
+      const response = await fetch(`${API_URL}/api/load-course-structure`)
+      const data = await response.json()
+
+      if (data.success) {
+        // Convert the loaded structure to ExtractedVideo format
+        const videos: ExtractedVideo[] = []
+        for (const module of data.modules || []) {
+          for (const chapter of module.chapters || []) {
+            for (const lesson of chapter.lessons || []) {
+              videos.push({
+                title: lesson.lesson_name || lesson.title || 'Unknown',
+                url: lesson.lesson_url || lesson.url || '',
+                module: module.name || 'Unknown Module',
+                chapter: chapter.name || 'Unknown Chapter',
+                lesson_id: lesson.lesson_id || ''
+              })
+            }
+          }
+        }
+        
+        setExtractedVideos(videos)
+        setShowVideoList(true)
+        setSuccess(`Loaded ${data.total_lessons} lessons from ${data.total_modules} modules!\nSource: ${data.source_file}`)
+      } else {
+        setError(data.detail || 'Failed to load course structure. Make sure course_structure.json exists in the downloads folder.')
+      }
+    } catch (err) {
+      setError('Failed to load course structure. Make sure the backend is running and course_structure.json exists.')
+    } finally {
+      setIsExtracting(false)
+      setExtractionProgress('')
+    }
+  }
+
   // Download all extracted videos
   const handleDownloadAllVideos = async () => {
     if (!sessionId || extractedVideos.length === 0) {
@@ -457,23 +499,47 @@ function App() {
                 <p className="text-xs text-indigo-500">Leave empty to use default location</p>
               </div>
 
-              <Button 
-                onClick={handleExtractVideos} 
-                disabled={isExtracting || isLoading}
-                className="w-full bg-green-600 hover:bg-green-700"
-              >
-                {isExtracting ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Extracting Videos... (This takes a while)
-                  </>
-                ) : (
-                  <>
-                    <Video className="mr-2 h-4 w-4" />
-                    Extract All Video URLs
-                  </>
-                )}
-              </Button>
+              <div className="grid grid-cols-2 gap-2">
+                <Button 
+                  onClick={handleExtractVideos} 
+                  disabled={isExtracting || isLoading}
+                  className="bg-green-600 hover:bg-green-700"
+                >
+                  {isExtracting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Extracting...
+                    </>
+                  ) : (
+                    <>
+                      <Video className="mr-2 h-4 w-4" />
+                      Extract Video URLs
+                    </>
+                  )}
+                </Button>
+
+                <Button 
+                  onClick={handleLoadCourseStructure} 
+                  disabled={isExtracting || isLoading}
+                  className="bg-blue-600 hover:bg-blue-700"
+                >
+                  {isExtracting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Loading...
+                    </>
+                  ) : (
+                    <>
+                      <Folder className="mr-2 h-4 w-4" />
+                      Load from JSON
+                    </>
+                  )}
+                </Button>
+              </div>
+
+              <p className="text-xs text-center text-indigo-500">
+                "Extract" fetches fresh data from QpiAI. "Load from JSON" uses pre-saved course_structure.json file.
+              </p>
 
               {extractionProgress && (
                 <p className="text-sm text-gray-400 text-center">{extractionProgress}</p>
