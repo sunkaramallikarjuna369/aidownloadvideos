@@ -53,6 +53,7 @@ class LoginRequest(BaseModel):
 class DownloadRequest(BaseModel):
     session_id: str
     module_ids: list[str]
+    download_path: str = ""  # Optional custom download path
 
 class ModuleInfo(BaseModel):
     id: str
@@ -744,8 +745,13 @@ async def start_download(request: DownloadRequest, background_tasks: BackgroundT
     session = sessions[request.session_id]
     download_id = str(uuid.uuid4())
     
-    # Create download directory
-    download_dir = os.path.join(DOWNLOAD_BASE_DIR, download_id)
+    # Use custom download path if provided, otherwise use default
+    if request.download_path and request.download_path.strip():
+        # Use the custom path provided by user
+        download_dir = os.path.join(request.download_path.strip(), f"course_download_{download_id[:8]}")
+    else:
+        download_dir = os.path.join(DOWNLOAD_BASE_DIR, download_id)
+    
     os.makedirs(download_dir, exist_ok=True)
     
     # Initialize progress

@@ -51,6 +51,7 @@ function App() {
   const [downloadId, setDownloadId] = useState('')
   const [downloadProgress, setDownloadProgress] = useState<DownloadProgress | null>(null)
   const [isDownloading, setIsDownloading] = useState(false)
+  const [downloadPath, setDownloadPath] = useState('')  // Custom download location
 
   const handleLogin = async () => {
     if (!courseUrl || !username || !password) {
@@ -159,7 +160,8 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           session_id: sessionId,
-          module_ids: selectedModules
+          module_ids: selectedModules,
+          download_path: downloadPath
         })
       })
 
@@ -431,6 +433,23 @@ function App() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="downloadPath" className="text-gray-300">
+                  Download Location (optional)
+                </Label>
+                <Input
+                  id="downloadPath"
+                  type="text"
+                  placeholder="e.g., D:\Downloads\Courses or leave empty for default"
+                  value={downloadPath}
+                  onChange={(e) => setDownloadPath(e.target.value)}
+                  className="bg-slate-700 border-slate-600 text-white placeholder:text-gray-500"
+                />
+                <p className="text-xs text-gray-500">
+                  Files will be organized in folders by module name. Leave empty to use server default location.
+                </p>
+              </div>
+
               <Button 
                 onClick={startDownload} 
                 disabled={isDownloading || selectedModules.length === 0}
