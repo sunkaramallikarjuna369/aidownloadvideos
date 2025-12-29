@@ -8,7 +8,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Download, LogIn, FileVideo, FileText, Folder, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, BookOpen, GraduationCap, ClipboardList, Award } from 'lucide-react'
+import { Download, LogIn, FileVideo, FileText, Folder, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, BookOpen, GraduationCap, ClipboardList, Award, ChevronDown, ChevronRight, Play } from 'lucide-react'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
@@ -63,10 +63,30 @@ function App() {
   const [activeSection, setActiveSection] = useState('modules')
   const [selectedModules, setSelectedModules] = useState<string[]>([])
   
-  const [downloadId, setDownloadId] = useState('')
-  const [downloadProgress, setDownloadProgress] = useState<DownloadProgress | null>(null)
-  const [isDownloading, setIsDownloading] = useState(false)
-  const [downloadPath, setDownloadPath] = useState('')
+    const [downloadId, setDownloadId] = useState('')
+    const [downloadProgress, setDownloadProgress] = useState<DownloadProgress | null>(null)
+    const [isDownloading, setIsDownloading] = useState(false)
+    const [downloadPath, setDownloadPath] = useState('')
+    const [expandedModules, setExpandedModules] = useState<string[]>([])
+
+    // Toggle module expansion to show/hide files inside
+    const toggleModuleExpansion = (moduleId: string) => {
+      setExpandedModules(prev => 
+        prev.includes(moduleId) 
+          ? prev.filter(id => id !== moduleId)
+          : [...prev, moduleId]
+      )
+    }
+
+    // Expand all modules
+    const expandAllModules = () => {
+      setExpandedModules(modules.map(m => m.id))
+    }
+
+    // Collapse all modules
+    const collapseAllModules = () => {
+      setExpandedModules([])
+    }
 
   // Get modules for the active section
   const currentSectionData = sections.find(s => s.id === activeSection)
@@ -464,16 +484,32 @@ function App() {
                     </div>
                   ) : (
                     <>
-                      <div className="flex gap-2 mb-4">
-                        <Button 
-                          size="sm" 
-                          variant="outline" 
-                          onClick={selectSectionModules}
-                          className="border-slate-600 text-gray-200 hover:bg-slate-700"
-                        >
-                          Select All in Section
-                        </Button>
-                      </div>
+                                            <div className="flex gap-2 mb-4">
+                                              <Button 
+                                                size="sm" 
+                                                variant="outline" 
+                                                onClick={selectSectionModules}
+                                                className="border-slate-600 text-gray-200 hover:bg-slate-700"
+                                              >
+                                                Select All in Section
+                                              </Button>
+                                              <Button 
+                                                size="sm" 
+                                                variant="outline" 
+                                                onClick={expandAllModules}
+                                                className="border-slate-600 text-gray-200 hover:bg-slate-700"
+                                              >
+                                                Expand All
+                                              </Button>
+                                              <Button 
+                                                size="sm" 
+                                                variant="outline" 
+                                                onClick={collapseAllModules}
+                                                className="border-slate-600 text-gray-200 hover:bg-slate-700"
+                                              >
+                                                Collapse All
+                                              </Button>
+                                            </div>
                       
                       {/* Table Header - Mirrors QpiAI */}
                       <div className="grid grid-cols-12 gap-4 px-4 py-2 bg-slate-700/50 rounded-t-lg text-sm font-medium text-gray-300">
@@ -482,50 +518,99 @@ function App() {
                         <div className="col-span-3">Status</div>
                       </div>
                       
-                      <ScrollArea className="h-80 rounded-b-md border border-slate-700 border-t-0">
-                        <div className="divide-y divide-slate-700">
-                          {modules.map((module, index) => (
-                            <div 
-                              key={module.id} 
-                              className="grid grid-cols-12 gap-4 px-4 py-3 hover:bg-slate-700/50 transition-colors items-center"
-                            >
-                              <div className="col-span-1 text-gray-400 text-sm">
-                                {index + 1}
-                              </div>
-                              <div className="col-span-8 flex items-center gap-3">
-                                <Checkbox
-                                  id={`module-${module.id}`}
-                                  checked={selectedModules.includes(module.id)}
-                                  onCheckedChange={() => toggleModuleSelection(module.id)}
-                                />
-                                <label 
-                                  htmlFor={`module-${module.id}`}
-                                  className="text-sm text-white cursor-pointer flex-1"
-                                >
-                                  {module.name}
-                                </label>
-                                {module.items?.length > 0 && (
-                                  <Badge variant="outline" className="text-xs border-slate-600 text-gray-300">
-                                    {module.items.length} files
-                                  </Badge>
-                                )}
-                              </div>
-                              <div className="col-span-3">
-                                <Badge 
-                                  variant="outline" 
-                                  className={`text-xs ${
-                                    module.status === 'Completed' 
-                                      ? 'border-green-600 text-green-400' 
-                                      : 'border-slate-600 text-gray-400'
-                                  }`}
-                                >
-                                  {module.status || 'Not Started'}
-                                </Badge>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </ScrollArea>
+                                            <ScrollArea className="h-96 rounded-b-md border border-slate-700 border-t-0">
+                                              <div className="divide-y divide-slate-700">
+                                                {modules.map((module, index) => (
+                                                  <div key={module.id}>
+                                                    {/* Module Row */}
+                                                    <div 
+                                                      className="grid grid-cols-12 gap-4 px-4 py-3 hover:bg-slate-700/50 transition-colors items-center cursor-pointer"
+                                                      onClick={() => module.items?.length > 0 && toggleModuleExpansion(module.id)}
+                                                    >
+                                                      <div className="col-span-1 text-gray-400 text-sm flex items-center gap-1">
+                                                        {module.items?.length > 0 && (
+                                                          expandedModules.includes(module.id) 
+                                                            ? <ChevronDown className="h-4 w-4" />
+                                                            : <ChevronRight className="h-4 w-4" />
+                                                        )}
+                                                        {index + 1}
+                                                      </div>
+                                                      <div className="col-span-8 flex items-center gap-3">
+                                                        <Checkbox
+                                                          id={`module-${module.id}`}
+                                                          checked={selectedModules.includes(module.id)}
+                                                          onCheckedChange={(e) => {
+                                                            e.stopPropagation?.()
+                                                            toggleModuleSelection(module.id)
+                                                          }}
+                                                          onClick={(e) => e.stopPropagation()}
+                                                        />
+                                                        <Folder className="h-4 w-4 text-yellow-500" />
+                                                        <label 
+                                                          htmlFor={`module-${module.id}`}
+                                                          className="text-sm text-white cursor-pointer flex-1 font-medium"
+                                                        >
+                                                          {module.name}
+                                                        </label>
+                                                        {module.items?.length > 0 && (
+                                                          <Badge variant="outline" className="text-xs border-purple-600 text-purple-300">
+                                                            {module.items.length} files
+                                                          </Badge>
+                                                        )}
+                                                      </div>
+                                                      <div className="col-span-3">
+                                                        <Badge 
+                                                          variant="outline" 
+                                                          className={`text-xs ${
+                                                            module.status === 'Completed' 
+                                                              ? 'border-green-600 text-green-400' 
+                                                              : 'border-slate-600 text-gray-400'
+                                                          }`}
+                                                        >
+                                                          {module.status || 'Not Started'}
+                                                        </Badge>
+                                                      </div>
+                                                    </div>
+                              
+                                                    {/* Expanded Files List */}
+                                                    {expandedModules.includes(module.id) && module.items?.length > 0 && (
+                                                      <div className="bg-slate-900/50 border-l-2 border-purple-600 ml-8">
+                                                        {module.items.map((item, itemIndex) => (
+                                                          <div 
+                                                            key={`${module.id}-item-${itemIndex}`}
+                                                            className="grid grid-cols-12 gap-4 px-4 py-2 hover:bg-slate-700/30 transition-colors items-center"
+                                                          >
+                                                            <div className="col-span-1 text-gray-500 text-xs pl-4">
+                                                              {itemIndex + 1}
+                                                            </div>
+                                                            <div className="col-span-8 flex items-center gap-3">
+                                                              {item.type === 'video' ? (
+                                                                <Play className="h-4 w-4 text-blue-400" />
+                                                              ) : item.type === 'pdf' ? (
+                                                                <FileText className="h-4 w-4 text-red-400" />
+                                                              ) : (
+                                                                <FileVideo className="h-4 w-4 text-green-400" />
+                                                              )}
+                                                              <span className="text-sm text-gray-300">
+                                                                {item.name}
+                                                              </span>
+                                                            </div>
+                                                            <div className="col-span-3">
+                                                              <Badge 
+                                                                variant="outline" 
+                                                                className="text-xs border-blue-600 text-blue-300"
+                                                              >
+                                                                {item.type}
+                                                              </Badge>
+                                                            </div>
+                                                          </div>
+                                                        ))}
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            </ScrollArea>
                     </>
                   )}
                 </CardContent>
