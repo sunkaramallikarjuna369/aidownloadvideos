@@ -251,37 +251,44 @@ def detect_video_urls_from_page(driver, base_url: str) -> list:
 def scrape_qpiai_modules(driver, course_url: str) -> list:
     """Scrape modules from QpiAI Explorer platform with video detection like browser extensions
     
-    QpiAI Explorer structure:
+    QpiAI Explorer structure (from screenshot):
     - Left sidebar: Course Overview, Modules, Quizzes & Assignments, Certificate
-    - Main content: Table with S.No, Title, Completion Status
-    - Dropdown filters for different sections (e.g., Prerequisites, Introduction to Linear)
+    - Main content: Table with S.No, Title, Completion Status columns
+    - Two dropdown filters at top (e.g., "Prerequisites for Quantum", "Introduction to Linear")
+    - Pagination: "Page 1 of 2" with "Rows per page: 10"
+    - 16 total modules across pages and dropdown sections
     """
     modules = []
-    sections = []  # Track different sections/categories
+    seen_titles = set()  # Track seen titles to avoid duplicates
+    module_id = 0
     
     try:
         # Navigate to modules page
         print(f"Navigating to: {course_url}")
         driver.get(course_url)
-        time.sleep(5)  # Increased wait for SPA to load
+        time.sleep(5)  # Wait for SPA to load
         
         # Log current URL after navigation
         current_url = driver.current_url
         print(f"Current URL after navigation: {current_url}")
         
-        # Wait for the page to load - try multiple selectors
+        # Wait for the table to load - look for "S.No" header text which indicates table is ready
         try:
             WebDriverWait(driver, 15).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "table, [role='grid'], [role='table'], [class*='module'], [class*='content'], [class*='list']"))
+                EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'S.No') or contains(text(), 'Title')]"))
             )
+            print("Found table header (S.No/Title)")
         except Exception as e:
-            print(f"Timeout waiting for content: {e}")
+            print(f"Timeout waiting for table header: {e}")
+        
+        # Additional wait for table rows to render
+        time.sleep(2)
         
         # Save page source for debugging
         page_source = driver.page_source
         print(f"Page source length: {len(page_source)}")
         
-        # Debug: Save page source to file for inspection (use temp directory that works on all OS)
+        # Debug: Save page source to file for inspection
         import tempfile
         try:
             debug_file = os.path.join(tempfile.gettempdir(), f"qpiai_debug_{int(time.time())}.html")
@@ -291,25 +298,25 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
         except Exception as e:
             print(f"Could not save debug file: {e}")
         
-        # Check if we're actually logged in by looking for login form elements
-        login_indicators = driver.find_elements(By.CSS_SELECTOR, "input[type='password'], [class*='signin'], [class*='login'] button")
-        if login_indicators:
-            print("WARNING: Login form elements detected - may not be logged in!")
+        # Check if we're logged in
+        if "signin" in current_url.lower() or "login" in current_url.lower():
+            print("ERROR: Still on login page - authentication may have failed!")
+            return modules
         
-        # Log what elements we can find on the page for debugging
+        # Log element counts for debugging
         print("\n=== PAGE ELEMENT COUNTS ===")
         element_checks = [
             ("tables", "table"),
-            ("table rows", "tr"),
+            ("tbody", "tbody"),
+            ("table rows (tr)", "tr"),
+            ("table cells (td)", "td"),
             ("divs with role=row", "[role='row']"),
             ("divs with role=grid", "[role='grid']"),
-            ("links", "a"),
+            ("divs with role=cell", "[role='cell']"),
+            ("MuiTableRow", "[class*='MuiTableRow']"),
+            ("MuiTableCell", "[class*='MuiTableCell']"),
+            ("links (a)", "a"),
             ("buttons", "button"),
-            ("any element with 'module' in class", "[class*='module']"),
-            ("any element with 'lesson' in class", "[class*='lesson']"),
-            ("any element with 'content' in class", "[class*='content']"),
-            ("any element with 'list' in class", "[class*='list']"),
-            ("any element with 'item' in class", "[class*='item']"),
         ]
         for name, selector in element_checks:
             try:
@@ -319,66 +326,155 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
                 print(f"  {name}: error")
         print("===========================\n")
         
-        # First, try to find and click through all section dropdowns to get all modules
-        # QpiAI has dropdown filters like "Prerequisites for Quantum", "Introduction to Linear"
-        try:
-            # Find dropdown/select elements or buttons that might filter content
-            dropdowns = driver.find_elements(By.CSS_SELECTOR, "select, [role='combobox'], button[class*='select'], [class*='dropdown']")
+        def extract_modules_from_current_page():
+            """Extract module titles from the currently visible table/grid"""
+            nonlocal module_id
+            found_on_page = []
             
-            for dropdown in dropdowns:
-                try:
-                    dropdown_text = dropdown.text.strip()
-                    if dropdown_text and len(dropdown_text) > 2:
-                        sections.append(dropdown_text)
-                except:
-                    pass
-        except Exception as e:
-            print(f"Error finding dropdowns: {e}")
-        
-        print(f"Found sections: {sections}")
-        
-        # Get page source and parse
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
-        
-        # Find all table rows - QpiAI uses a table with S.No, Title, Completion Status
-        table = soup.find('table')
-        module_id = 0
-        
-        if table:
-            rows = table.find_all('tr')
-            for row in rows:
-                # Skip header rows
-                if row.find('th'):
-                    continue
+            # Strategy 1: Try standard HTML table with tbody
+            try:
+                rows = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
+                print(f"Strategy 1 (table tbody tr): Found {len(rows)} rows")
                 
-                cells = row.find_all('td')
-                if len(cells) >= 2:
-                    # S.No is first cell, Title is second cell
-                    title_cell = cells[1] if len(cells) > 1 else cells[0]
-                    title = title_cell.get_text(strip=True)
+                for row in rows:
+                    try:
+                        cells = row.find_elements(By.TAG_NAME, "td")
+                        if len(cells) >= 2:
+                            # S.No is first cell, Title is second cell
+                            title = cells[1].text.strip()
+                            status = cells[2].text.strip() if len(cells) >= 3 else ""
+                            
+                            if title and len(title) > 3 and title not in seen_titles:
+                                # Skip header-like text
+                                if title.lower() in ['title', 's.no', 'completion status']:
+                                    continue
+                                    
+                                seen_titles.add(title)
+                                module_id += 1
+                                
+                                # Try to get the row's click URL by clicking and capturing
+                                lesson_url = ""
+                                try:
+                                    link = row.find_element(By.TAG_NAME, "a")
+                                    lesson_url = link.get_attribute("href") or ""
+                                except:
+                                    pass
+                                
+                                found_on_page.append({
+                                    "id": str(module_id),
+                                    "name": title,
+                                    "lesson_url": lesson_url,
+                                    "status": status,
+                                    "items": [],
+                                    "row_element": row  # Keep reference for clicking later
+                                })
+                                print(f"  Found module: {title}")
+                    except StaleElementReferenceException:
+                        continue
+                    except Exception as e:
+                        print(f"  Error parsing row: {e}")
+            except Exception as e:
+                print(f"Strategy 1 failed: {e}")
+            
+            # Strategy 2: Try MUI table rows if Strategy 1 found nothing
+            if not found_on_page:
+                try:
+                    rows = driver.find_elements(By.CSS_SELECTOR, "[class*='MuiTableRow'], [role='row']")
+                    print(f"Strategy 2 (MuiTableRow/role=row): Found {len(rows)} rows")
                     
-                    if title and len(title) > 2:
-                        module_id += 1
-                        
-                        # Try to find a link to the lesson
-                        link = row.find('a')
-                        lesson_url = ""
-                        if link and link.get('href'):
-                            href = link.get('href')
-                            lesson_url = href if href.startswith('http') else urljoin(course_url, href)
-                        
-                        # Get completion status if available
-                        status = ""
-                        if len(cells) >= 3:
-                            status = cells[2].get_text(strip=True)
-                        
-                        modules.append({
-                            "id": str(module_id),
-                            "name": title,
-                            "lesson_url": lesson_url,
-                            "status": status,
-                            "items": []
-                        })
+                    for row in rows:
+                        try:
+                            cells = row.find_elements(By.CSS_SELECTOR, "[class*='MuiTableCell'], [role='cell'], td")
+                            row_text = row.text.strip()
+                            
+                            if len(cells) >= 2:
+                                title = cells[1].text.strip()
+                                status = cells[2].text.strip() if len(cells) >= 3 else ""
+                            elif row_text:
+                                # Parse from row text (format: "1\nTitle\nStatus")
+                                parts = row_text.split('\n')
+                                if len(parts) >= 2:
+                                    title = parts[1].strip()
+                                    status = parts[2].strip() if len(parts) >= 3 else ""
+                                else:
+                                    continue
+                            else:
+                                continue
+                            
+                            if title and len(title) > 3 and title not in seen_titles:
+                                if title.lower() in ['title', 's.no', 'completion status']:
+                                    continue
+                                    
+                                seen_titles.add(title)
+                                module_id += 1
+                                
+                                lesson_url = ""
+                                try:
+                                    link = row.find_element(By.TAG_NAME, "a")
+                                    lesson_url = link.get_attribute("href") or ""
+                                except:
+                                    pass
+                                
+                                found_on_page.append({
+                                    "id": str(module_id),
+                                    "name": title,
+                                    "lesson_url": lesson_url,
+                                    "status": status,
+                                    "items": [],
+                                    "row_element": row
+                                })
+                                print(f"  Found module: {title}")
+                        except StaleElementReferenceException:
+                            continue
+                except Exception as e:
+                    print(f"Strategy 2 failed: {e}")
+            
+            return found_on_page
+        
+        def go_to_next_page():
+            """Click the next page button if available. Returns True if successful."""
+            try:
+                # Look for next page button (usually > or >> icon)
+                next_buttons = driver.find_elements(By.CSS_SELECTOR, 
+                    "button[aria-label*='next'], button[aria-label*='Next'], "
+                    "[class*='pagination'] button:last-child, "
+                    "button[title*='next'], button[title*='Next'], "
+                    "[class*='MuiTablePagination'] button:nth-last-child(2)")
+                
+                for btn in next_buttons:
+                    if btn.is_enabled() and btn.is_displayed():
+                        # Check if it's not disabled
+                        disabled = btn.get_attribute("disabled")
+                        if disabled:
+                            continue
+                        btn.click()
+                        time.sleep(2)  # Wait for page to load
+                        return True
+                return False
+            except Exception as e:
+                print(f"Error navigating to next page: {e}")
+                return False
+        
+        # Extract modules from current page
+        print("\n=== Extracting modules from page 1 ===")
+        page_modules = extract_modules_from_current_page()
+        modules.extend(page_modules)
+        
+        # Try to go to next page and extract more modules
+        page_num = 1
+        while page_num < 5:  # Safety limit
+            print(f"\n=== Trying to go to page {page_num + 1} ===")
+            if go_to_next_page():
+                page_num += 1
+                time.sleep(2)
+                page_modules = extract_modules_from_current_page()
+                if not page_modules:
+                    print("No new modules found on this page")
+                    break
+                modules.extend(page_modules)
+            else:
+                print("No more pages available")
+                break
         
         # If no modules found from table, try using Selenium to find clickable rows
         if not modules:
@@ -631,6 +727,11 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
                             
                 except Exception as e:
                     print(f"Error scraping module {module['name']}: {e}")
+        
+        # Clean up row_element references (can't be serialized to JSON)
+        for module in modules:
+            if 'row_element' in module:
+                del module['row_element']
         
         # Final summary
         print(f"\n=== SCRAPING SUMMARY ===")
