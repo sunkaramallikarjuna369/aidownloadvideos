@@ -249,22 +249,23 @@ def detect_video_urls_from_page(driver, base_url: str) -> list:
     return video_urls
 
 def scrape_qpiai_modules(driver, course_url: str) -> list:
-    """Scrape modules from QpiAI Explorer platform using the 'Explore Course Content' sidebar
+    """Scrape modules from QpiAI Explorer platform
     
-    NEW approach based on user screenshot:
-    - Navigate to any lesson page to access the "Explore Course Content" sidebar
-    - The sidebar shows expandable sections (chapters) with lessons inside
-    - Each section can be expanded to show individual lessons
-    - Click into each lesson to get video URLs
+    Based on actual site analysis (Dec 2025):
     
-    Structure from screenshot:
-    - Prerequisites for Quantum Computing (expandable)
-      - Introduction to Linear Algebra
-      - Basics of Quantum Mechanics
-      - etc.
-    - Quantum States and Qubits Part 1-7 (expandable)
-      - Single-qubit states and superposition Part 1
-      - etc.
+    Site Structure:
+    - Modules page (/modules) has a dropdown to select module categories
+    - When "All Modules" is selected, table shows module names without links
+    - When a specific module is selected, table shows lessons WITH clickable links
+    - Each lesson page has a "Browse Lessons" button that opens a sidebar
+    - The sidebar shows ALL modules > chapters > lessons in a hierarchical tree
+    
+    Strategy:
+    1. Navigate to modules page
+    2. Wait for table to load (look for "S.No" header)
+    3. If table has links, extract lessons from table
+    4. If no links, click first lesson to access "Browse Lessons" sidebar
+    5. From sidebar, expand all modules and extract all lesson links
     """
     modules = []
     seen_titles = set()  # Track seen titles to avoid duplicates
@@ -311,6 +312,50 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
                 print(f"Now at: {driver.current_url}")
         except Exception as e:
             print(f"Error clicking Modules: {e}")
+        
+        # Step 1.5: Wait for table to load and check if we need to select a specific module
+        print("\nStep 1.5: Checking if we need to select a specific module from dropdown...")
+        time.sleep(2)
+        
+        # Check if table rows have links (if "All Modules" is selected, they won't have links)
+        table_links = driver.find_elements(By.CSS_SELECTOR, "table tbody tr td a")
+        print(f"Found {len(table_links)} links in table")
+        
+        if len(table_links) == 0:
+            # Need to select a specific module from dropdown
+            print("No links in table - need to select a specific module from dropdown")
+            try:
+                # Click on the first dropdown (module selector)
+                dropdown_selectors = [
+                    "button[aria-expanded]",
+                    "[role='combobox']",
+                    "button:has(svg)",  # Buttons with dropdown arrows
+                ]
+                
+                for selector in dropdown_selectors:
+                    try:
+                        dropdowns = driver.find_elements(By.CSS_SELECTOR, selector)
+                        for dropdown in dropdowns:
+                            text = dropdown.text.strip()
+                            if 'All Modules' in text or 'Prerequisites' in text or 'Quantum' in text:
+                                dropdown.click()
+                                print(f"Clicked dropdown: {text}")
+                                time.sleep(1)
+                                
+                                # Select "Prerequisites for Quantum Computing" (first specific module)
+                                options = driver.find_elements(By.CSS_SELECTOR, "[role='option'], [aria-selected]")
+                                for opt in options:
+                                    opt_text = opt.text.strip()
+                                    if 'Prerequisites' in opt_text and 'All' not in opt_text:
+                                        opt.click()
+                                        print(f"Selected module: {opt_text}")
+                                        time.sleep(2)
+                                        break
+                                break
+                    except:
+                        continue
+            except Exception as e:
+                print(f"Error selecting module from dropdown: {e}")
         
         # Step 2: Click on the first lesson in the table to access the "Explore Course Content" sidebar
         print("\nStep 2: Clicking on first lesson to access 'Explore Course Content' sidebar...")
