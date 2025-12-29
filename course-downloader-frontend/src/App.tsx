@@ -184,7 +184,10 @@ function App() {
         setSessionId(data.session_id)
         setExtractedVideos(data.videos || [])
         setShowVideoList(true)
-        setSuccess(`Found ${data.total_videos} videos out of ${data.total_lessons} lessons!`)
+        const filesInfo = data.files_saved 
+          ? `\nFiles saved to:\n- JSON: ${data.files_saved.json}\n- CSV: ${data.files_saved.csv}\n- TXT: ${data.files_saved.txt}`
+          : ''
+        setSuccess(`Found ${data.total_videos} videos out of ${data.total_lessons} lessons!${filesInfo}`)
       } else {
         setError(data.detail || data.error || 'Video extraction failed')
       }

@@ -1884,12 +1884,53 @@ async def extract_videos_api(request: LoginRequest, background_tasks: Background
             "modules": modules_data
         }
         
+        # Save videos to files for later use
+        output_dir = DOWNLOAD_BASE_DIR
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # Save as JSON
+        json_file = os.path.join(output_dir, "video_urls.json")
+        with open(json_file, 'w', encoding='utf-8') as f:
+            json.dump({
+                "course_url": request.course_url,
+                "total_videos": len(videos),
+                "total_lessons": len(all_lessons),
+                "extracted_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+                "videos": videos
+            }, f, indent=2, ensure_ascii=False)
+        print(f"Saved video URLs to: {json_file}")
+        
+        # Save as CSV for easy viewing
+        csv_file = os.path.join(output_dir, "video_urls.csv")
+        with open(csv_file, 'w', encoding='utf-8') as f:
+            f.write("Module,Chapter,Title,URL\n")
+            for video in videos:
+                # Escape commas and quotes in fields
+                module = video.get('module', '').replace('"', '""')
+                chapter = video.get('chapter', '').replace('"', '""')
+                title = video.get('title', '').replace('"', '""')
+                url = video.get('url', '')
+                f.write(f'"{module}","{chapter}","{title}","{url}"\n')
+        print(f"Saved video URLs to: {csv_file}")
+        
+        # Save as simple text file with just URLs
+        txt_file = os.path.join(output_dir, "video_urls.txt")
+        with open(txt_file, 'w', encoding='utf-8') as f:
+            for video in videos:
+                f.write(f"{video.get('url', '')}\n")
+        print(f"Saved video URLs to: {txt_file}")
+        
         return {
             "success": True,
             "session_id": session_id,
             "total_videos": len(videos),
             "total_lessons": len(all_lessons),
-            "videos": videos
+            "videos": videos,
+            "files_saved": {
+                "json": json_file,
+                "csv": csv_file,
+                "txt": txt_file
+            }
         }
         
     except HTTPException:
