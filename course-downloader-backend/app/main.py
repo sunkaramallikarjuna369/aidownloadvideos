@@ -325,35 +325,55 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
             # Need to select a specific module from dropdown
             print("No links in table - need to select a specific module from dropdown")
             try:
-                # Click on the first dropdown (module selector)
-                dropdown_selectors = [
-                    "button[aria-expanded]",
-                    "[role='combobox']",
-                    "button:has(svg)",  # Buttons with dropdown arrows
-                ]
+                # Click on the module dropdown - use XPath for more precise targeting
+                # Note: button:has(svg) doesn't work in Selenium, so we use XPath
+                dropdown_clicked = False
                 
-                for selector in dropdown_selectors:
-                    try:
-                        dropdowns = driver.find_elements(By.CSS_SELECTOR, selector)
-                        for dropdown in dropdowns:
-                            text = dropdown.text.strip()
-                            if 'All Modules' in text or 'Prerequisites' in text or 'Quantum' in text:
-                                dropdown.click()
-                                print(f"Clicked dropdown: {text}")
-                                time.sleep(1)
-                                
-                                # Select "Prerequisites for Quantum Computing" (first specific module)
-                                options = driver.find_elements(By.CSS_SELECTOR, "[role='option'], [aria-selected]")
-                                for opt in options:
-                                    opt_text = opt.text.strip()
-                                    if 'Prerequisites' in opt_text and 'All' not in opt_text:
-                                        opt.click()
-                                        print(f"Selected module: {opt_text}")
-                                        time.sleep(2)
-                                        break
+                # Try XPath first - more reliable for finding the "All Modules" dropdown
+                try:
+                    all_modules_btn = driver.find_element(By.XPATH, "//button[contains(., 'All Modules')]")
+                    if all_modules_btn.is_displayed():
+                        all_modules_btn.click()
+                        dropdown_clicked = True
+                        print("Clicked 'All Modules' dropdown via XPath")
+                        time.sleep(1)
+                except:
+                    pass
+                
+                # Fallback: try CSS selectors
+                if not dropdown_clicked:
+                    dropdown_selectors = [
+                        "button[aria-expanded]",
+                        "[role='combobox']",
+                    ]
+                    
+                    for selector in dropdown_selectors:
+                        try:
+                            dropdowns = driver.find_elements(By.CSS_SELECTOR, selector)
+                            for dropdown in dropdowns:
+                                text = dropdown.text.strip()
+                                if 'All Modules' in text or 'Prerequisites' in text or 'Quantum' in text:
+                                    dropdown.click()
+                                    dropdown_clicked = True
+                                    print(f"Clicked dropdown: {text}")
+                                    time.sleep(1)
+                                    break
+                            if dropdown_clicked:
                                 break
-                    except:
-                        continue
+                        except:
+                            continue
+                
+                # Now select "Prerequisites for Quantum Computing" from the dropdown options
+                if dropdown_clicked:
+                    time.sleep(1)
+                    options = driver.find_elements(By.CSS_SELECTOR, "[role='option'], [aria-selected]")
+                    for opt in options:
+                        opt_text = opt.text.strip()
+                        if 'Prerequisites' in opt_text and 'All' not in opt_text:
+                            opt.click()
+                            print(f"Selected module: {opt_text}")
+                            time.sleep(2)
+                            break
             except Exception as e:
                 print(f"Error selecting module from dropdown: {e}")
         
@@ -469,34 +489,75 @@ def scrape_qpiai_modules(driver, course_url: str) -> list:
         
         print(f"Found {len(sections_found)} potential sections")
         
-        # Step 5: Find all lesson links directly
-        print("\nStep 5: Finding all lesson links...")
+        # Step 5: Find all lesson links - SCOPED TO SIDEBAR ONLY
+        # IMPORTANT: We must scope to the "Explore Course Content" sidebar to avoid
+        # capturing "Next"/"Previous" navigation links from the lesson page
+        print("\nStep 5: Finding all lesson links (scoped to sidebar)...")
         
         lesson_links = []
+        
+        # First, try to find the sidebar container
+        sidebar_container = None
+        sidebar_selectors = [
+            "//h2[contains(text(), 'Explore Course Content')]/parent::div/parent::div",
+            "//h2[contains(text(), 'Explore Course Content')]/ancestor::div[contains(@tabindex, '-1')]",
+            "[tabindex='-1']:has(h2)",  # Fallback - dialog containers
+        ]
+        
+        for selector in sidebar_selectors:
+            try:
+                if selector.startswith("//"):
+                    sidebar_container = driver.find_element(By.XPATH, selector)
+                else:
+                    # CSS :has() doesn't work in Selenium, skip it
+                    if ':has(' in selector:
+                        continue
+                    sidebar_container = driver.find_element(By.CSS_SELECTOR, selector)
+                if sidebar_container:
+                    print(f"Found sidebar container using: {selector}")
+                    break
+            except:
+                continue
+        
+        # If we found the sidebar, search within it; otherwise search the whole page
+        search_context = sidebar_container if sidebar_container else driver
+        context_name = "sidebar" if sidebar_container else "whole page"
+        print(f"Searching for lesson links in: {context_name}")
+        
+        # Navigation links to filter out
+        nav_link_texts = {'next', 'previous', 'prev', '←', '→', '<', '>'}
+        
         lesson_selectors = [
             "a[href*='/lessons/']",
-            "a[href*='/chapters/']",
-            "[class*='lesson'] a",
-            "[class*='content'] a[href*='learn']",
         ]
         
         for selector in lesson_selectors:
             try:
-                links = driver.find_elements(By.CSS_SELECTOR, selector)
-                print(f"Selector '{selector}' found {len(links)} links")
+                links = search_context.find_elements(By.CSS_SELECTOR, selector)
+                print(f"Selector '{selector}' found {len(links)} links in {context_name}")
                 
                 for link in links:
                     try:
                         href = link.get_attribute('href')
                         text = link.text.strip()
                         
-                        if href and '/lessons/' in href and text:
+                        # Filter out navigation links (Next/Previous)
+                        if text.lower() in nav_link_texts:
+                            print(f"  Skipping navigation link: {text}")
+                            continue
+                        
+                        # Filter out empty or very short text
+                        if not text or len(text) < 3:
+                            continue
+                        
+                        if href and '/lessons/' in href:
                             if text not in seen_titles:
                                 seen_titles.add(text)
                                 lesson_links.append({
                                     'name': text,
                                     'url': href
                                 })
+                                print(f"  Found lesson: {text[:50]}...")
                     except:
                         continue
             except Exception as e:
